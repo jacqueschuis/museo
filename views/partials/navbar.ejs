@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">museo</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link " href="/">Home</a>
+        <a class="nav-link" href="/campgrounds">Campgrounds</a>
+        <a class="nav-link" href="/campgrounds/new">New Campground</a>
+      </div>
+      <div class="navbar-nav ms-auto">
+        <% if (!currentUser){%>
+        <a href="#" class="nav-link dropdown dropdown-toggle" role="button" data-bs-toggle="dropdown">Not currently signed in</a>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <a href="/login" class="dropdown-item">Login</a>
+          <a href="/register" class="dropdown-item">Register</a>
+        </ul>
+        <% } else {%>
+        <a href="#" class="nav-link dropdown dropdown-toggle" role="button" data-bs-toggle="dropdown">Welcome back, <%= currentUser.username %></a>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a href="/logout" class="dropdown-item">Logout</a></li>
+        </ul>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>
