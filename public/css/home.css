@@ -15,19 +15,22 @@ body {
   }
   
   .nav-link {
-      padding: 0.25rem 0;
+    padding: 0.25rem 0;
       color: rgba(255,255,255,.5);
       margin-left: 1rem;
       border-bottom: 0.125rem solid transparent;
+      transition: transform .2s, text-shadow .2s;
   }
   
   .nav-link:hover {
-      border-bottom-color: rgba(255,255,255,.5);
-      color: rgb(255,255,255)
+    text-shadow: 0 1px 5px rgba(255,255,255,.5);
+    transform: translate(0, -.1rem);
+    color: rgb(233, 233, 233);
   }
   
   .nav-link.active{
       color: white;
+      text-shadow: 0 1px 5px rgba(255,255,255,.5);
       font-weight: 400;
       border-bottom-color: white;
   }
