@@ -78,3 +78,12 @@ app.use((err, req, res, next) => {
 app.listen(3000, () => {
   console.log("listening on port 3500");
 });
+
+process.once("SIGUSR2", function () {
+  process.kill(process.pid, "SIGUSR2");
+});
+
+process.on("SIGINT", function () {
+  // this is only called on ctrl+c, not restart
+  process.kill(process.pid, "SIGINT");
+});
