@@ -81,24 +81,28 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-  res.render("home");
+  res.render("app/home");
 });
+
+app.get('/about', (req, res) => {
+  res.render('app/about')
+})
 
 app.use((err, req, res, next) => {
   const { status = 500 } = err;
   if (!err.message) err.message = "Oh no, something went wrong!";
-  res.status(status).render("error", { err });
+  res.status(status).render("app/error", { err });
 });
 
 app.listen(3000, () => {
   console.log("listening on port 3500");
 });
 
-process.once("SIGUSR2", function () {
-  process.kill(process.pid, "SIGUSR2");
-});
+// process.once("SIGUSR2", function () {
+//   process.kill(process.pid, "SIGUSR2");
+// });
 
-process.on("SIGINT", function () {
-  // this is only called on ctrl+c, not restart
-  process.kill(process.pid, "SIGINT");
-});
+// process.on("SIGINT", function () {
+//   // this is only called on ctrl+c, not restart
+//   process.kill(process.pid, "SIGINT");
+// });
