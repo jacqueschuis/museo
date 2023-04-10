@@ -53,4 +53,5 @@ body {
 
   #logo {
     font-weight: 800;
+    display: inline-block;
 }
