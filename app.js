@@ -13,11 +13,13 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const passportLocal = require("passport-local");
 const mongoSanitize = require("express-mongo-sanitize");
+const MongoDBStore = require ('connect-mongo');
 
 const dbUrl = "mongodb://localhost:27017/muzeion";
+const atlasUrl = process.env.ATLAS_URL;
 
 mongoose.set("strictQuery", true);
-mongoose.connect(dbUrl);
+mongoose.connect(atlasUrl);
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -36,7 +38,20 @@ app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(mongoSanitize());
 
+const store = MongoDBStore.create({
+  mongoUrl: atlasUrl,
+  touchAfter: 24*60*60,
+  crypto: {
+    secret: 'secret',
+  },
+});
+
+store.on("error", function(e) {
+  console.log('session store error', e);
+});
+
 const sessionConfig = {
+  store,
   name: "sesh",
   secret: "secret",
   resave: false,
