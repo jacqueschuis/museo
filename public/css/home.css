@@ -3,12 +3,12 @@ body {
     font-weight: 400;
   }
 
-  .cover-container {
-    max-width: 60vw;
+  #main {
+    height: 100vh;
+    width:100vw
   }
-  
   .nav-link {
-    padding: 0.25rem 0;
+      padding: 0.25rem 0;
       color: #aaa;
       margin-left: 1rem;
       border-bottom: 0.125rem solid transparent;
@@ -18,53 +18,44 @@ body {
   .nav-link:hover {
     text-shadow: 0 1px 5px #aaa;
     transform: translate(0, -.1rem);
-    color: black;
+    color: rgba(34, 34, 34,.75);
+
   }
   
   .nav-link.active{
-      color: black;
+    color: rgba(34, 34, 34,.75);
       text-shadow: 0 1px 5px #aaa;
   }
-  
-  .btn-secondary {
-      color: #ffffff;
-      text-shadow: none;
-      background-color:#aaa;
-      transition: transform .2s, box-shadow .2s;
-  }
-  
-  .btn-secondary:hover {
-      background-color: transparent;
-      color: black;
-      transform: translate(0, -.2rem);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-  } 
 
   .lead {
     font-weight: 400
   }
 
+  .text-dark-emphasis {
+    color: rgba(34, 34, 34,.75);
+  }
+
   #title {
-    font-size: 80pt;
+    font-size: 100pt;
     font-weight: 800;
     transform-style:preserve-3d;
-    z-index: 1;
-    color: #222;
+    z-index: 2;
+    color: rgba(34, 34, 34,.75);
     transform: translateZ(50px);
     align-self: center;
   }
 
   #logo {
     font-weight: 800;
-    color: #222;
+    color: rgba(34, 34, 34,.75);
 }
 
 #photo-container {
    background-image: url("https://images.unsplash.com/photo-1575223970966-76ae61ee7838?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8");
     background-size: cover;
     background-position: center;
-    width: 500px;
-    height: 500px;
+    width: 600px;
+    height: 600px;
     z-index: 0;
     display: flex;
     transform-style: preserve-3d;
@@ -78,13 +69,47 @@ body {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1400px) {
+  #photo-container{
+    width: 500px;
+    height: 500px;
+  }
+  
+  #title {
+    font-size: 80pt;
+  }
+}
+
+
+@media (max-width: 1200px) {
   #photo-container {
-    width: 375px;
-    height: 375px;
+    width: 450px;
+    height: 450px;
   }
 
   #title {
-    font-size: 70pt;
+    font-size: 75pt;
+  }
+}
+
+@media (max-width: 600px) {
+  #photo-container {
+    width: 350px;
+    height: 350px;
+  }
+
+  #title {
+    font-size: 65pt;
+  }
+}
+
+@media (max-width: 500px) {
+  #photo-container {
+    width:300px;
+    height: 300px;
+  }
+
+  #title {
+    font-size: 55pt;
   }
 }
