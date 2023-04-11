@@ -1,62 +1,90 @@
 body {
-    height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-      url("https://images.unsplash.com/photo-1575223970966-76ae61ee7838?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8");
-    background-size: cover;
-    background-position: center;
-    text-shadow: 0 .05rem .1rem rgba(0, 0, 0, 0.4);
-    box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.4);
     font-family: 'Montserrat', sans-serif;
-    font-weight: 100;
-    overflow: hidden;
+    font-weight: 400;
   }
-  
+
   .cover-container {
     max-width: 60vw;
   }
   
   .nav-link {
     padding: 0.25rem 0;
-      color: rgba(255,255,255,.5);
+      color: #aaa;
       margin-left: 1rem;
       border-bottom: 0.125rem solid transparent;
       transition: transform .2s, text-shadow .2s;
   }
   
   .nav-link:hover {
-    text-shadow: 0 1px 5px rgba(255,255,255,.5);
+    text-shadow: 0 1px 5px #aaa;
     transform: translate(0, -.1rem);
-    color: rgb(233, 233, 233);
+    color: black;
   }
   
   .nav-link.active{
-      color: white;
-      text-shadow: 0 1px 5px rgba(255,255,255,.5);
-      font-weight: 400;
+      color: black;
+      text-shadow: 0 1px 5px #aaa;
   }
   
   .btn-secondary {
-      color: #222;
+      color: #ffffff;
       text-shadow: none;
-      background-color: rgba(255,255,255,.8);
+      background-color:#aaa;
       transition: transform .2s, box-shadow .2s;
   }
   
   .btn-secondary:hover {
       background-color: transparent;
-      color: white;
+      color: black;
       transform: translate(0, -.2rem);
-      box-shadow: 0 5px 15px rgba(255,255,255,.5);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   } 
+
+  .lead {
+    font-weight: 400
+  }
 
   #title {
     font-size: 80pt;
     font-weight: 800;
     transform-style:preserve-3d;
+    z-index: 1;
+    color: #222;
+    transform: translateZ(50px);
+    align-self: center;
   }
 
   #logo {
     font-weight: 800;
-    display: inline-block;
+    color: #222;
 }
 
+#photo-container {
+   background-image: url("https://images.unsplash.com/photo-1575223970966-76ae61ee7838?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8");
+    background-size: cover;
+    background-position: center;
+    width: 500px;
+    height: 500px;
+    z-index: 0;
+    display: flex;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    justify-content: center;
+}
+
+@media (min-width: 768px) {
+  body{
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 768px) {
+  #photo-container {
+    width: 375px;
+    height: 375px;
+  }
+
+  #title {
+    font-size: 70pt;
+  }
+}

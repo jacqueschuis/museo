@@ -19,13 +19,13 @@
 </head>
 
 
-<body class="d-flex text-center text-white bg-dark">
+<body class="text-center text-white bg-light">
   <div class="container-fluid d-flex p-3  flex-column">
-    <header class="mb-auto">
-      <div class="d-md-inline mx-auto">
+    <header class="mb-auto align-items-center">
+      <div class="mx-auto">
         <%- include('../partials/flash') %>
         <h3 class="float-sm-start mb-0 animate__animated animate__fadeInDown" id="logo">museo</h3>
-        <nav class="nav nav-masthead float-sm-end justify-content-between d-flex">
+        <nav class="nav nav-masthead float-sm-end justify-content-between d-flex navbar-dark">
           <a href="#" class="nav-link active">Home</a>
           <a href="/about" class="nav-link">About</a>
           <% if (!currentUser) {%>
@@ -38,18 +38,27 @@
       </div>
     </header>
 
-
-    <main class="px-3">
-      <h1 class="mb-3 animate__animated animate__fadeIn animate__delay-1s animate__slow" id="title" data-tilt data-tilt-full-page-listening>museo</h1>
-      <div class="animate__animated animate__fadeIn animate__delay-2s">
-      <p class="lead">welcome to museo!</p>
-      <p>Jump right in and explore our many campgrounds. Feel free to share some of your own and comment on others!</p>
-      <div class="div">
-        <a href="/museums" class="btn btn-secondary font-weight-bold border-white">museum</a>
-        <a href="/artworks" class="btn btn-secondary font-weight-bold border-white">artwork</a>
+    <main class="container-fluid">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-4 order-2 order-md-1">
+            <div class="animate__animated animate__fadeIn animate__delay-2s text-dark-emphasis">
+              <p class="lead">welcome to museo!</p>
+              <p>Jump right in and explore our many campgrounds. Feel free to share some of your own and comment on others!</p>
+              <a href="/museums" class="btn btn-secondary font-weight-bold border-white">museum</a>
+              <a href="/artworks" class="btn btn-secondary font-weight-bold border-white">artwork</a>
+              <a href="/about" class="btn btn-secondary font-weight-bold border-white">about museo</a>
+            </div>
+          </div>
+          <div class="col-md-8 order-1 order-md-2">
+            <div id="photo-container"data-tilt data-tilt-full-page-listening>
+              <h1 class="mb-3 animate__animated animate__fadeIn animate__delay-1s animate__slow" id="title" data-tilt data-tilt-full-page-listening>museo</h1>
+            </div> 
+          </div>
+        </div>
       </div>
-    </div>
     </main>
+  
     <footer class="mt-auto text-white-50">
       <p>&copy;2023 museo</p>
     </footer>
