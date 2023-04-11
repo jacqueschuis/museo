@@ -13,7 +13,7 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const passportLocal = require("passport-local");
 const mongoSanitize = require("express-mongo-sanitize");
-const MongoDBStore = require ('connect-mongo');
+const MongoDBStore = require("connect-mongo");
 
 const dbUrl = "mongodb://localhost:27017/muzeion";
 const atlasUrl = process.env.ATLAS_URL;
@@ -40,14 +40,14 @@ app.use(mongoSanitize());
 
 const store = MongoDBStore.create({
   mongoUrl: atlasUrl,
-  touchAfter: 24*60*60,
+  touchAfter: 24 * 60 * 60,
   crypto: {
-    secret: 'secret',
+    secret: "secret",
   },
 });
 
-store.on("error", function(e) {
-  console.log('session store error', e);
+store.on("error", function (e) {
+  console.log("session store error", e);
 });
 
 const sessionConfig = {
@@ -84,9 +84,9 @@ app.get("/", (req, res) => {
   res.render("app/home");
 });
 
-app.get('/about', (req, res) => {
-  res.render('app/about')
-})
+app.get("/about", (req, res) => {
+  res.render("app/about");
+});
 
 app.use((err, req, res, next) => {
   const { status = 500 } = err;
@@ -94,7 +94,7 @@ app.use((err, req, res, next) => {
   res.status(status).render("app/error", { err });
 });
 
-app.listen(3000, () => {
+app.listen(3001, () => {
   console.log("listening on port 3500");
 });
 
