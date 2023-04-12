@@ -5,7 +5,21 @@ module.exports.registerForm = (req, res) => {
 }
 
 module.exports.registerUser = async (req, res, next) => {
-    res.redirect('/')
+    try {
+        const {email, username, password, firstName, lastName } = req.body;
+        const user = new User({email,username,firstName,lastName});
+        const registeredUser = await User.register(user,password);
+        req.login(registeredUser, (err) => {
+            if (err) {
+                return next(err);
+            }
+            req.flash('success', 'welcome back');
+            res.redirect('/')
+        });
+    } catch (e) {
+        req.flash('error', e.message);
+        res.redirect('/register');
+    }
 }
 
 module.exports.loginForm = (req, res) => {
@@ -17,5 +31,11 @@ module.exports.loginUser = async (req, res) => {
 }
 
 module.exports.logout = (req,res,next) => {
-    res.redirect('/')
+    req.logout((err) => {
+        if (err) {
+            return next(err);
+        }
+        req.flash('success', 'you have been signed out')
+        res.redirect('/')
+    })
 }

@@ -15,6 +15,8 @@ const passportLocal = require("passport-local");
 const mongoSanitize = require("express-mongo-sanitize");
 const MongoDBStore = require("connect-mongo");
 
+const User = require('./models/user')
+
 const artworkRoutes = require('./routes/artworkRoutes');
 const museumRoutes = require('./routes/museumRoutes');
 const reviewRoutes = require('./routes/reviewRoutes');
@@ -73,10 +75,10 @@ app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
-// passport.use(new passportLocal(User.authenticate()));
+passport.use(new passportLocal(User.authenticate()));
 
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
