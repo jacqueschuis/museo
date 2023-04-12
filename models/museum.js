@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
 const Review = require("./review");
-const Artwork = require("./artwork");
 
 const Schema = mongoose.Schema;
 
@@ -64,11 +63,6 @@ museumSchema.post("findOneAndDelete", async function (museum) {
     await Review.deleteMany({
       _id: {
         $in: museum.reviews,
-      },
-    });
-    await Artwork.deleteMany({
-      _id: {
-        $in: museum.artworks,
       },
     });
   }
