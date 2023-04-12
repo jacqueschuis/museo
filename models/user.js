@@ -8,7 +8,19 @@ const userSchema = new Schema({
     required: true,
     unique: true,
   },
+  firstName: {
+    type: String,
+    required: true
+  },
+  lastName: {
+    type: String,
+    required: true
+  }
 });
+
+userSchema.virtual('fullName').get(() => {
+  return `${this.firstName} ${this.lastName}`
+})
 
 userSchema.plugin(passportLM);
 

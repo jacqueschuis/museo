@@ -25,6 +25,7 @@ const artworkSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User",
   },
+  opts
 });
 
 module.exports = mongoose.model("Artwork", artworkSchema);
