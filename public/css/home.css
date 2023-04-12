@@ -102,6 +102,12 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+  main{
+    height: auto;
+  }
+}
+
 @media (max-width: 600px) {
   #photo-container {
     width: 350px;
@@ -118,4 +124,5 @@ body {
   #title {
     font-size: 55pt;
   }
+
 }
