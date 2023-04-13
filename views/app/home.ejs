@@ -16,7 +16,7 @@
 </head>
 
 <body class="text-md-end text-center text-nowrap">
-  <header class="py-2 px-5">
+  <header class="py-3 px-5">
     <div class="mx-auto">
       <%- include('../partials/flash') %>
       <h3 class="float-md-start mb-2 animate__animated animate__fadeInDown" id="logo">museo</h3>
@@ -27,8 +27,14 @@
         <a href="/login" class="nav-link">login</a>
         <a href="/register" class="nav-link">register</a>
         <% } else  {%>
-        <a href="/Logout" class="nav-link">logout</a>
-        <% } %>
+          <a href="#" class="nav-link dropdown dropdown-toggle fw-bold" role="button" data-bs-toggle="dropdown"><%= currentUser.firstName %></a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <% if (currentUser.isAdmin === true) {%>
+              <li><a href="/admin" class="dropdown-item">admin tools</a></li>
+            <% } %>
+            <li><a href="/logout" class="dropdown-item">logout</a></li>
+          </ul>
+          <% } %>
       </nav>
     </div>
   </header>
