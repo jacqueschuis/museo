@@ -7,6 +7,10 @@ const Schema = mongoose.Schema;
 const imageSchema = new Schema({
   url: String,
   filename: String,
+  submittedBy: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }
 });
 
 imageSchema.virtual("thumbnail").get(() => {
@@ -19,9 +23,26 @@ const museumSchema = new Schema(
   {
     name: String,
     images: [imageSchema],
-    admission: Number,
     summary: String,
     location: String,
+    url: String,
+    tags: {
+      timePeriodFocus: {
+        type: String,
+        enum: ['prehistoric', 'ancient', 'medieval', 'renaissance', 'early modern', 'modern', 'contemporary'], 
+      },
+      mediaFocus: {
+        type: String,
+        enum: ['noMediaFocus', '2d', '3d', 'performance']
+      },
+      geoFocus: {
+        type: String,
+        enum: ['african', 'american', 'east asian', 'european', 'islamic', 'native american', 'oceanian', 'south asian', 'noGeoFocus']
+      },
+      isEncyclopedic: {
+        type: Boolean
+      }
+    },
     geometry: {
       type: String,
       enum: "Point",
@@ -31,7 +52,7 @@ const museumSchema = new Schema(
       type: [Number],
       required: true,
     },
-    author: {
+    postedBy: {
       type: Schema.Types.ObjectId,
       ref: "User",
     },
