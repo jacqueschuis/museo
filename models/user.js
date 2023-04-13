@@ -15,7 +15,8 @@ const userSchema = new Schema({
   lastName: {
     type: String,
     required: true
-  }
+  },
+  isAdmin: Boolean,
 });
 
 userSchema.virtual('fullName').get(() => {

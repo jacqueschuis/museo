@@ -19,6 +19,7 @@
         <% } else {%>
         <a href="#" class="nav-link dropdown dropdown-toggle fw-bold" role="button" data-bs-toggle="dropdown"><%= currentUser.firstName %></a>
         <ul class="dropdown-menu dropdown-menu-end">
+          <li><a href="/admin" class="dropdown-item">admin tools</a></li>
           <li><a href="/logout" class="dropdown-item">logout</a></li>
         </ul>
         <% } %>
