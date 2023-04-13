@@ -1,31 +1,35 @@
 body {
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
+    color: rgba(34, 34, 34, 0.75)
 }
 
 #navLogo{
     font-weight: 800;
-    transition: transform .2s, text-shadow .2s;
+    font-weight: 800;
+    color: rgba(34, 34, 34, 0.75);
+    transition: transform 0.2s, text-shadow 0.2s;
+    display: inline-block
 }
 
 #navLogo:hover{
-    text-shadow: 0 1px 5px rgba(255,255,255,.5);
-    transform: translate(0, -.5rem);
-    color: rgb(233, 233, 233);
+    text-shadow: 0 1px 5px #aaa;
+  transform: translate(0, -0.1rem);
+  color: rgba(34, 34, 34, 0.75);
 }
 
 
 .nav-link {
-      padding: 0.25rem 0;
-      color: rgba(255,255,255,.5);
-      margin-left: 1rem;
-      border-bottom: 0.125rem solid transparent;
-      transition: transform .2s, text-shadow .2s;
+    padding: 0.25rem 0;
+    color: #aaa;
+    margin-left: 1rem;
+    border-bottom: 0.125rem solid transparent;
+    transition: transform 0.2s, text-shadow 0.2s;
   }
   
   .nav-link:hover {
-    text-shadow: 0 1px 5px rgba(255,255,255,.5);
-    transform: translate(0, -.1rem);
-    color: rgb(233, 233, 233);
+    text-shadow: 0 1px 5px #aaa;
+  transform: translate(0, -0.1rem);
+  color: rgba(34, 34, 34, 0.75);
   }
   

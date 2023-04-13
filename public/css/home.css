@@ -1,6 +1,7 @@
 body {
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
+  color: rgba(34, 34, 34, 0.75)
 }
 
 main {
@@ -50,6 +51,15 @@ main {
 
 #logo {
   font-weight: 800;
+    font-weight: 800;
+    color: rgba(34, 34, 34, 0.75);
+    transition: transform 0.2s, text-shadow 0.2s;
+    display: inline-block
+}
+
+#logo:hover {
+  text-shadow: 0 1px 5px #aaa;
+  transform: translate(0, -0.1rem);
   color: rgba(34, 34, 34, 0.75);
 }
 

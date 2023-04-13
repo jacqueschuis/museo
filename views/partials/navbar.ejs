@@ -1,25 +1,25 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" id="navStyles">
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top py-2 px-5" id="navStyles">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/"><span id="navLogo">museo</span></a>
+    <a class="navbar-brand animate__animated animate__fadeInDown" href="/"><h3 id="navLogo">museo</h3></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link" href="/about">About</a>
-        <a class="nav-link" href="/campgrounds/new">New</a>
+        <a class="nav-link" href="/about">about</a>
+        <a class="nav-link" href="/campgrounds/new">new</a>
       </div>
-      <div class="navbar-nav ms-auto">
+      <div class="navbar-nav ms-auto dropdown">
         <% if (!currentUser){%>
-        <a href="#" class="nav-link dropdown dropdown-toggle" role="button" data-bs-toggle="dropdown">Not currently signed in</a>
+        <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">not signed in</a>
         <ul class="dropdown-menu dropdown-menu-end">
-          <a href="/login" class="dropdown-item">Login</a>
-          <a href="/register" class="dropdown-item">Register</a>
+          <a href="/login" class="dropdown-item" type="button">login</a>
+          <a href="/register" class="dropdown-item">register</a>
         </ul>
         <% } else {%>
-        <a href="#" class="nav-link dropdown dropdown-toggle" role="button" data-bs-toggle="dropdown">Welcome back, <%= currentUser.username %></a>
+        <a href="#" class="nav-link dropdown dropdown-toggle" role="button" data-bs-toggle="dropdown"><%= currentUser.username %></a>
         <ul class="dropdown-menu dropdown-menu-end">
-          <li><a href="/logout" class="dropdown-item">Logout</a></li>
+          <li><a href="/logout" class="dropdown-item">logout</a></li>
         </ul>
         <% } %>
       </div>

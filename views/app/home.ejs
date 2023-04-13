@@ -21,13 +21,13 @@
       <%- include('../partials/flash') %>
       <h3 class="float-md-start mb-2 animate__animated animate__fadeInDown" id="logo">museo</h3>
       <nav class="nav nav-masthead float-md-end justify-content-evenly d-flex navbar-dark mb-2">
-        <a href="#" class="nav-link active">Home</a>
-        <a href="/about" class="nav-link">About</a>
+        <a href="#" class="nav-link active">home</a>
+        <a href="/about" class="nav-link">about</a>
         <% if (!currentUser) {%>
-        <a href="/login" class="nav-link">Login</a>
-        <a href="/register" class="nav-link">Register</a>
+        <a href="/login" class="nav-link">login</a>
+        <a href="/register" class="nav-link">register</a>
         <% } else  {%>
-        <a href="/Logout" class="nav-link">Logout</a>
+        <a href="/Logout" class="nav-link">logout</a>
         <% } %>
       </nav>
     </div>
