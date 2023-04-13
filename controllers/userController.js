@@ -14,7 +14,7 @@ module.exports.registerUser = async (req, res, next) => {
             if (err) {
                 return next(err);
             }
-            req.flash('success', 'welcome back');
+            req.flash('success', 'welcome to museo');
             res.redirect('/')
         });
     } catch (e) {
@@ -28,7 +28,7 @@ module.exports.loginForm = (req, res) => {
 }
 
 module.exports.loginUser = async (req, res) => {
-    req.flash('success', 'welcome back!');
+    req.flash('success', `welcome back, ${req.user.firstName}`);
     const redirectUrl = req.session.returnTo || '/';
     delete req.session.returnTo;
     res.redirect(redirectUrl);

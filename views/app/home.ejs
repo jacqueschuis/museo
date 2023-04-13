@@ -12,13 +12,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,900;1,200;1,400;1,900&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <link rel="stylesheet" href="/css/home.css">
-
 </head>
 
 <body class="text-md-end text-center text-nowrap">
   <header class="py-3 px-5">
     <div class="mx-auto">
-      <%- include('../partials/flash') %>
       <h3 class="float-md-start mb-2 animate__animated animate__fadeInDown" id="logo">museo</h3>
       <nav class="nav nav-masthead float-md-end justify-content-evenly d-flex navbar-dark mb-2">
         <a href="#" class="nav-link active">home</a>
@@ -58,6 +56,8 @@
       </div>
     </div>
   </main>
+  <%- include('../partials/flash') %>
+
 
   <footer class="text-black-50 fixed-bottom text-center">
     <p>&copy;2023 museo</p>
@@ -66,6 +66,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/js/vanillatilt.js"></script>
+  <script src="/js/toast.js"></script>
 </body>
 
 </html>
