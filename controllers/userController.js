@@ -27,7 +27,10 @@ module.exports.loginForm = (req, res) => {
 }
 
 module.exports.loginUser = async (req, res) => {
-    res.redirect('/')
+    req.flash('success', 'welcome back!');
+    const redirectUrl = req.session.returnTo || '/';
+    delete req.session.returnTo;
+    res.redirect(redirectUrl);
 }
 
 module.exports.logout = (req,res,next) => {

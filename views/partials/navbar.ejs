@@ -17,7 +17,7 @@
           <a href="/register" class="dropdown-item">register</a>
         </ul>
         <% } else {%>
-        <a href="#" class="nav-link dropdown dropdown-toggle" role="button" data-bs-toggle="dropdown"><%= currentUser.username %></a>
+        <a href="#" class="nav-link dropdown dropdown-toggle fw-bold" role="button" data-bs-toggle="dropdown"><%= currentUser.firstName %></a>
         <ul class="dropdown-menu dropdown-menu-end">
           <li><a href="/logout" class="dropdown-item">logout</a></li>
         </ul>
