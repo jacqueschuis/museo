@@ -26,22 +26,20 @@ const museumSchema = new Schema(
     summary: String,
     location: String,
     url: String,
-    tags: {
-      timePeriodFocus: {
-        type: String,
-        enum: ['prehistoric', 'ancient', 'medieval', 'renaissance', 'early modern', 'modern', 'contemporary'], 
-      },
-      mediaFocus: {
-        type: String,
-        enum: ['noMediaFocus', '2d', '3d', 'performance']
-      },
-      geoFocus: {
-        type: String,
-        enum: ['african', 'american', 'east asian', 'european', 'islamic', 'native american', 'oceanian', 'south asian', 'noGeoFocus']
-      },
-      isEncyclopedic: {
-        type: Boolean
-      }
+    timePeriodFocus: {
+      type: String,
+      enum: ['prehistoric', 'ancient', 'medieval', 'renaissance', 'early modern', 'modern', 'contemporary', 'noTimeFocus'], 
+    },
+    mediaFocus: {
+      type: String,
+      enum: ['noMediaFocus', '2d', '3d', 'performance', 'video']
+    },
+    geoFocus: {
+      type: String,
+      enum: ['african', 'american', 'east asian', 'european', 'islamic', 'native american', 'oceania', 'south asian', 'noGeoFocus']
+    },
+    isEncyclopedic: {
+      type: Boolean
     },
     geometry: {
       type: String,

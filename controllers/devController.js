@@ -7,5 +7,6 @@ module.exports.newMuseumForm = (req, res) => {
 }
 
 module.exports.newMuseumSubmit = async(req, res, next) => {
-    res.render('/')
+    console.log(req.body);
+    res.redirect('/')
 }

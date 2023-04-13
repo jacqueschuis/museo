@@ -9,6 +9,6 @@ router.get('/', devController.devHome);
 
 router.route('/newmuseum')
     .get(devController.newMuseumForm)
-    .post(devController.newMuseumSubmit)
+    .post(catchAsync(devController.newMuseumSubmit))
 
 module.exports = router;

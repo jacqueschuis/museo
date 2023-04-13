@@ -1,8 +1,14 @@
 body {
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
-    color: rgba(34, 34, 34, 0.75)
+    color: rgba(34, 34, 34, 0.75);
+    min-height: 100vh;
 }
+
+footer {
+  bottom: 0;
+  width: 100%;
+  margin-top: 20px;}
 
 #navLogo{
     font-weight: 800;
