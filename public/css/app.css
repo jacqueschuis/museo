@@ -82,7 +82,8 @@ nav {
 
 .museum-name{
   position: absolute;
-  padding: 5px;
+  text-align: end;
+  padding: 10px;
   z-index: 3;
   color: white;
   transition: .2s;
@@ -117,7 +118,7 @@ nav {
 
 @media (max-width: 2400px) {
   .grid-sizer,
-  .grid-item { width: 19.5%}
+  .grid-item { width: 19%}
 }
 
 @media (max-width: 1200px) {

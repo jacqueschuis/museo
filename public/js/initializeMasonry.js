@@ -5,7 +5,8 @@ let msnry = new Masonry( grid, {
   columnWidth: '.grid-sizer',
   percentPosition: true,
   gutter: 9,
-  resize: true
+  stagger:50,
+  transitionDuration: '0.6s'
 });
 
 imagesLoaded(grid).on ('progress', function() {
