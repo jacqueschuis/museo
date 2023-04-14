@@ -1,6 +1,19 @@
 <% layout('layouts/boilerplate') %>
 
-<% for (let museum of museums) {%>
+
+
+<div class="grid" id="index-grid">
+  <div class="grid-sizer"></div>
+  <% for (let museum of museums) {%>
+    <a href="<%= museum.url %>"><div class="grid-item animate__animated animate__fadeInDown animate__slow animate__delay-1s">
+      <h4 class="fw-bold museum-name"><%= museum.name %></h4>
+      <img src="<%= museum.images[0].url %>" alt="">
+    </div>
+  </a>
+    <% } %>
+</div>
+
+<!-- <% for (let museum of museums) {%>
 <div class="col-md-8 offset-md-2">
   <div class="card mb-3">
     <div class="row" id="museum-card">
@@ -19,4 +32,4 @@
     </div>
   </div>
 </div>
-<% } %>
+<% } %> -->

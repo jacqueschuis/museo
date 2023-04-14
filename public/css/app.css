@@ -43,11 +43,55 @@ nav {
   color: rgba(34, 34, 34, 0.75);
 }
 
-#museum-card{
-  filter: grayscale(1) brightness(.5);
-  transition: .2s;
+
+/* clear fix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
 }
 
-#museum-card:hover{
+/* ---- .grid-item ---- */
+
+.grid-sizer,
+.grid-item {
+  width: 15%;
+}
+
+.grid-item {
+  float: left;
+  margin-bottom: 8px;
+  display: flex;
+  z-index: 0;
+  transition: .2s
+}
+
+.grid-item img {
+  border-radius: 8px;
+  max-width: 100%;
+  z-index: 1;
+  filter: grayscale(1) brightness(.5);
+  transition: .2s
+}
+
+.grid-item:hover > img{
   filter: grayscale(0) brightness(1);
 }
+
+.museum-name{
+  position: absolute;
+  padding: 5px;
+  z-index: 3;
+  color: white;
+  transition: .2s
+}
+
+.grid-item:hover > .museum-name{
+  color: rgba(34, 34, 34, 0.75);
+}
+
+#index-grid{
+  display: flex;
+  justify-content: center;
+}
+
