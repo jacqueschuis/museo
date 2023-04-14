@@ -20,9 +20,15 @@ module.exports.newDevMuseum = async (req, res, next) => {
       limit: 1,
     })
     .send();
+  const image = {
+    url: req.body.image,
+    postedBy: req.user._id,
+  };
   const museum = new Museum(req.body.museum);
   museum.geometry = geoData.body.features[0].geometry;
-  museum.author = req.user._id;
+  museum.postedBy = req.user._id;
+  museum.images.push(image);
+  console.log(museum);
   await museum.save();
   req.flash("success", `${museum.name} added to museo`);
   res.redirect("/admin/newmuseum");

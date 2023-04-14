@@ -1,11 +1,15 @@
 body {
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
-  color: rgba(34, 34, 34, 0.75)
+  color: rgba(34, 34, 34, 0.75);
 }
 
 main {
   height: 80vh;
+}
+
+nav {
+  z-index: 100;
 }
 
 .nav-link {
@@ -45,16 +49,16 @@ main {
   transform-style: preserve-3d;
   z-index: 2;
   color: rgba(34, 34, 34, 0.75);
-  transform: translateZ(50px);
+  transform: translateZ(75px);
   align-self: center;
 }
 
 #logo {
   font-weight: 800;
-    font-weight: 800;
-    color: rgba(34, 34, 34, 0.75);
-    transition: transform 0.2s, text-shadow 0.2s;
-    display: inline-block
+  font-weight: 800;
+  color: rgba(34, 34, 34, 0.75);
+  transition: transform 0.2s, text-shadow 0.2s;
+  display: inline-block;
 }
 
 #logo:hover {

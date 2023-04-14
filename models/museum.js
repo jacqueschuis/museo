@@ -7,7 +7,7 @@ const Schema = mongoose.Schema;
 const imageSchema = new Schema({
   url: String,
   filename: String,
-  submittedBy: {
+  postedBy: {
     type: Schema.Types.ObjectId,
     ref: "User",
   },

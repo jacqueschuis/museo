@@ -1,88 +1,101 @@
 <% layout('layouts/boilerplate') %>
 
 <div class="container d-flex justify-content-center">
-    <div class="row">
-        <div class="col-lg-8 offset-lg-2 mt-5">
-            <div class="card shadow">
-                <img src="https://images.unsplash.com/photo-1575223970966-76ae61ee7838?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" alt="" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title text-center fw-bold mb-3">new museum_dev</h5>
-                    <form action="/admin/newmuseum" method="post" novalidate class="needs-validation">
-                        <div class="mb-3">
-                            <div class="form-floating">
-                                <input type="text" id="name" name="museum[name]" class="form-control" required autofocus placeholder="name">
-                                <label for="username">name:</label>
-                            </div>
-                            <div class="valid-feedback">looks good!</div>
-                            <div class="invalid-feedback">please specify the museum's name</div>
-                        </div>
-                        <div class="mb-3">
-                            <div class="form-floating">
-                                <input type="text" id="url" name="museum[url]" class="form-control" required autofocus placeholder="url">
-                                <label for="url">website:</label>
-                            </div>
-                            <div class="valid-feedback">looks good!</div>
-                            <div class="invalid-feedback">please specify a link to the museum's website</div>
-                        </div>
-                        <div class="mb-3">
-                            <div class="form-floating">
-                                <input type="location" id="url" name="museum[location]" class="form-control" required autofocus placeholder="location">
-                                <label for="location">location:</label>
-                            </div>
-                            <div class="valid-feedback">looks good!</div>
-                            <div class="invalid-feedback">please specify the museum's location</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <label for="timePeriodFocus">time period focus:</label>
-                                <select name="museum[timePeriodFocus]" id="timePeriodFocus" class="form-select">
-                                    <option value="noTimeFocus">no singular time period focus</option>
-                                    <option value="prehistoric">prehistoric</option>
-                                    <option value="ancient">ancient</option>
-                                    <option value="medieval">medieval</option>
-                                    <option value="renaissance">renaissance</option>
-                                    <option value="early modern">early modern</option>
-                                    <option value="modern">modern</option>
-                                    <option value="contemporary">contemporary</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="mediaFocus">media focus:</label>
-                                <select name="museum[mediaFocus]" id="mediaFocus" class="form-select">
-                                    <option value="noMediaFocus">no singular focus</option>
-                                    <option value="2d">2d</option>
-                                    <option value="3d">3d</option>
-                                    <option value="video">video</option>
-                                    <option value="performance">performance</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="geoFocus">geographic region focus:</label>
-                                <select name="museum[geoFocus]" id="geoFocus" class="form-select">
-                                    <option value="noGeoFocus">no singular geographic focus</option>
-                                    <option value="african">african</option>
-                                    <option value="american">american</option>
-                                    <option value="east asian">east asian</option>
-                                    <option value="european">european</option>
-                                    <option value="islamic">islamic</option>
-                                    <option value="native american">native american</option>
-                                    <option value="oceania">oceania</option>
-                                    <option value="south asian">south asian</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="summary" class="form-label">summary:</label>
-                            <textarea class="form-control" id="summary" name="museum[summary]" required></textarea>
-                            <div class="valid-feedback">looks good!</div>
-                            <div class="invalid-feedback">please provide a brief summary of the museum</div>
-                          </div>
-                        <div class="d-grid">
-                            <button class="btn">add museum</button>
-                        </div>
-                    </form>
-                </div>
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2 mt-5">
+      <div class="card shadow">
+        <img src="https://images.unsplash.com/photo-1575223970966-76ae61ee7838?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" alt="" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title text-center fw-bold mb-3">new museum_dev</h5>
+          <form action="/admin/newmuseum" method="post" novalidate class="needs-validation">
+            <div class="mb-3">
+              <div class="form-floating">
+                <input type="text" id="name" name="museum[name]" class="form-control" required autofocus placeholder="name">
+                <label for="username">name:</label>
+              </div>
+              <div class="valid-feedback">looks good!</div>
+              <div class="invalid-feedback">please specify the museum's name</div>
             </div>
+            <div class="mb-3">
+              <div class="form-floating">
+                <input type="text" id="url" name="museum[url]" class="form-control" required autofocus placeholder="url">
+                <label for="url">website:</label>
+              </div>
+            </div>
+            <div class="mb-3">
+              <div class="form-floating">
+                <input type="text" id="imageUrl" name="image" class="form-control" required autofocus placeholder="url">
+                <label for="imageUrl">image url:</label>
+              </div>
+            </div>
+            <div class="mb-3">
+              <div class="form-floating">
+                <input type="location" id="url" name="museum[location]" class="form-control" required autofocus placeholder="location">
+                <label for="location">location:</label>
+              </div>
+              <div class="valid-feedback">looks good!</div>
+              <div class="invalid-feedback">please specify the museum's location</div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <label for="isEncyclopedic">is encyclopedic?</label>
+                <select name="museum[isEncyclopedic]" id="isEncyclopedic" class="form-select">
+                  <option value=true>true</option>
+                  <option value=false>false</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label for="timePeriodFocus">time period focus:</label>
+                <select name="museum[timePeriodFocus]" id="timePeriodFocus" class="form-select">
+                  <option value="noTimeFocus">no singular time period focus</option>
+                  <option value="prehistoric">prehistoric</option>
+                  <option value="ancient">ancient</option>
+                  <option value="medieval">medieval</option>
+                  <option value="renaissance">renaissance</option>
+                  <option value="early modern">early modern</option>
+                  <option value="modern">modern</option>
+                  <option value="contemporary">contemporary</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <label for="mediaFocus">media focus:</label>
+                <select name="museum[mediaFocus]" id="mediaFocus" class="form-select">
+                  <option value="noMediaFocus">no singular focus</option>
+                  <option value="2d">2d</option>
+                  <option value="3d">3d</option>
+                  <option value="video">video</option>
+                  <option value="performance">performance</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label for="geoFocus">geographic region focus:</label>
+                <select name="museum[geoFocus]" id="geoFocus" class="form-select">
+                  <option value="noGeoFocus">no singular geographic focus</option>
+                  <option value="african">african</option>
+                  <option value="american">american</option>
+                  <option value="east asian">east asian</option>
+                  <option value="european">european</option>
+                  <option value="islamic">islamic</option>
+                  <option value="native american">native american</option>
+                  <option value="oceania">oceania</option>
+                  <option value="south asian">south asian</option>
+                </select>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="summary" class="form-label">summary:</label>
+              <textarea class="form-control" id="summary" name="museum[summary]" required></textarea>
+              <div class="valid-feedback">looks good!</div>
+              <div class="invalid-feedback">please provide a brief summary of the museum</div>
+            </div>
+            <div class="d-grid">
+              <button class="btn">add museum</button>
+            </div>
+          </form>
         </div>
+      </div>
     </div>
+  </div>
 </div>
