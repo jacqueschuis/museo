@@ -14,6 +14,7 @@ const passport = require("passport");
 const passportLocal = require("passport-local");
 const mongoSanitize = require("express-mongo-sanitize");
 const MongoDBStore = require("connect-mongo");
+const imagesLoaded = require('imagesloaded')
 
 const User = require("./models/user");
 
