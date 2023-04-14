@@ -13,12 +13,14 @@ imageSchema.virtual("thumbnail").get(() => {
 
 const opts = { toJSON: { virtuals: true } };
 
-const artworkSchema = new Schema({
-  title: String,
-  artist: {
-    type: Schema.Types.ObjectId,
-    ref: "Artist",
-  },
+const artistSchema = new Schema({
+  name: String,
+  artworks: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Artwork",
+    },
+  ],
   images: [imageSchema],
   year: Number,
   museum: {
@@ -32,4 +34,4 @@ const artworkSchema = new Schema({
   opts,
 });
 
-module.exports = mongoose.model("Artwork", artworkSchema);
+module.exports = mongoose.model("Artist", artistSchema);
