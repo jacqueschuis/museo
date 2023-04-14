@@ -86,8 +86,23 @@ nav {
   transition: .2s
 }
 
-.grid-item:hover > .museum-name{
+.grid-item:hover > .museum-name {
   color: rgba(34, 34, 34, 0.75);
+}
+
+.gradient-overlay {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  z-index: 2;
+  background: linear-gradient(180deg, rgba(255,255,255,1) 10%, rgba(255,255,255,0) 100%);
+  position: absolute;
+  display: none;
+  transition: .2s
+}
+
+.grid-item:hover > .gradient-overlay{
+  display:inline;
 }
 
 #index-grid{
