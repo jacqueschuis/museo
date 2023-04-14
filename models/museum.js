@@ -9,8 +9,8 @@ const imageSchema = new Schema({
   filename: String,
   submittedBy: {
     type: Schema.Types.ObjectId,
-    ref: 'User'
-  }
+    ref: "User",
+  },
 });
 
 imageSchema.virtual("thumbnail").get(() => {
@@ -28,27 +28,48 @@ const museumSchema = new Schema(
     url: String,
     timePeriodFocus: {
       type: String,
-      enum: ['prehistoric', 'ancient', 'medieval', 'renaissance', 'early modern', 'modern', 'contemporary', 'noTimeFocus'], 
+      enum: [
+        "prehistoric",
+        "ancient",
+        "medieval",
+        "renaissance",
+        "early modern",
+        "modern",
+        "contemporary",
+        "noTimeFocus",
+      ],
     },
     mediaFocus: {
       type: String,
-      enum: ['noMediaFocus', '2d', '3d', 'performance', 'video']
+      enum: ["noMediaFocus", "2d", "3d", "performance", "video"],
     },
     geoFocus: {
       type: String,
-      enum: ['african', 'american', 'east asian', 'european', 'islamic', 'native american', 'oceania', 'south asian', 'noGeoFocus']
+      enum: [
+        "african",
+        "american",
+        "east asian",
+        "european",
+        "islamic",
+        "native american",
+        "oceania",
+        "south asian",
+        "noGeoFocus",
+      ],
     },
     isEncyclopedic: {
-      type: Boolean
+      type: Boolean,
     },
     geometry: {
-      type: String,
-      enum: "Point",
-      required: true,
-    },
-    coordinates: {
-      type: [Number],
-      required: true,
+      type: {
+        type: String,
+        enum: ["Point"],
+        required: true,
+      },
+      coordinates: {
+        type: [Number],
+        required: true,
+      },
     },
     postedBy: {
       type: Schema.Types.ObjectId,

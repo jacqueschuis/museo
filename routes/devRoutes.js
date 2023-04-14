@@ -11,6 +11,6 @@ router.get("/", isAdmin, devController.devHome);
 router
   .route("/newmuseum")
   .get(isAdmin, devController.newMuseumForm)
-  .post(catchAsync(devController.newMuseumSubmit));
+  .post(isAdmin, catchAsync(devController.newDevMuseum));
 
 module.exports = router;
