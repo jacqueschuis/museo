@@ -15,13 +15,13 @@ const passportLocal = require("passport-local");
 const mongoSanitize = require("express-mongo-sanitize");
 const MongoDBStore = require("connect-mongo");
 
-const User = require('./models/user')
+const User = require("./models/user");
 
-const artworkRoutes = require('./routes/artworkRoutes');
-const museumRoutes = require('./routes/museumRoutes');
-const reviewRoutes = require('./routes/reviewRoutes');
-const userRoutes = require('./routes/userRoutes');
-const devRoutes = require('./routes/devRoutes');
+const artworkRoutes = require("./routes/artworkRoutes");
+const museumRoutes = require("./routes/museumRoutes");
+const reviewRoutes = require("./routes/reviewRoutes");
+const userRoutes = require("./routes/userRoutes");
+const devRoutes = require("./routes/devRoutes");
 
 const dbUrl = "mongodb://localhost:27017/muzeion";
 const atlasUrl = process.env.ATLAS_URL;
@@ -88,8 +88,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/', userRoutes);
-app.use('/admin', devRoutes)
+app.use("/", userRoutes);
+app.use("/admin", devRoutes);
 
 app.get("/", (req, res) => {
   res.render("app/home");
