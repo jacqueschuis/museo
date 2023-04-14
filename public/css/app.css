@@ -51,7 +51,9 @@ nav {
   clear: both;
 }
 
-/* ---- .grid-item ---- */
+.grid {
+  width: 100%
+}
 
 .grid-sizer,
 .grid-item {
@@ -113,22 +115,17 @@ nav {
 }
 
 
-@media (max-width: 2200px) {
+@media (max-width: 2400px) {
   .grid-sizer,
-  .grid-item { width: 15%}
+  .grid-item { width: 19.5%}
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1200px) {
   .grid-sizer,
-  .grid-item { width: 18%}
+  .grid-item { width: 32.5%}
 }
 
-@media (max-width: 960px) {
-  .grid-sizer,
-  .grid-item { width: 30%}
-}
-
-@media (max-width: 860px) {
+@media (max-width: 992px) {
 
 }
 
@@ -137,11 +134,8 @@ nav {
   .grid-item { width: 48%}
 }
 
-@media (max-width: 600px) {
-
-}
-
 @media (max-width: 500px) {
   .grid-sizer,
   .grid-item { width: 100%}
 }
+
