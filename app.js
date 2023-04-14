@@ -14,7 +14,6 @@ const passport = require("passport");
 const passportLocal = require("passport-local");
 const mongoSanitize = require("express-mongo-sanitize");
 const MongoDBStore = require("connect-mongo");
-const imagesLoaded = require('imagesloaded')
 
 const User = require("./models/user");
 
@@ -99,6 +98,10 @@ app.get("/", (req, res) => {
 
 app.get("/about", (req, res) => {
   res.render("app/about");
+});
+
+app.all('*', (req, res, next) => {
+  return next(new ExpressError("page not found", 404));
 });
 
 app.use((err, req, res, next) => {

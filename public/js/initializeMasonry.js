@@ -1,12 +1,13 @@
 const grid = document.querySelector('.grid');
-let msnry;
+let msnry = new Masonry( grid, {
+  // options
+  itemSelector: '.grid-item',
+  columnWidth: '.grid-sizer',
+  percentPosition: true,
+  gutter: 9,
+  resize: true
+});
 
-imagesLoaded( grid, () => {
-  msnry= new Masonry( grid, {
-    // options
-    itemSelector: '.grid-item',
-    columnWidth: '.grid-sizer',
-    percentPosition: true,
-    gutter: 9,
-  });
+imagesLoaded(grid).on ('progress', function() {
+  msnry.layout()
 })

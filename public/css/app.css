@@ -55,7 +55,7 @@ nav {
 
 .grid-sizer,
 .grid-item {
-  width: 15%;
+  width: 8%;
 }
 
 .grid-item {
@@ -83,11 +83,13 @@ nav {
   padding: 5px;
   z-index: 3;
   color: white;
-  transition: .2s
+  transition: .2s;
+  display: none;
 }
 
 .grid-item:hover > .museum-name {
   color: rgba(34, 34, 34, 0.75);
+  display: inline
 }
 
 .gradient-overlay {
@@ -110,3 +112,36 @@ nav {
   justify-content: center;
 }
 
+
+@media (max-width: 2200px) {
+  .grid-sizer,
+  .grid-item { width: 15%}
+}
+
+@media (max-width: 1400px) {
+  .grid-sizer,
+  .grid-item { width: 18%}
+}
+
+@media (max-width: 960px) {
+  .grid-sizer,
+  .grid-item { width: 30%}
+}
+
+@media (max-width: 860px) {
+
+}
+
+@media (max-width: 768px) {
+  .grid-sizer,
+  .grid-item { width: 48%}
+}
+
+@media (max-width: 600px) {
+
+}
+
+@media (max-width: 500px) {
+  .grid-sizer,
+  .grid-item { width: 100%}
+}

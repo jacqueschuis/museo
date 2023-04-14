@@ -6,7 +6,7 @@
   <div class="grid-sizer"></div>
   <% for (let museum of museums) {%>
     <a href="<%= museum.url %>">
-      <div class="grid-item animate__animated animate__fadeInDown animate__slow animate__delay-1s">
+      <div class="grid-item ">
         <div class="gradient-overlay"></div>
         <h4 class="fw-bold museum-name"><%= museum.name %></h4>
         <img src="<%= museum.images[0].url %>" alt="">
@@ -15,23 +15,6 @@
     <% } %>
 </div>
 
-<!-- <% for (let museum of museums) {%>
-<div class="col-md-8 offset-md-2">
-  <div class="card mb-3">
-    <div class="row" id="museum-card">
-        <img src="<%= museum.images[0].url %>" class="img-fluid card-img">
-        <div class="card-img-overlay">
-          <h5 class="card-title fw-bold"> <%= museum.name  %> </h5>
-          <div id="museum-text">
-            <p class="card-text"><small><%= museum.location  %></small></p>
-            <p class="card-text"><a href="<%= museum.url %>">visit <%= museum.name %>'s website</a></p>
-          </div>
-          <div class="row">
-            <a href="<%= museum.url %>" class="btn"><%= museum.name %>'s website</a>
-            <a href="/museums/<%= museum._id %>" class="btn"><%= museum.name %> on museo</a>
-          </div>
-        </div>
-    </div>
-  </div>
-</div>
-<% } %> -->
+<script src="/js/imagesloaded.js"></script>
+<script src="/js/masonry.js"></script>
+<script src="/js/initializeMasonry.js"></script>
