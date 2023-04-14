@@ -3,19 +3,19 @@
 <% for (let museum of museums) {%>
 <div class="col-md-8 offset-md-2">
   <div class="card mb-3">
-    <div class="row">
-      <div class="col-md-4">
-        <img src="<%= museum.images[0].url %>" class="img-fluid campImage">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title"> <%= museum.name  %> </h5>
-          <p class="card-text"><%= museum.summary %> </p>
-          <p class="card-text"><small class="text-muted"><%= museum.location  %></small></p>
-          <p class="card-text"><a href="<%= museum.url %>" class="text-muted">visit <%= museum.name %>'s website</a></p>
-          <a href="/museums/<%= museum._id %>" class="btn btn-primary">View <%= museum.name %></a>
+    <div class="row" id="museum-card">
+        <img src="<%= museum.images[0].url %>" class="img-fluid card-img">
+        <div class="card-img-overlay">
+          <h5 class="card-title fw-bold"> <%= museum.name  %> </h5>
+          <div id="museum-text">
+            <p class="card-text"><small><%= museum.location  %></small></p>
+            <p class="card-text"><a href="<%= museum.url %>">visit <%= museum.name %>'s website</a></p>
+          </div>
+          <div class="row">
+            <a href="<%= museum.url %>" class="btn"><%= museum.name %>'s website</a>
+            <a href="/museums/<%= museum._id %>" class="btn"><%= museum.name %> on museo</a>
+          </div>
         </div>
-      </div>
     </div>
   </div>
 </div>

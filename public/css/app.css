@@ -42,3 +42,12 @@ nav {
   transform: translate(0, -0.1rem);
   color: rgba(34, 34, 34, 0.75);
 }
+
+#museum-card{
+  filter: grayscale(1) brightness(.5);
+  transition: .2s;
+}
+
+#museum-card:hover{
+  filter: grayscale(0) brightness(1);
+}
