@@ -28,7 +28,7 @@
         <% if (currentUser.isAdmin === true) {%>
         <li><a href="/admin" class="nav-link">admin tools</a></li>
         <% } %>
-        <li><a href="/logout" class="nav-link fw-bold">logout</a></li>
+        <li><a href="/logout" class="nav-link fw-bold">logout, <%= currentUser.firstName %></a></li>
         <% } %>
       </nav>
     </div>
