@@ -35,12 +35,13 @@ module.exports.loginUser = async (req, res) => {
 }
 
 module.exports.logout = (req,res,next) => {
+    console.log(req.session)
+    const redirectUrl = req.session.returnTo || '/';
     req.logout((err) => {
         if (err) {
             return next(err);
         }
         req.flash('success', 'you have been signed out')
-        const redirectUrl = req.session.returnTo || '/';
         delete req.session.returnTo;
         res.redirect(redirectUrl);
     })
