@@ -1,0 +1,47 @@
+body{
+    overflow: hidden;
+}
+
+#header{
+    width: 100%;
+    height: 200px;
+    display: flex;
+}
+
+#museumShowHero{
+    width: 100%;
+    height:auto;
+    border-radius: 8px;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+    filter: grayscale(1) contrast(.5);
+}
+
+#museumTitle{
+    position: absolute;
+    align-self: flex-end;
+    padding-left: 15px;
+    z-index: 3;
+}
+
+#museumHeroGradient{
+    width: 100%;
+    height: 100%;
+    align-self: flex-end;
+    z-index: 2;
+    background: linear-gradient(0deg, rgba(255,255,255,1) 5%, rgba(255,255,255,0) 30%);
+    position: absolute;
+}
+
+#backButton {
+    color: #aaa;
+    border-bottom: 0.125rem solid transparent;
+    transition: transform 0.2s, text-shadow 0.2s;
+}
+
+#backButton:hover {
+    text-shadow: 0 1px 5px #aaa;
+    transform: translate(0, -0.1rem);
+    color: rgba(34, 34, 34, 0.75);
+  }

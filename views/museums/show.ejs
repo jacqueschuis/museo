@@ -1,0 +1,45 @@
+<% layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="/css/museumShow.css">
+
+<div id="header">
+    <div id="museumHeroGradient"></div>
+    <h1 class="fw-bold" id="museumTitle"><a href="/museums"><i class="bi bi-chevron-left" id="backButton"></i></a><%= museum.name %></h1>
+    <img id="museumShowHero" src="<%= museum.images[0].url %>" alt="">
+</div>
+<ul class="nav nav-tabs" id="museumShowTab" role="tablist">
+    <li class="nav-item">
+        <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview-tab-pane" role="tab" aria-controls="overview-tab-pane" aria-selected="true">
+            overview
+        </button>          
+    </li>
+    <li class="nav-item">
+        <button class="nav-link" id="museum-tab" data-bs-toggle="tab" data-bs-target="#museum-tab-pane" role="tab" aria-controls="museum-tab-pane" aria-selected="true">
+            the museum
+        </button>          
+    </li>
+    <li class="nav-item">
+        <button class="nav-link" id="artwork-tab" data-bs-toggle="tab" data-bs-target="#artwork-tab-pane" role="tab" aria-controls="artwork-tab-pane" aria-selected="true">
+            the art
+        </button>          
+    </li>
+    <li class="nav-item">
+        <button class="nav-link" id="review-tab" data-bs-toggle="tab" data-bs-target="#review-tab-pane" role="tab" aria-controls="review-tab-pane" aria-selected="true">
+            the reviews
+        </button>          
+    </li>
+</ul>
+
+<div class="tab-content" id="museumShowTabContent">
+    <div class="tab-pane fade show active" id="overview-tab-pane" role="tabpanel" aria-labelledby="overview-tab" tabindex="0">
+        <h1>overview</h1>
+    </div>
+    <div class="tab-pane fade show" id="museum-tab-pane" role="tabpanel" aria-labelledby="museum-tab" tabindex="0">
+        <h1><%= museum.name %></h1>
+    </div>
+    <div class="tab-pane fade show" id="artwork-tab-pane" role="tabpanel" aria-labelledby="artwork-tab" tabindex="0">
+        <h1>artwork</h1>
+    </div>
+    <div class="tab-pane fade show" id="review-tab-pane" role="tabpanel" aria-labelledby="review-tab" tabindex="0">
+        <h1>reviews</h1>
+    </div>
+</div>

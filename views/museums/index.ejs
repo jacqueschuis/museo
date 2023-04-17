@@ -5,7 +5,7 @@
 <div class="grid" id="index-grid">
   <div class="grid-sizer"></div>
   <% for (let museum of museums) {%>
-    <a href="<%= museum.url %>">
+    <a href="/museums/<%= museum._id %>">
       <div class="grid-item ">
         <div class="gradient-overlay"></div>
         <h4 class="fw-bold museum-name"><%= museum.name %></h4>

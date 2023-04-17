@@ -6,4 +6,7 @@ const museumController = require("../controllers/museumController");
 
 router.route("/").get(catchAsync(museumController.index));
 
+router.route('/:id')
+    .get(catchAsync(museumController.showMuseum));
+
 module.exports = router;
