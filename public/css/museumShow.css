@@ -1,6 +1,4 @@
-body{
-    overflow: hidden;
-}
+
 
 #header{
     width: 100%;
@@ -60,10 +58,19 @@ body{
 .nav-pills>li>.nav-link:hover{
     transform: none;
 }
-/* 
-@media (min-width: 2400px) {
-    #museumTitle{
-        padding-left: 15px;
 
+.carousel-item{
+    width: 400px;
+}
+
+.carousel-item>img {
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
+}
+
+@media (max-width: 500) {
+    .carousel-item{
+        width: 100%;
     }
-  } */
+  }

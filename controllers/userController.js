@@ -40,6 +40,8 @@ module.exports.logout = (req,res,next) => {
             return next(err);
         }
         req.flash('success', 'you have been signed out')
-        res.redirect('/')
+        const redirectUrl = req.session.returnTo || '/';
+        delete req.session.returnTo;
+        res.redirect(redirectUrl);
     })
 }
