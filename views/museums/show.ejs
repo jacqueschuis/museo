@@ -1,4 +1,5 @@
 <% layout('layouts/boilerplate') %>
+
 <link rel="stylesheet" href="/css/museumShow.css">
 
 <div id="header">
@@ -6,7 +7,7 @@
     <h1 class="fw-bold" id="museumTitle"><a href="/museums"><i class="bi bi-chevron-left" id="backButton"></i></a><%= museum.name %></h1>
     <img id="museumShowHero" src="<%= museum.images[0].url %>" alt="">
 </div>
-<ul class="nav nav-tabs" id="museumShowTab" role="tablist">
+<ul class="nav nav-pills nav-justified flex-column flex-md-row" id="museumShowTab" role="tablist">
     <li class="nav-item">
         <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview-tab-pane" role="tab" aria-controls="overview-tab-pane" aria-selected="true">
             overview
@@ -27,9 +28,16 @@
             the reviews
         </button>          
     </li>
+   <% if(currentUser && museum.postedBy.equals(currentUser._id)) {%>
+    <li class="nav-item">
+        <button class="nav-link" id="admin-tab" data-bs-toggle="tab" data-bs-target="#admin-tab-pane" role="tab" aria-controls="admin-tab-pane" aria-selected="true">
+            settings
+        </button>          
+    </li>
+    <% } %>
 </ul>
 
-<div class="tab-content" id="museumShowTabContent">
+<div class="tab-content mt-3" id="museumShowTabContent">
     <div class="tab-pane fade show active" id="overview-tab-pane" role="tabpanel" aria-labelledby="overview-tab" tabindex="0">
         <h1>overview</h1>
     </div>
@@ -42,4 +50,9 @@
     <div class="tab-pane fade show" id="review-tab-pane" role="tabpanel" aria-labelledby="review-tab" tabindex="0">
         <h1>reviews</h1>
     </div>
+    <% if(currentUser && museum.postedBy.equals(currentUser._id)) {%>
+    <div class="tab-pane fade show" id="admin-tab-pane" role="tabpanel" aria-labelledby="admin-tab" tabindex="0">
+        <h1>settings</h1>
+    </div>
+    <% } %>
 </div>
