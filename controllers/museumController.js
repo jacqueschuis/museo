@@ -12,7 +12,7 @@ module.exports.index = async (req, res) => {
 
 module.exports.showMuseum = async(req,res) => {
   const {id} = req.params;
-  const museum = await Museum.findById(id)
+  const museum = await Museum.findById(id).populate('postedBy')
   // .populate({
   //   path: 'reviews',
   //   populate: {

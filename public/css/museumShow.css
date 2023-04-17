@@ -33,7 +33,6 @@
 
 #backButton {
     color: #aaa;
-    border-bottom: 0.125rem solid transparent;
     transition: transform 0.2s, text-shadow 0.2s;
 }
 
@@ -68,6 +67,31 @@
     object-fit: cover;
     object-position: center;
 }
+
+.museumTitleLink{
+    display: inline-block;
+    text-decoration: none !important;
+    color: rgba(34, 34, 34, 0.75);
+    transition: transform 0.2s, text-shadow 0.2s;
+}
+
+.museumTitleLink:hover{
+    text-shadow: 0 1px 5px #aaa;
+    transform: translate(0, -0.1rem);
+    color: rgba(34, 34, 34, 0.75);
+}
+
+#mapCollapse {
+    width: 100%;
+    max-width:500px;
+    height: 300px;
+  }
+
+  @media (max-width: 768px) {
+    #mapCollapse{
+        max-width: 100%
+    }
+  }
 
 @media (max-width: 500) {
     .carousel-item{

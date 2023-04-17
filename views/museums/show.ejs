@@ -40,7 +40,7 @@
 <div class="tab-content mt-3" id="museumShowTabContent">
     <div class="tab-pane fade show active" id="overview-tab-pane" role="tabpanel" aria-labelledby="overview-tab" tabindex="0">
         <div class="row d-flex text-center mb-5 mb-md-0">
-            <div class="col-md-6 mb-5 mb-md-0 d-flex justify-content-md-end justify-content-center">
+            <div class="col-md-6 mb-3 mb-md-0 d-flex justify-content-md-end justify-content-center">
                 <div id="museumCarousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                       <% museum.images.forEach((img, i)=> { %>
@@ -60,7 +60,20 @@
                     </div>
                   </div>
             </div>
-            <div class="col-md-6">column 2</div>
+            <div class="col-md-6 text-center text-md-start justify-content-center justify-content-md-start">
+                    <a href="<%= museum.url %>" data-bs-toggle="tooltip" data-bs-title="view museum's website" class="museumTitleLink">
+                        <h3 class="fw-bold link-underline-none"><%= museum.name %></h3>
+                    </a>
+                <div class="row">
+                    <div class="col">
+                        <a href="#mapCollapse" data-bs-toggle="collapse" role="button" class="museumTitleLink"><%= museum.location %></a>
+                        <div class="collapse align-self-center" id="mapCollapse"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <p>posted by <span class="fw-bold"><%= museum.postedBy.username %></span></p>
+                </div>
+            </div>
         </div>
     </div>
     <div class="tab-pane fade show" id="museum-tab-pane" role="tabpanel" aria-labelledby="museum-tab" tabindex="0">
@@ -78,3 +91,10 @@
     </div>
     <% } %>
 </div>
+
+
+<script>
+    const mapToken = '<%-process.env.MAPBOX_TOKEN%>'
+    const museum = <%- JSON.stringify(museum) %>
+</script>
+<script src="/js/museumShowMap.js"></script>
