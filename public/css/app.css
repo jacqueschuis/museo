@@ -82,8 +82,8 @@ nav {
 
 .museum-name{
   position: absolute;
-  justify-self: center;
-  text-align: center;
+  justify-self: flex-end;
+  text-align: end;
   padding: 10px;
   z-index: 3;
   color: white;

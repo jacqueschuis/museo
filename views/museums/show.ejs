@@ -81,13 +81,39 @@
   </div>
   <div class="tab-pane fade show" id="artwork-tab-pane" role="tabpanel" aria-labelledby="artwork-tab" tabindex="0">
     <h1>artwork</h1>
-    <a href="#artworkSubmit" data-bs-toggle="collapse" role="button" class="artworkSubmitLink">submit artwork for <%= museum.name %></a>
-    <form action="/museums/<%= museum._id %>/artwork" method="post" class="needs-validation collapse" id="artworkSubmit" novalidate>
-      <div class="d-grid">
-        <button class="btn">submit artwork</button>
+    <% if (currentUser) {%>
+      <div class="col-lg-8 offset-lg-2 mt-5">
+      <a href="#artworkSubmit" data-bs-toggle="collapse" role="button" class="artworkSubmitLink">submit artwork for <%= museum.name %></a>
+      <div class="card shadow collapse" id="artworkSubmit">
+        <div class="card-body">
+          <h5 class="card-title text-center fw-bold mb-3">DEV_submit artwork to <%= museum.name %></h5>
+          <form action="/museums/<%= museum._id %>/artwork" method="post" novalidate class="needs-validation">
+            <div class="mb-3">
+              <div class="form-floating">
+                <input type="text" id="title" name="artwork[title]" class="form-control" required autofocus placeholder="name">
+                <label for="title">title:</label>
+              </div>
+            </div>
+            <div class="mb-3">
+              <div class="form-floating">
+                <input type="text" id="year" name="artwork[year]" class="form-control" required autofocus placeholder="url">
+                <label for="year">date:</label>
+              </div>
+            </div>
+            <div class="mb-3">
+              <div class="form-floating">
+                <input type="text" id="imageUrl" name="image" class="form-control" required autofocus placeholder="url">
+                <label for="imageUrl">image url:</label>
+              </div>
+            </div>
+            <div class="d-grid">
+              <button class="btn">add artwork</button>
+            </div>
+          </form>
+        </div>
       </div>
-    </form>
-    <div class="collapse align-self-center" id=""></div>
+    </div>
+    <% } %>
   </div>
   <div class="tab-pane fade show" id="review-tab-pane" role="tabpanel" aria-labelledby="review-tab" tabindex="0">
     <h1>reviews</h1>
