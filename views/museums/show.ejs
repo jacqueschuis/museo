@@ -81,6 +81,13 @@
   </div>
   <div class="tab-pane fade show" id="artwork-tab-pane" role="tabpanel" aria-labelledby="artwork-tab" tabindex="0">
     <h1>artwork</h1>
+    <a href="#artworkSubmit" data-bs-toggle="collapse" role="button" class="artworkSubmitLink">submit artwork for <%= museum.name %></a>
+    <form action="/museums/<%= museum._id %>/artwork" method="post" class="needs-validation collapse" id="artworkSubmit" novalidate>
+      <div class="d-grid">
+        <button class="btn">submit artwork</button>
+      </div>
+    </form>
+    <div class="collapse align-self-center" id=""></div>
   </div>
   <div class="tab-pane fade show" id="review-tab-pane" role="tabpanel" aria-labelledby="review-tab" tabindex="0">
     <h1>reviews</h1>
