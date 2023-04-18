@@ -3,98 +3,98 @@
 <link rel="stylesheet" href="/css/museumShow.css">
 
 <div id="header">
-    <div id="museumHeroGradient"></div>
-    <h1 class="fw-bold" id="museumTitle"><a href="/museums"><i class="bi bi-chevron-left" id="backButton"></i></a><%= museum.name %></h1>
-    <img id="museumShowHero" src="<%= museum.images[0].url %>" alt="">
+  <div id="museumHeroGradient"></div>
+  <h1 class="fw-bold" id="museumTitle"><a href="/museums"><i class="bi bi-chevron-left" id="backButton"></i></a><%= museum.name %></h1>
+  <img id="museumShowHero" src="<%= museum.images[0].url %>" alt="">
 </div>
 <ul class="nav nav-pills nav-justified flex-column flex-md-row" id="museumShowTab" role="tablist">
-    <li class="nav-item">
-        <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview-tab-pane" role="tab" aria-controls="overview-tab-pane" aria-selected="true">
-            overview
-        </button>          
-    </li>
-    <li class="nav-item">
-        <button class="nav-link" id="museum-tab" data-bs-toggle="tab" data-bs-target="#museum-tab-pane" role="tab" aria-controls="museum-tab-pane" aria-selected="true">
-            the museum
-        </button>          
-    </li>
-    <li class="nav-item">
-        <button class="nav-link" id="artwork-tab" data-bs-toggle="tab" data-bs-target="#artwork-tab-pane" role="tab" aria-controls="artwork-tab-pane" aria-selected="true">
-            the art
-        </button>          
-    </li>
-    <li class="nav-item">
-        <button class="nav-link" id="review-tab" data-bs-toggle="tab" data-bs-target="#review-tab-pane" role="tab" aria-controls="review-tab-pane" aria-selected="true">
-            the reviews
-        </button>          
-    </li>
-   <% if(currentUser && museum.postedBy.equals(currentUser._id)) {%>
-    <li class="nav-item">
-        <button class="nav-link" id="admin-tab" data-bs-toggle="tab" data-bs-target="#admin-tab-pane" role="tab" aria-controls="admin-tab-pane" aria-selected="true">
-            settings
-        </button>          
-    </li>
-    <% } %>
+  <li class="nav-item">
+    <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview-tab-pane" role="tab" aria-controls="overview-tab-pane" aria-selected="true">
+      overview
+    </button>
+  </li>
+  <li class="nav-item">
+    <button class="nav-link" id="museum-tab" data-bs-toggle="tab" data-bs-target="#museum-tab-pane" role="tab" aria-controls="museum-tab-pane" aria-selected="true">
+      the museum
+    </button>
+  </li>
+  <li class="nav-item">
+    <button class="nav-link" id="artwork-tab" data-bs-toggle="tab" data-bs-target="#artwork-tab-pane" role="tab" aria-controls="artwork-tab-pane" aria-selected="true">
+      the art
+    </button>
+  </li>
+  <li class="nav-item">
+    <button class="nav-link" id="review-tab" data-bs-toggle="tab" data-bs-target="#review-tab-pane" role="tab" aria-controls="review-tab-pane" aria-selected="true">
+      the reviews
+    </button>
+  </li>
+  <% if(currentUser && museum.postedBy.equals(currentUser._id)) {%>
+  <li class="nav-item">
+    <button class="nav-link" id="admin-tab" data-bs-toggle="tab" data-bs-target="#admin-tab-pane" role="tab" aria-controls="admin-tab-pane" aria-selected="true">
+      settings
+    </button>
+  </li>
+  <% } %>
 </ul>
 
 <div class="tab-content mt-3" id="museumShowTabContent">
-    <div class="tab-pane fade show active" id="overview-tab-pane" role="tabpanel" aria-labelledby="overview-tab" tabindex="0">
-        <div class="row d-flex text-center mb-5 mb-md-0">
-            <div class="col-md-6 mb-3 mb-md-0 d-flex justify-content-md-end justify-content-center">
-                <div id="museumCarousel" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                      <% museum.images.forEach((img, i)=> { %>
-                      <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
-                        <img src="<%= img.url %>" class="d-block w-100 img-fluid" alt="..." />
-                      </div>
-                      <% }) %> <% if(museum.images.length > 1) {%>
-                      <button class="carousel-control-prev" type="button" data-bs-target="#museumCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                      </button>
-                      <button class="carousel-control-next" type="button" data-bs-target="#museumCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                      </button>
-                      <% } %>
-                    </div>
-                  </div>
+  <div class="tab-pane fade show active" id="overview-tab-pane" role="tabpanel" aria-labelledby="overview-tab" tabindex="0">
+    <div class="row d-flex text-center mb-5 mb-md-0">
+      <div class="col-md-6 mb-3 mb-md-0 d-flex justify-content-md-end justify-content-center">
+        <div id="museumCarousel" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <% museum.images.forEach((img, i)=> { %>
+            <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
+              <img src="<%= img.url %>" class="d-block w-100 img-fluid" alt="..." />
             </div>
-            <div class="col-md-6 text-center text-md-start justify-content-center justify-content-md-start">
-                    <a href="<%= museum.url %>" data-bs-toggle="tooltip" data-bs-title="view museum's website" class="museumTitleLink">
-                        <h3 class="fw-bold link-underline-none"><%= museum.name %></h3>
-                    </a>
-                <div class="row">
-                    <div class="col">
-                        <a href="#mapCollapse" data-bs-toggle="collapse" role="button" class="museumTitleLink"><%= museum.location %></a>
-                        <div class="collapse align-self-center" id="mapCollapse"></div>
-                    </div>
-                </div>
-                <div class="row">
-                    <p>posted by <span class="fw-bold"><%= museum.postedBy.username %></span></p>
-                </div>
-            </div>
+            <% }) %> <% if(museum.images.length > 1) {%>
+            <button class="carousel-control-prev" type="button" data-bs-target="#museumCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#museumCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+            <% } %>
+          </div>
         </div>
+      </div>
+      <div class="col-md-6 text-center text-md-start justify-content-center justify-content-md-start">
+        <a href="<%= museum.url %>" data-bs-toggle="tooltip" data-bs-title="view museum's website" class="museumTitleLink">
+          <h3 class="fw-bold link-underline-none"><%= museum.name %> <i class="bi bi-box-arrow-up-right d-inline" style="font-size: .75em"></i></h3>
+        </a>
+        <div class="row">
+          <p>posted by <span class="fw-bold"><%= museum.postedBy.username %></span></p>
+        </div>
+        <div class="row">
+          <div class="col">
+            <a href="#mapCollapse" data-bs-toggle="collapse" role="button" class="museumTitleLink"><%= museum.location %></a>
+            <div class="collapse align-self-center" id="mapCollapse"></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="tab-pane fade show" id="museum-tab-pane" role="tabpanel" aria-labelledby="museum-tab" tabindex="0">
-        <h1><%= museum.name %></h1>
-    </div>
-    <div class="tab-pane fade show" id="artwork-tab-pane" role="tabpanel" aria-labelledby="artwork-tab" tabindex="0">
-        <h1>artwork</h1>
-    </div>
-    <div class="tab-pane fade show" id="review-tab-pane" role="tabpanel" aria-labelledby="review-tab" tabindex="0">
-        <h1>reviews</h1>
-    </div>
-    <% if(currentUser && museum.postedBy.equals(currentUser._id)) {%>
-    <div class="tab-pane fade show" id="admin-tab-pane" role="tabpanel" aria-labelledby="admin-tab" tabindex="0">
-        <h1>settings</h1>
-    </div>
-    <% } %>
+  </div>
+  <div class="tab-pane fade show" id="museum-tab-pane" role="tabpanel" aria-labelledby="museum-tab" tabindex="0">
+    <h1><%= museum.name %></h1>
+  </div>
+  <div class="tab-pane fade show" id="artwork-tab-pane" role="tabpanel" aria-labelledby="artwork-tab" tabindex="0">
+    <h1>artwork</h1>
+  </div>
+  <div class="tab-pane fade show" id="review-tab-pane" role="tabpanel" aria-labelledby="review-tab" tabindex="0">
+    <h1>reviews</h1>
+  </div>
+  <% if(currentUser && museum.postedBy.equals(currentUser._id)) {%>
+  <div class="tab-pane fade show" id="admin-tab-pane" role="tabpanel" aria-labelledby="admin-tab" tabindex="0">
+    <h1>settings</h1>
+  </div>
+  <% } %>
 </div>
 
 
 <script>
-    const mapToken = '<%-process.env.MAPBOX_TOKEN%>'
-    const museum = <%- JSON.stringify(museum) %>
+  const mapToken = '<%-process.env.MAPBOX_TOKEN%>'
+  const museum = <%- JSON.stringify(museum) %>
 </script>
 <script src="/js/museumShowMap.js"></script>
