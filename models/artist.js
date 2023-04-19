@@ -11,7 +11,7 @@ imageSchema.virtual("thumbnail").get(() => {
   return this.url.replace("/upload", "/upload/w_200");
 });
 
-const opts = { toJSON: { virtuals: true } };
+// const opts = { toJSON: { virtuals: true } };
 
 const artistSchema = new Schema({
   name: String,
@@ -22,16 +22,19 @@ const artistSchema = new Schema({
     },
   ],
   images: [imageSchema],
-  year: Number,
-  museum: {
-    type: Schema.Types.ObjectId,
-    ref: "Museum",
-  },
+  bornDate: Number,
+  deathDate: Number,
+  museums: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Museum',
+    }
+  ],
   postedBy: {
     type: Schema.Types.ObjectId,
     ref: "User",
   },
-  opts,
+  // opts,
 });
 
 module.exports = mongoose.model("Artist", artistSchema);

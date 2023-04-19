@@ -88,7 +88,7 @@ const museumSchema = new Schema(
       },
     ],
   },
-  opts
+  opts,
 );
 
 museumSchema.virtual("properties.popUpMarkUp").get(() => {

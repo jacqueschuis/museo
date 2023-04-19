@@ -20,6 +20,7 @@ const User = require("./models/user");
 const artworkRoutes = require("./routes/artworkRoutes");
 const museumRoutes = require("./routes/museumRoutes");
 const reviewRoutes = require("./routes/reviewRoutes");
+const artistRoutes = require('./routes/artistRoutes');
 const userRoutes = require("./routes/userRoutes");
 const devRoutes = require("./routes/devRoutes");
 
@@ -91,6 +92,7 @@ app.use((req, res, next) => {
 app.use("/", userRoutes);
 app.use("/admin", devRoutes);
 app.use("/museums", museumRoutes);
+app.use('/artists', artistRoutes);
 
 app.get("/", (req, res) => {
   res.render("app/home");
