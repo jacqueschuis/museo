@@ -109,7 +109,7 @@
             <div class="mb-3">
               <label for="artist">artist:</label>
               <select name="artwork[artist]" id="artist" class="form-select">
-                  <% for (let artist of artists) {%>
+                  <% for (let artist of formArtists) {%>
                     <option value="<%= artist._id %>"><%= artist.name %></option>
                   <% } %>
                 </select>
