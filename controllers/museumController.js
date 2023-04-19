@@ -1,4 +1,5 @@
 const Museum = require("../models/museum");
+const Artist = require('../models/artist');
 const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
 const mapBoxToken = process.env.MAPBOX_TOKEN;
 // const { cloudinary } = require("../cloudinary");
@@ -12,6 +13,7 @@ module.exports.index = async (req, res) => {
 
 module.exports.showMuseum = async(req,res) => {
   const {id} = req.params;
+  const artists = await Artist.find({});
   const museum = await Museum.findById(id).populate('postedBy')
   // .populate({
   //   path: 'reviews',
@@ -28,5 +30,5 @@ module.exports.showMuseum = async(req,res) => {
   //   req.flash('error', 'museum not found');
   //   return res.redirect('/museums');
   // }
-  res.render('museums/show', {museum})
+  res.render('museums/show', {museum, artists})
 }

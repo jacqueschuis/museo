@@ -1,18 +1,19 @@
 const Museum = require('../models/museum');
 const Artwork = require('../models/artwork');
-const {cloudinary} = require('../utilities/cloudinary');
+const Artist = require('../models/artist');
+// const {cloudinary} = require('../utilities/cloudinary');
 
 module.exports.submitArtwork = async (req, res) => {
-    const {id} = req.params;
-    const museum = await Museum.findById(id);
+    const {museumId} = req.params;
+    const artist = await Artist.findById(req.body.artwork.artist);
     const artwork = new Artwork(req.body.artwork);
     artwork.postedBy = req.user._id;
-    artwork.museum.push(museum);
+    artwork.museum = museumId;
     const image = {
         url: req.body.image,
         postedBy: req.user._id,
     };
     artwork.images.push(image);
-    console.log(artwork);
-
+    artist.artworks.push(artwork._id);
+    console.log(artwork, artist);
 }

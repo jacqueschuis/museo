@@ -11,7 +11,7 @@ imageSchema.virtual("thumbnail").get(() => {
   return this.url.replace("/upload", "/upload/w_200");
 });
 
-const opts = { toJSON: { virtuals: true } };
+// const opts = { toJSON: { virtuals: true } };
 
 const artworkSchema = new Schema({
   title: String,
@@ -29,7 +29,7 @@ const artworkSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User",
   },
-  opts,
+  // opts,
 });
 
 module.exports = mongoose.model("Artwork", artworkSchema);

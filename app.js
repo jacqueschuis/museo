@@ -93,6 +93,7 @@ app.use("/", userRoutes);
 app.use("/admin", devRoutes);
 app.use("/museums", museumRoutes);
 app.use('/artists', artistRoutes);
+app.use('/museums/:id/artwork', artworkRoutes);
 
 app.get("/", (req, res) => {
   res.render("app/home");
