@@ -17,7 +17,7 @@ module.exports.showMuseum = async(req,res) => {
   const formArtists = await Artist.find({});
   const artists = await Artist.find().where('museums').all([id]);
   const museum = await Museum.findById(id).populate('postedBy')
-  const artworks = await Artwork.find({museum: id});
+  const artworks = await Artwork.find({museum: id}).populate('artist');
   // .populate({
   //   path: 'reviews',
   //   populate: {

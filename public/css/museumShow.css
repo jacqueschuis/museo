@@ -1,5 +1,4 @@
 
-
 #header{
     width: 100%;
     height: 300px;
@@ -9,7 +8,7 @@
 #museumShowHero{
     width: 100%;
     height:auto;
-    border-radius: 8px;
+    border-radius: 18px;
     object-fit: cover;
     object-position: center;
     z-index: 0;
@@ -81,6 +80,31 @@
     color: rgba(34, 34, 34, 0.75);
 }
 
+#artworkScroll{
+    height:400px;
+}
+
+.artworkScrollItem{
+    margin: 0 10px;
+    display: block;
+    max-width: 400px;
+    position: relative;
+    height: 100%
+}
+
+.artworkScrollItem img {
+    object-fit: cover;
+    object-position: center;
+    height: 100%;
+    max-width: 400px;
+}
+
+.artworkText {
+    position: absolute;
+    justify-self: flex-start;
+    text-align: start;
+    padding: 10px;
+}
 #mapCollapse {
     width: 100%;
     max-width:500px;
