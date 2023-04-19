@@ -1,0 +1,23 @@
+<% layout('layouts/boilerplate') %>
+
+<link rel="stylesheet" href="/css/museumShow.css">
+
+
+<h1><%= artist.name %></h1>
+<ul>
+  <h2>art</h2>
+  <% if (artist.artworks.length === 0) {%>
+  <li>none yet submitted to <span class="fw-bold">museo</span></li>
+  <%} else {for (let artwork of artist.artworks) {%>
+  <li><a href="/artworks/<%= artwork._id %>"><%= artwork.title %></a></li>
+  <% }} %>
+</ul>
+<ul>
+  <h2>museums:</h2>
+
+  <% if (artist.museums.length === 0) {%>
+  <li>none of <%= artist.name %>'s works have been added to a museum on <span class="fw-bold">muso</span></li>
+  <%} else{for (let museum of artist.museums) {%>
+  <li><a href="/museums/<%= museum._id %>"><%= museum.name %></a></li>
+  <% }} %>
+</ul>

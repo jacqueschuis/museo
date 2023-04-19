@@ -1,0 +1,8 @@
+<% layout('layouts/boilerplate') %>
+
+<link rel="stylesheet" href="/css/museumShow.css">
+
+
+<h1><%= artwork.title %></h1>
+<p>by <a href="/artists/<%= artwork.artist._id %>"><%= artwork.artist.name %></a></p>
+<p>at <a href="/museums/<%= artwork.museum._id %>"><%= artwork.museum.name %></a></p>
