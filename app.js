@@ -17,7 +17,8 @@ const MongoDBStore = require("connect-mongo");
 
 const User = require("./models/user");
 
-const artworkRoutes = require("./routes/artworkRoutes");
+const artworkSubmitRoutes = require("./routes/artworkSubmitRoutes");
+const artworkRoutes = require('./routes/artworkRoutes');
 const museumRoutes = require("./routes/museumRoutes");
 const reviewRoutes = require("./routes/reviewRoutes");
 const artistRoutes = require('./routes/artistRoutes');
@@ -93,7 +94,8 @@ app.use("/", userRoutes);
 app.use("/admin", devRoutes);
 app.use("/museums", museumRoutes);
 app.use('/artists', artistRoutes);
-app.use('/museums/:id/artwork', artworkRoutes);
+app.use('/museums/:id/artwork', artworkSubmitRoutes);
+app.use('/artworks', artworkRoutes)
 
 app.get("/", (req, res) => {
   res.render("app/home");

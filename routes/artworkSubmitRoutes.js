@@ -4,6 +4,6 @@ const catchAsync = require("../utilities/catchasync");
 const { isLoggedIn, isAuthor } = require("../utilities/middleware");
 const artworkController = require("../controllers/artworkController");
 
-router.get('/', catchAsync(artworkController.index));
+router.post('/', catchAsync(artworkController.submitArtwork));
 
 module.exports = router

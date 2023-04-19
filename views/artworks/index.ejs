@@ -1,0 +1,20 @@
+<% layout('layouts/boilerplate') %>
+
+
+
+<div class="grid" id="index-grid">
+  <div class="grid-sizer"></div>
+  <% for (let artwork of artworks) {%>
+    <a href="/artworks/<%= artwork._id %>">
+      <div class="grid-item ">
+        <div class="gradient-overlay"></div>
+        <h4 class="fw-bold museum-name"><%= artwork.title %></h4>
+        <img src="<%= artwork.images[0].url %>" alt="">
+      </div>
+    </a>
+    <% } %>
+</div>
+
+<script src="/js/imagesloaded.js"></script>
+<script src="/js/masonry.js"></script>
+<script src="/js/initializeMasonry.js"></script>
