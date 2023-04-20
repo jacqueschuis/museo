@@ -1,23 +1,73 @@
 <% layout('layouts/boilerplate') %>
 
-<link rel="stylesheet" href="/css/museumShow.css">
+<link rel="stylesheet" href="/css/artistShow.css">
 
 
-<h1><%= artist.name %></h1>
-<ul>
-  <h2>art</h2>
-  <% if (artist.artworks.length === 0) {%>
-  <li>none yet submitted to <span class="fw-bold">museo</span></li>
-  <%} else {for (let artwork of artist.artworks) {%>
-  <li><a href="/artworks/<%= artwork._id %>"><%= artwork.title %></a></li>
-  <% }} %>
-</ul>
-<ul>
-  <h2>museums:</h2>
+<main class="container-fluid d-flex justify-content-center align-items-md-center">
+  <div class="row justify-content-center mx-0">
+      <div class="col-md-6 d-flex align-items-md-center justify-content-center mb-4">
+          <img src="<%= artist.images[0].url %>" alt="" class="img-fluid" id="artistProfile">
+      </div>
+      <div class="col-md-6 d-flex justify-content-center align-items-center">
+          <div class="text-container text-lg-start text-center">
+            <h2 class="fw-bold mb-3" id="artistName"><a href="/artists"><i class="bi bi-chevron-left" id="backButton"></i></a><%= artist.name %></h2>
+            <h5 class="text-center mb-3">
+              <%= artist.bornDate %> - <%= (artist.deathDate === null ? 'present' : artist.deathDate) %>
+            </h5>
+            <ul class="nav nav-pills nav-justified flex-column flex-md-row text-center" id="artistShowTab" role="tablist">
+              <li class="nav-item">
+                <button class="nav-link active" id="artwork-tab" data-bs-toggle="tab" data-bs-target="#artwork-tab-pane" role="tab" aria-controls="artwork-tab-pane" aria-selected="true">
+                  art
+                </button>
+              </li>
+              <li class="nav-item">
+                <button class="nav-link" id="museum-tab" data-bs-toggle="tab" data-bs-target="#museum-tab-pane" role="tab" aria-controls="museum-tab-pane" aria-selected="true">
+                  museums
+                </button>
+              </li>
+              <li class="nav-item">
+                <button class="nav-link" id="comments-tab" data-bs-toggle="tab" data-bs-target="#comments-tab-pane" role="tab" aria-controls="comments-tab-pane" aria-selected="true">
+                  comments
+                </button>
+              </li>
+            </ul>
 
-  <% if (artist.museums.length === 0) {%>
-  <li>none of <%= artist.name %>'s works have been added to a museum on <span class="fw-bold">muso</span></li>
-  <%} else{for (let museum of artist.museums) {%>
-  <li><a href="/museums/<%= museum._id %>"><%= museum.name %></a></li>
-  <% }} %>
-</ul>
+            <div class="tab-content" id="artistShowTabContent">
+              <div class="tab-pane fade show active" id="artwork-tab-pane" role="tabpanel" aria-labelledby="artwork-tab" tabindex="0">
+                <ul class="list-group list-group-flush text-center text-md-start">
+                  <% if (artist.artworks.length === 0) {%>
+                  <li class="list-group-item"><%= artist.name %>'s works aren't yet on <span class="fw-bold">museo</span></li>
+                  <%} else {for (let artwork of artist.artworks) {%>
+                  <li class="list-group-item">
+                    <div class="container-fluid d-flex flex-md-row flex-column justify-content-center">
+                      <a href="/artworks/<%= artwork._id %>">
+                        <img src="<%= artwork.images[0].url %>" alt="" class="img-thumbnail me-0 me-md-2">
+                        <p>
+                          <%= artwork.title %>
+                        </p>
+                      </a>
+                    </div>
+                  </li>
+                  <% }} %>
+                </ul>
+              </div>
+              <div class="tab-pane fade show" id="museum-tab-pane" role="tabpanel" aria-labelledby="museum-tab" tabindex="0">
+                <ul class="list-group list-group-flush">
+                  <% if (artist.museums.length === 0) {%>
+                  <li class="list-group-item"><%= artist.name %>'s works aren't yet on <span class="fw-bold">museo</span></li>
+                  <%} else{for (let museum of artist.museums) {%>
+                  <li class="list-group-item"><a href="/museums/<%= museum._id %>"><%= museum.name %></a></li>
+                  <% }} %>
+                </ul>
+              </div>
+              <div class="tab-pane fade show" id="comments-tab-pane" role="tabpanel" aria-labelledby="comments-tab" tabindex="0"></div>
+            </div>
+
+            
+          </div>
+          <div class="text-container">
+          </div>
+      </div>
+  </div>
+</main>
+

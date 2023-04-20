@@ -1,0 +1,47 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+#artistProfile {
+    max-height: 50vh;
+    border-radius: 18px;
+}
+
+#backButton {
+    color: #aaa;
+    transition: transform 0.2s, text-shadow 0.2s;
+}
+
+#backButton:hover {
+    text-shadow: 0 1px 5px #aaa;
+    transform: translate(0, -0.1rem);
+    color: rgba(34, 34, 34, 0.75);
+  }
+
+  #artistShowTab{
+    width: 100%;
+}
+
+.img-thumbnail {
+    max-width: 150px;
+    height: 50px;
+    object-fit: cover;
+    object-position: center;
+}
+
+  
+.nav-pills>li>.nav-link.active {
+    color: #fff;
+    background-color: rgba(34, 34, 34, 0.75);
+}
+
+.nav-pills>li>.nav-link,
+.nav-pills>li>.nav-link:hover{
+    transform: none;
+}
+
+.nav-link {
+    margin-left: 0;
+}
