@@ -4,7 +4,7 @@
 
 
 <main class="container-fluid d-flex justify-content-center align-items-md-center">
-  <div class="row justify-content-center mx-0">
+  <div class="row justify-content-center mx-0 align-items-center">
       <div class="col-md-6 d-flex align-items-md-center justify-content-center mb-4">
           <img src="<%= artist.images[0].url %>" alt="" class="img-fluid" id="artistProfile">
       </div>
@@ -60,7 +60,11 @@
                   <% }} %>
                 </ul>
               </div>
-              <div class="tab-pane fade show" id="comments-tab-pane" role="tabpanel" aria-labelledby="comments-tab" tabindex="0"></div>
+              <div class="tab-pane fade show" id="comments-tab-pane" role="tabpanel" aria-labelledby="comments-tab" tabindex="0">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">no comments about <%= artist.name %> yet</li>
+                </ul>
+              </div>
             </div>
 
             

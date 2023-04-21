@@ -5,8 +5,11 @@
 }
 
 #artistProfile {
-    max-height: 50vh;
+    height: 100%;
+    max-height: 70vh;
     border-radius: 18px;
+    object-fit: cover;
+    width: 100%;
 }
 
 #backButton {
@@ -44,4 +47,8 @@
 
 .nav-link {
     margin-left: 0;
+}
+
+.tab-content {
+    min-width: 300px;
 }
