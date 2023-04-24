@@ -18,9 +18,22 @@ module.exports.show = async (req, res) => {
 
 module.exports.filterArtists = async (req, res) => {
     const museums = await Museum.find({})
-    console.log(req.body);
     const {name, filterBornDate, filterDeathDate, filterMuseum} = req.body;
-    console.log(name, filterBornDate, filterDeathDate, filterMuseum);
+    (name ? queryName = name : queryName = null);
+    (filterBornDate ? queryBornDate = filterBornDate : queryBornDate = null);
+    (filterDeathDate ? queryDeathDate = filterDeathDate : queryDeathDate = null);
+    (filterMuseum ? queryMuseum = filterMuseum : queryMuseum = null);
+    console.log(queryBornDate,queryDeathDate,queryMuseum,queryName);
+
+    const agg = [
+      {$search: {autocomplete: {query: queryName, path: "name"}}},
+      {$limit: 20},
+      {$project: {_id: 0, name:1}}
+    ]
+
+    const filteredArtists = await Artist.aggregate(agg)
+        
+    console.log(filteredArtists);
     const artists = await Artist.find({})
     res.render('artist/index', {artists, museums})
 }
