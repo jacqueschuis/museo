@@ -1,7 +1,35 @@
 <% layout('layouts/boilerplate') %>
 
-
-
+<header class="container-fluid">
+  <div class="row">
+    <div class="dropdown float-md-end">
+      <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"><i class="bi bi-filter-circle"></i></button>
+      <div class="dropdown-menu">
+        <form action="/artists?_method=PATCH" method="post" class="mx-3">
+          <label for="name">name:</label>
+          <input type="text" class="form-control" name="name">
+          <div class="input-group my-3">
+            <input type="number" class="form-control" placeholder="born after" aria-label="born after" name="filterBornDate">
+            <span class="input-group-text">-</span>
+            <input type="number" class="form-control" placeholder="died before" aria-label="died before" name="filterDeathDate">
+          </div>
+          <div class="mb-3">
+            <label for="museum">museums:</label>
+            <select name="filterMuseum" id="museum" class="form-select form-select-sm">
+                  <option value='' disabled selected></option>
+                <% for (let museum of museums) {%>
+                  <option value="<%= museum._id %>"><%= museum.name %></option>
+                <% } %>
+              </select>
+          </div>
+          <div class="d-grid">
+            <button class="btn">filter artists</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
 <div class="grid" id="index-grid">
   <div class="grid-sizer"></div>
   <% for (let artist of artists) {%>
