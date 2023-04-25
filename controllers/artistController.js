@@ -20,27 +20,44 @@ module.exports.filterArtists = async (req, res) => {
     const museums = await Museum.find({})
     const {name, filterBornDate, filterDeathDate, filterMuseum} = req.body;
     (name ? queryName = name : queryName = null);
-    (filterBornDate ? queryBornDate = filterBornDate : queryBornDate = null);
-    (filterDeathDate ? queryDeathDate = filterDeathDate : queryDeathDate = null);
+    (filterBornDate ? queryBornDate = filterBornDate : queryBornDate = -9999);
+    (filterDeathDate ? queryDeathDate = filterDeathDate : queryDeathDate = 9999);
     (filterMuseum ? queryMuseum = filterMuseum : queryMuseum = null);
-    console.log(queryBornDate,queryDeathDate,queryMuseum,queryName);
 if (queryName) {
-  const agg = [[
+  console.log('queryname branch')
+  const agg = [
     {
       $search: {
         index: "artist-name",
         autocomplete: {
           query: queryName,
-          path: "name"
+          path: "name",
+          "fuzzy": {
+            "maxEdits": 2,
+          }
         }
+      }
+    },
+    {
+      $match: {
+        bornDate: {$gte: parseInt(queryBornDate)},
+        deathDate: {$lte: parseInt(queryDeathDate)},
       }
     }
   ]
-  ]
-
   const artists = await Artist.aggregate(agg)
   return res.render('artist/index', {artists, museums});
+} if (queryMuseum) {
+  console.log('querymuseum branch')
+  const artists = await Artist.find()
+    .where('bornDate').gte(queryBornDate)
+    .where('deathDate').lte(queryDeathDate)
+    .where('museums').all([queryMuseum]);
+  return res.render('artist/index', {artists, museums})
 }
-    const artists = await Artist.find({})
-    res.render('artist/index', {artists, museums})
+console.log('reg branch')
+  const artists = await Artist.find({})
+    .where('bornDate').gte(parseInt(queryBornDate))
+    .where('deathDate').lte(parseInt(queryDeathDate))
+  res.render('artist/index', {artists, museums})
 }
