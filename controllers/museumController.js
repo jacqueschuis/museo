@@ -9,7 +9,8 @@ const geocoder = mbxGeocoding({ accessToken: mapBoxToken });
 
 module.exports.index = async (req, res) => {
   const museums = await Museum.find({});
-  res.render("museums/index", { museums });
+  const artists = await Artist.find({});
+  res.render("museums/index", { museums, artists });
 };
 
 module.exports.showMuseum = async(req,res) => {
@@ -34,4 +35,29 @@ module.exports.showMuseum = async(req,res) => {
   //   return res.redirect('/museums');
   // }
   res.render('museums/show', {museum,formArtists, artists, artworks})
+}
+
+module.exports.filterMuseums = async(req,res) => {
+  const artists = await Artist.find({});
+  const {name} = req.body;
+  if (name) {
+    const museumAgg = [
+      {
+        $search: {
+          index: "default",
+          autocomplete: {
+            query: name,
+            path: "name",
+            fuzzy: {
+              maxEdits: 1,
+            },
+          },
+        },
+      },
+    ];
+    const museums = await Museum.aggregate(museumAgg);
+    return res.render('museums/index', {museums, artists});
+  } 
+  const museums = await Museum.find({});
+  res.render('museums/index', {museums,artists});
 }

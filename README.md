@@ -17,10 +17,11 @@ Inspired by YelpCamp by Colt Steele combined with my background/personal interes
 - [ ] delete artist comment
 
 ### Museums
+- [ ] fill out museum show page
 - [ ] new museum
 - [ ] edit museum
 - [ ] delete museum
-- [ ] filter museums
+- [x] filter museums
 - [ ] museum comment
 - [ ] edit museum comment
 - [ ] delete museum comment

@@ -1,7 +1,7 @@
 body {
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
-  color: rgba(34, 34, 34, 0.75);
+  color: rgba(34, 34, 34, 0.75) !important;
   padding-top: 70px;
 }
 
@@ -124,6 +124,20 @@ nav {
 #index-grid{
   display: flex;
   justify-content: center;
+}
+
+.dropdown-menu {
+  color: rgba(34, 34, 34, 0.75) !important;
+}
+
+.nav-pills>li>.nav-link.active {
+  color: #fff;
+  background-color: rgba(34, 34, 34, 0.75);
+}
+
+.nav-pills>li>.nav-link,
+.nav-pills>li>.nav-link:hover{
+  transform: none;
 }
 
 @media (max-width: 2400px) {

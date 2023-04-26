@@ -18,15 +18,16 @@ const submitBtn = document.querySelector('#submitButton')
 
 nameSelect.addEventListener('click', () => {
  // show/hide the proper elements 
-    nameInput.removeAttribute('disabled');
+    nameInput.removeAttribute('disabled', 'required');
     submitBtn.removeAttribute('disabled');
     artistLifeContainer.style.display = 'none';
     artistMuseumContainer.style.display = 'none';
     artistNameContainer.style.display = 'block';
     submitBtn.style.display = 'block'
-    birthInput.setAttribute('disabled');
-    deathInput.setAttribute('disabled');
-    museumInput.setAttribute('disabled');
+    nameInput.setAttribute('required', "");
+    birthInput.setAttribute('disabled', "");
+    deathInput.setAttribute('disabled', "");
+    museumInput.setAttribute('disabled', "");
 })
 
 lifeSelect.addEventListener('click', () => {
@@ -38,8 +39,8 @@ lifeSelect.addEventListener('click', () => {
     artistMuseumContainer.style.display = 'none';
     artistNameContainer.style.display = 'none';
     submitBtn.style.display = 'block'
-    nameInput.setAttribute('disabled');
-    museumInput.setAttribute('disabled');
+    nameInput.setAttribute('disabled', "");
+    museumInput.setAttribute('disabled', "");
 })
 
 museumSelect.addEventListener('click', () => {
@@ -50,6 +51,7 @@ museumSelect.addEventListener('click', () => {
     artistMuseumContainer.style.display = 'block';
     artistNameContainer.style.display = 'none';
     submitBtn.style.display = 'block'
-    deathInput.setAttribute('disabled');
-    nameInput.setAttribute('disabled');
+    museumInput.setAttribute('required', "")
+    deathInput.setAttribute('disabled', "");
+    nameInput.setAttribute('disabled', "");
 })

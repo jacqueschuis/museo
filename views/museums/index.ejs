@@ -1,6 +1,26 @@
 <% layout('layouts/boilerplate') %>
 
+<link rel="stylesheet" href="/css/museumIndex.css">
 
+<header class="container-fluid">
+  <div class="row">
+    <div class="dropdown float-md-end">
+      <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"><i class="bi bi-filter-circle"></i></button>
+      <div class="dropdown-menu">
+        <h5 class="text-center">filter <span class="fw-bold">museums</span></h5>
+        <form action="/museums?_method=PATCH" method="post" class="mx-3 needs-validation" novalidate>
+          <div class="form-floating mb-3" id="museumNameContainer">
+            <input type="text" class="form-control" name="name" id="museumName" placeholder="name" required>
+            <label for="museumName">name:</label>
+          </div>
+          <div class="d-grid" id="submitButtonContainer">
+            <button class="btn" id="submitButton">filter artists</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
 
 <div class="grid" id="index-grid">
   <div class="grid-sizer"></div>

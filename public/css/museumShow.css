@@ -46,17 +46,6 @@
     padding-right: 25px;
 }
 
-
-.nav-pills>li>.nav-link.active {
-    color: #fff;
-    background-color: rgba(34, 34, 34, 0.75);
-}
-
-.nav-pills>li>.nav-link,
-.nav-pills>li>.nav-link:hover{
-    transform: none;
-}
-
 .carousel-item{
     width: 400px;
 }

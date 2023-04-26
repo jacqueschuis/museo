@@ -1,18 +1,27 @@
 <% layout('layouts/boilerplate') %>
 
-<h6 class="text-center">search <span class="fw-bold">museo</span></h6>
-<form action="/search?_method=PATCH" method="post" class="mx-3 mb-3">
-<div class="form-floating mb-3">
-    <input type="text" class="form-control" name="search" placeholder="search" value="<%= search %>">
-    <label for="name">search:</label>
-</div>
-<div class="d-grid">
-    <button class="btn">search</button>
-</div>
-</form>
 
-<h5 class="text-center">results for <span class="fw-bold">"<%= search %>"</span></h5>
+
 <div class="container">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="card-title mb-1">
+                <h5 class="text-center">search <span class="fw-bold">museo</span></h5>
+            </div>
+            <div class="container-fluid">
+                <form action="/search?_method=PATCH" method="post" class="needs-validation" novalidate>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="search" placeholder="search" value="<%= search %>" required>
+                        <label for="name">search:</label>
+                    </div>
+                    <div class="d-grid">
+                        <button class="btn">search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <h5 class="text-center">results for <span class="fw-bold">"<%= search %>"</span></h5>
     <h6 class="fw-bold">art</h6>
     <ul class="list-group list-group-flush mb-3">
         <% if (artworks.length === 0) {%>
