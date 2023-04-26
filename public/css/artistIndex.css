@@ -1,0 +1,19 @@
+#artistNameContainer {
+    display: none;
+}
+
+#artistLifeContainer {
+    display: none;
+}
+
+#artistMuseumContainer {
+    display: none;
+}
+
+#submitButton {
+    display: none;
+}
+
+.dropdown-menu {
+    min-width: 375px;
+}
