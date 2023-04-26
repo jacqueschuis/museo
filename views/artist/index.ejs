@@ -2,13 +2,13 @@
 
 <link rel="stylesheet" href="/css/artistIndex.css">
 
-<header class="container-fluid">
+<header class="container-fluid my-3">
   <div class="row">
     <div class="dropdown float-md-end">
       <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside"><i class="bi bi-filter-circle"></i></button>
-      <div class="dropdown-menu">
+      <div class="dropdown-menu shadow">
         <h5 class="text-center">filter <span class="fw-bold">artists</span></h5>
-        <div class="container-fluid mb-3 d-flex flex-row justify-content-between">
+        <div class="container-fluid mb-3 d-flex flex-row justify-content-evenly">
           <div class="form-check">
             <input type="radio" class="form-check-input" name="artistFilter" id="artistFilterName">
             <label for="artistFilterName" class="form-check-label">name</label>
@@ -24,9 +24,9 @@
         </div>
         <form action="/artists?_method=PATCH" method="post" class="mx-3 needs-validation" novalidate>
           
-          <div class="mb-3" id="artistNameContainer">
+          <div class="mb-3 form-floating" id="artistNameContainer">
+            <input type="text" class="form-control" name="name" id="artistName" placeholder="name">
             <label for="artistName">name:</label>
-            <input type="text" class="form-control" name="name" id="artistName">
           </div>
           <div class="input-group my-3" id="artistLifeContainer">
             <input type="number" class="form-control" placeholder="born after" aria-label="born after" name="filterBornDate" id="bornYear">
@@ -43,7 +43,7 @@
               </select>
           </div>
           <div class="d-grid" id="submitButtonContainer">
-            <button class="btn" id="submitButton" disabled>filter artists</button>
+            <button class="btn" id="submitButton" disabled>submit</button>
           </div>
         </form>
       </div>
@@ -52,7 +52,8 @@
 </header>
 
 <% if (artists.length === 0) {%>
-  <p class="text-center">no artists match your search; try broadening your parameters</p>
+  <p class="text-center">no <span class="fw-bold">artists</span> match your search; try broadening your parameters</p>
+  <p class="text-center"><a href="/artists" class="btn">view all <span class="fw-bold">artists</span></a></p>
 <% } %>
 <div class="grid" id="index-grid">
   <div class="grid-sizer"></div>
@@ -68,7 +69,6 @@
 </div>
 
 <script src="/js/artistFilterForm.js"></script>
-<script src="/js/validateforms.js"></script>
 <script src="/js/imagesloaded.js"></script>
 <script src="/js/masonry.js"></script>
 <script src="/js/initializeMasonry.js"></script>

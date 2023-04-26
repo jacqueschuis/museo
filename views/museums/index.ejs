@@ -2,11 +2,11 @@
 
 <link rel="stylesheet" href="/css/museumIndex.css">
 
-<header class="container-fluid">
+<header class="container-fluid my-3">
   <div class="row">
     <div class="dropdown float-md-end">
       <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside"><i class="bi bi-filter-circle"></i></button>
-      <div class="dropdown-menu">
+      <div class="dropdown-menu shadow">
         <h5 class="text-center">filter <span class="fw-bold">museums</span></h5>
         <form action="/museums?_method=PATCH" method="post" class="mx-3 needs-validation" novalidate>
           <div class="form-floating mb-3" id="museumNameContainer">
@@ -14,13 +14,18 @@
             <label for="museumName">name:</label>
           </div>
           <div class="d-grid" id="submitButtonContainer">
-            <button class="btn" id="submitButton">filter artists</button>
+            <button class="btn" id="submitButton">submit</button>
           </div>
         </form>
       </div>
     </div>
   </div>
 </header>
+
+<% if (museums.length === 0) {%>
+  <p class="text-center">no <span class="fw-bold">museums</span> match your search; try broadening your parameters</p>
+  <p class="text-center"><a href="/museums" class="btn">all <span class="fw-bold">museums</span></a></p>
+<% } %>
 
 <div class="grid" id="index-grid">
   <div class="grid-sizer"></div>

@@ -33,6 +33,14 @@ nav {
   color: rgba(34, 34, 34, 0.75);
 }
 
+.dropdown-toggle {
+  color: rgba(34,34,34,.75) !important
+}
+
+.dropdown-menu .btn{
+  color: rgba(34,34,34,.75)
+}
+
 .list-group-flush > li{
   color: rgba(34, 34, 34, 0.75);
   font-weight: 400;

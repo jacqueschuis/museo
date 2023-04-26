@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white bg-md-transparent fixed-top py-2 px-5 mb-10" id="navStyles">
+<nav class="navbar navbar-expand-lg navbar-light bg-white bg-md-transparent fixed-top py-2 px-5 mb-10 shadow" id="navStyles">
   <div class="container-fluid">
     <a class="navbar-brand animate__animated animate__fadeInDown" href="/"><h3 id="navLogo">museo</h3></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,8 +12,8 @@
         <a href="/museums" class="nav-link">institutions</a>
       </div>
       <div class="navbar-nav ms-auto dropdown">
-        <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"><i class="bi bi-search"></i></a>
-        <div class="dropdown-menu dropdown-menu-end" id="searchDropdown">
+        <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside"><i class="bi bi-search"></i></a>
+        <div class="dropdown-menu dropdown-menu-end shadow" id="searchDropdown">
           <h5 class="text-center">search <span class="fw-bold">museo</span></h5>
           <div class="container-fluid">
             <form action="/search?_method=PATCH" method="post" class="needs-validation mx-3" novalidate>
@@ -30,13 +30,13 @@
 
         <% if (!currentUser){%>
         <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">not signed in</a>
-        <ul class="dropdown-menu dropdown-menu-end">
+        <ul class="dropdown-menu dropdown-menu-end shadow">
           <a href="/login" class="dropdown-item" type="button">login</a>
           <a href="/register" class="dropdown-item">register</a>
         </ul>
         <% } else {%>
         <a href="#" class="nav-link dropdown dropdown-toggle fw-bold" role="button" data-bs-toggle="dropdown"><%= currentUser.firstName %></a>
-        <ul class="dropdown-menu dropdown-menu-end">
+        <ul class="dropdown-menu dropdown-menu-end shadow">
           <% if (currentUser.isAdmin === true) {%>
             <li><a href="/admin" class="dropdown-item">admin tools</a></li>
           <% } %>

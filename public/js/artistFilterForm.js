@@ -34,16 +34,19 @@ lifeSelect.addEventListener('click', () => {
  // event listeners to toggle required on birth/death
     birthInput.addEventListener('click', () => {
         birthInput.setAttribute('required', "");
-        submitBtn.removeAttribute('disabled');
+        deathInput.removeAttribute('required');
     });
     deathInput.addEventListener('click', () => {
         deathInput.setAttribute('required', "");
-        submitBtn.removeAttribute('disabled');
+        birthInput.removeAttribute('required');
     });
 
  // show/hide the proper elements 
     birthInput.removeAttribute('disabled');
     deathInput.removeAttribute('disabled');
+    submitBtn.removeAttribute('disabled');
+    birthInput.setAttribute('required', "");
+    deathInput.setAttribute('required', "")
     artistLifeContainer.style.display = 'flex';
     artistMuseumContainer.style.display = 'none';
     artistNameContainer.style.display = 'none';

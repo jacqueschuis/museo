@@ -46,8 +46,8 @@ module.exports.searchMuseo = async (req, res) => {
           },
         },
       ];
-      const artists = await Artist.aggregate(artistAgg);
-      const museums = await Museum.aggregate(museumAgg);
-      const artworks = await Artwork.aggregate(artworkAgg);
+      const artists = await Artist.aggregate(artistAgg).limit(5);
+      const museums = await Museum.aggregate(museumAgg).limit(5);
+      const artworks = await Artwork.aggregate(artworkAgg).limit(5);
     res.render('app/search', {artists, museums, artworks, search});
 }
