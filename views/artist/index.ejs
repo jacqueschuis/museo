@@ -7,7 +7,7 @@
     <div class="dropdown float-md-end">
       <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"><i class="bi bi-filter-circle"></i></button>
       <div class="dropdown-menu">
-        <h3 class="text-center fw-bold">filter artists</h3>
+        <h5 class="text-center">filter <span class="fw-bold">artists</span></h5>
         <form action="/artists?_method=PATCH" method="post" class="mx-3">
           <div class="container-fluid mb-3 d-flex flex-row justify-content-between">
             <div class="form-check">
@@ -24,7 +24,7 @@
             </div>
           </div>
           <div class="mb-3" id="artistNameContainer">
-            <label for="name">name:</label>
+            <label for="artistName">name:</label>
             <input type="text" class="form-control" name="name" id="artistName">
           </div>
           <div class="input-group my-3" id="artistLifeContainer">

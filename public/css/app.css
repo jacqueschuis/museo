@@ -15,6 +15,10 @@ nav {
   z-index: 100;
 }
 
+#searchDropdown {
+  min-width: 375px;
+}
+
 #navLogo {
   font-weight: 800;
   font-weight: 800;
@@ -29,10 +33,16 @@ nav {
   color: rgba(34, 34, 34, 0.75);
 }
 
+.list-group-flush > li{
+  color: rgba(34, 34, 34, 0.75);
+  font-weight: 400;
+}
+
 .nav-link {
   padding: 0.25rem 0;
+  display: inline-block;
   color: #aaa;
-  margin-left: 1rem;
+  /* margin-left: 1rem; */
   border-bottom: 0.125rem solid transparent;
   transition: transform 0.2s, text-shadow 0.2s;
 }

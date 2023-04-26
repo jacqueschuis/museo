@@ -3,7 +3,6 @@ const router = express.Router({ mergeParams: true });
 const catchAsync = require("../utilities/catchasync");
 const { isLoggedIn, isAuthor } = require("../utilities/middleware");
 const artistController = require("../controllers/artistController");
-const artist = require("../models/artist");
 
 router.route("/")
     .get(catchAsync(artistController.index))

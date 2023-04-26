@@ -24,6 +24,7 @@ const reviewRoutes = require("./routes/reviewRoutes");
 const artistRoutes = require('./routes/artistRoutes');
 const userRoutes = require("./routes/userRoutes");
 const devRoutes = require("./routes/devRoutes");
+const searchRoutes = require('./routes/searchRoutes');
 
 const dbUrl = "mongodb://localhost:27017/muzeion";
 const atlasUrl = process.env.ATLAS_URL;
@@ -95,7 +96,8 @@ app.use("/admin", devRoutes);
 app.use("/museums", museumRoutes);
 app.use('/artists', artistRoutes);
 app.use('/museums/:id/artwork', artworkSubmitRoutes);
-app.use('/artworks', artworkRoutes)
+app.use('/artworks', artworkRoutes);
+app.use('/search', searchRoutes);
 
 app.get("/", (req, res) => {
   res.render("app/home");

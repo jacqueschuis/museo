@@ -4,7 +4,7 @@ Inspired by YelpCamp by Colt Steele combined with my background/personal interes
 
 ## To-Do
 ### App
-- [ ] site-wide search
+- [x] site-wide search
 - [ ] new dropdown with links to forms for new artists, new museums, new art
 - [ ] about page
 

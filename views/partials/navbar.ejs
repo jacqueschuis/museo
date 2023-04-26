@@ -12,6 +12,20 @@
         <a href="/museums" class="nav-link">institutions</a>
       </div>
       <div class="navbar-nav ms-auto dropdown">
+        <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"><i class="bi bi-search"></i></a>
+        <div class="dropdown-menu dropdown-menu-end" id="searchDropdown">
+          <h5 class="text-center">search <span class="fw-bold">museo</span></h5>
+          <form action="/search?_method=PATCH" method="post" class="mx-3">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" name="search" placeholder="search">
+              <label for="name">search:</label>
+            </div>
+            <div class="d-grid">
+              <button class="btn">search</button>
+            </div>
+          </form>
+        </div>
+
         <% if (!currentUser){%>
         <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">not signed in</a>
         <ul class="dropdown-menu dropdown-menu-end">
