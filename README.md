@@ -3,20 +3,24 @@
 New project that is essentially a yelp version but specific to museums.
 
 ## To-Do
+### App
+- [ ] site-wide search
+- [ ] new dropdown with links to forms for new artists, new museums, new art
+
 ### Artists
-#### Index Filtering
-- [x] name
-- [x] birth
-- [x] death
-- [x] museum
-- [x] name birth
-- [x] name death
-- [ ] name museum
-- [x] birth death
-- [x] birth museum
-- [x] death museum
-- [x] name birth death
-- [ ] name birth museum
-- [ ] name death museum
-- [ ] birth death museum
-- [ ] name birth death museum
+- [ ] submit a new artist form
+- [ ] edit form
+- [ ] delete form
+
+### Museums
+- [ ] new museum
+- [ ] edit museum
+- [ ] delete museum
+- [ ] filter museums
+
+### Art
+- [ ] new art
+- [ ] edit art
+- [ ] delete art
+- [ ] filter art
+
