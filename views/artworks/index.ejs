@@ -50,6 +50,11 @@
   </div>
 </header>
 
+<% if (artworks.length === 0) {%>
+  <p class="text-center">no <span class="fw-bold">artworks</span> match your search; try broadening your parameters</p>
+  <p class="text-center"><a href="/artworks" class="btn">view all <span class="fw-bold">artworks</span></a></p>
+<% } %>
+
 <div class="grid" id="index-grid">
   <div class="grid-sizer"></div>
   <% for (let artwork of artworks) {%>
@@ -62,6 +67,12 @@
     </a>
     <% } %>
 </div>
+
+<% if (artworks.length !== 0) {%>
+<div class="container text-center">
+  <a href="/artworks" class="btn"><i class="bi bi-chevron-left" id="backButton"></i>all <span class="fw-bold">artworks</span></a>
+</div>
+<% } %>
 
 <script src="/js/imagesloaded.js"></script>
 <script src="/js/masonry.js"></script>
