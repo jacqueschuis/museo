@@ -30,7 +30,7 @@ Inspired by YelpCamp by Colt Steele combined with my background/personal interes
 - [ ] new art
 - [ ] edit art
 - [ ] delete art
-- [ ] filter art
+- [x] filter art
 - [ ] art comment
 - [ ] edit art comment
 - [ ] delete art comment

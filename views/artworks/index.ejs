@@ -1,6 +1,54 @@
 <% layout('layouts/boilerplate') %>
 
+<link rel="stylesheet" href="/css/artIndex.css">
 
+<header class="container-fluid my-3">
+  <div class="row">
+    <div class="dropdown float-md-end">
+      <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside"><i class="bi bi-filter-circle"></i></button>
+      <div class="dropdown-menu shadow">
+        <h5 class="text-center">filter <span class="fw-bold">art</span></h5>
+        <div class="container-fluid mb-3 d-flex flex-row justify-content-evenly">
+          <div class="form-check">
+            <input type="radio" class="form-check-input" name="artworkFilter" id="artworkFilterTitle">
+            <label for="artworkFilterTitle" class="form-check-label">title</label>
+          </div>
+          <div class="form-check">
+            <input type="radio" class="form-check-input" name="artworkFilter" id="artworkFilterDate">
+            <label for="artworkFilterDate" class="form-check-label">date</label>
+          </div>
+          <div class="form-check">
+            <input type="radio" class="form-check-input" name="artworkFilter" id="artworkFilterMuseum">
+            <label for="artworkFilterMuseum" class="form-check-label">museum</label>
+          </div>
+        </div>
+        <form action="/artworks?_method=PATCH" method="post" class="mx-3 needs-validation" novalidate>
+          <div class="mb-3 form-floating" id="artworkTitleContainer">
+            <input type="text" class="form-control" name="title" id="artworkTitle" placeholder="title">
+            <label for="artworkTitle">title:</label>
+          </div>
+          <div class="input-group my-3" id="artworkDateContainer">
+            <input type="number" class="form-control" placeholder="from (year)" aria-label="from (year)" name="filterFromDate" id="fromYear">
+            <span class="input-group-text">-</span>
+            <input type="number" class="form-control" placeholder="to (year)" aria-label="to (year)" name="filterToDate" id="toYear">
+          </div>
+          <div class="mb-3" id="artworkMuseumContainer">
+            <label for="museumSelect">museum:</label>
+            <select name="filterMuseum" id="museumSelect" class="form-select form-select-sm">
+                  <option value='' disabled selected></option>
+                <% for (let museum of museums) {%>
+                  <option value="<%= museum._id %>"><%= museum.name %></option>
+                <% } %>
+              </select>
+          </div>
+          <div class="d-grid" id="submitButtonContainer">
+            <button class="btn" id="submitButton" disabled>submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
 
 <div class="grid" id="index-grid">
   <div class="grid-sizer"></div>
@@ -18,3 +66,4 @@
 <script src="/js/imagesloaded.js"></script>
 <script src="/js/masonry.js"></script>
 <script src="/js/initializeMasonry.js"></script>
+<script src="/js/artworkFilterForm.js"></script>

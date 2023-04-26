@@ -4,7 +4,9 @@ const catchAsync = require("../utilities/catchasync");
 const { isLoggedIn, isAuthor } = require("../utilities/middleware");
 const artworkController = require("../controllers/artworkController");
 
-router.get("/", catchAsync(artworkController.index));
+router.route('/')
+    .get(catchAsync(artworkController.index))
+    .patch(catchAsync(artworkController.filterArtwork))
 
 router.get("/:id", catchAsync(artworkController.show));
 
