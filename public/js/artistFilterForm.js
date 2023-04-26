@@ -31,10 +31,19 @@ nameSelect.addEventListener('click', () => {
 })
 
 lifeSelect.addEventListener('click', () => {
+ // event listeners to toggle required on birth/death
+    birthInput.addEventListener('click', () => {
+        birthInput.setAttribute('required', "");
+        submitBtn.removeAttribute('disabled');
+    });
+    deathInput.addEventListener('click', () => {
+        deathInput.setAttribute('required', "");
+        submitBtn.removeAttribute('disabled');
+    });
+
  // show/hide the proper elements 
     birthInput.removeAttribute('disabled');
     deathInput.removeAttribute('disabled');
-    submitBtn.removeAttribute('disabled');
     artistLifeContainer.style.display = 'flex';
     artistMuseumContainer.style.display = 'none';
     artistNameContainer.style.display = 'none';
