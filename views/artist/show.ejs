@@ -37,18 +37,19 @@
             <ul class="list-group list-group-flush text-center text-md-start">
               <% if (artist.artworks.length === 0) {%>
               <li class="list-group-item"><%= artist.name %>'s works aren't yet on <span class="fw-bold">museo</span></li>
-              <%} else {for (let artwork of artist.artworks) {%>
-              <li class="list-group-item">
-                <div class="container-fluid d-flex flex-md-row flex-column justify-content-center">
-                  <a href="/artworks/<%= artwork._id %>">
-                    <img src="<%= artwork.images[0].url %>" alt="" class="img-thumbnail me-0 me-md-2">
-                    <p>
-                      <%= artwork.title %>
-                    </p>
-                  </a>
-                </div>
-              </li>
-              <% }} %>
+              <%} else {%>
+                <div class="carousel mt-3" data-flickity='{ "cellAlign": "center", "contain": true, "imagesLoaded": true, "percentPosition": true, "pageDots": false, "prevNextButtons": false, "freeScroll": true, "wrapAround": true}'>
+                  <% for (let artwork of artist.artworks) {%>
+                    <a href="/artworks/<%= artwork._id %>">
+                      <div class="carousel-item">
+                        <h6 class="artwork-title"><%= artwork.title %></h6>
+                        <div class="gradient-overlay"></div>
+                        <img src="<%= artwork.images[0].url %>" alt="" class="artwork-img">
+                      </div>
+                    </a>
+                  <% } %>
+              </div>
+              <% } %>
             </ul>
           </div>
           <div class="tab-pane fade show" id="museum-tab-pane" role="tabpanel" aria-labelledby="museum-tab" tabindex="0">
@@ -74,3 +75,5 @@
     </div>
   </div>
 </main>
+
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.js"></script>
