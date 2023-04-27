@@ -63,3 +63,7 @@ module.exports.filterArtists = async (req, res) => {
   const artists = await Artist.find({});
   res.render("artist/index", { artists, museums });
 };
+
+module.exports.renderNewArtistForm = async (req, res) => {
+  res.render('artist/new');
+}

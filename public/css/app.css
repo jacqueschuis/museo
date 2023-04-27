@@ -79,7 +79,7 @@ nav {
 
 .grid-sizer,
 .grid-item {
-  width: 8%;
+  width: 9.5%;
 }
 
 .grid-item {
@@ -154,7 +154,7 @@ nav {
 
 @media (max-width: 2400px) {
   .grid-sizer,
-  .grid-item { width: 19%}
+  .grid-item { width: 19.2%}
 }
 
 @media (max-width: 1200px) {

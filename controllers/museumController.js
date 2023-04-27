@@ -70,5 +70,5 @@ module.exports.renderNewForm = async (req, res) => {
     for (let museum of museums) {
         museumNames.push(museum.name);
     }
-  res.render('dev/newMuseumTest',{museumNames})
+  res.render('museums/new',{museumNames})
 }

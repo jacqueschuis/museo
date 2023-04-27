@@ -5,7 +5,7 @@ Inspired by YelpCamp by Colt Steele combined with my background/personal interes
 ## To-Do
 ### App
 - [x] site-wide search
-- [ ] new dropdown with links to forms for new artists, new museums, new art
+- [x] new dropdown with links to forms for new artists, new museums, new art
 - [ ] about page
 
 ### Artists
@@ -15,9 +15,11 @@ Inspired by YelpCamp by Colt Steele combined with my background/personal interes
 - [ ] artist comment
 - [ ] edit artist comment
 - [ ] delete artist comment
+- [ ] show page artwork listing fix
 
 ### Museums
 - [ ] fill out museum show page
+- [ ] show page artwork list
 - [ ] new museum
 - [ ] edit museum
 - [ ] delete museum

@@ -14,7 +14,10 @@ imageSchema.virtual("thumbnail").get(() => {
 // const opts = { toJSON: { virtuals: true } };
 
 const artistSchema = new Schema({
-  name: String,
+  name: {
+    type: String,
+    unique: true,
+  },
   artworks: [
     {
       type: Schema.Types.ObjectId,

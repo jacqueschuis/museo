@@ -84,3 +84,7 @@ module.exports.filterArtwork = async (req,res) => {
   const artworks = await Artwork.find({});
   res.render('artworks/index', {artworks, museums, allArtworks});
 }
+
+module.exports.renderNewArtworkForm = async(req, res) => {
+  res.render('artworks/new')
+}

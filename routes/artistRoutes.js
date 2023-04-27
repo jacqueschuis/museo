@@ -9,6 +9,10 @@ router
   .get(catchAsync(artistController.index))
   .patch(catchAsync(artistController.filterArtists));
 
+router
+  .route('/new')
+  .get(catchAsync(artistController.renderNewArtistForm))
+
 router.route("/:id").get(catchAsync(artistController.show));
 
 module.exports = router;
