@@ -18,13 +18,13 @@ const MongoDBStore = require("connect-mongo");
 const User = require("./models/user");
 
 const artworkSubmitRoutes = require("./routes/artworkSubmitRoutes");
-const artworkRoutes = require('./routes/artworkRoutes');
+const artworkRoutes = require("./routes/artworkRoutes");
 const museumRoutes = require("./routes/museumRoutes");
 const reviewRoutes = require("./routes/reviewRoutes");
-const artistRoutes = require('./routes/artistRoutes');
+const artistRoutes = require("./routes/artistRoutes");
 const userRoutes = require("./routes/userRoutes");
 const devRoutes = require("./routes/devRoutes");
-const searchRoutes = require('./routes/searchRoutes');
+const searchRoutes = require("./routes/searchRoutes");
 
 const dbUrl = "mongodb://localhost:27017/muzeion";
 const atlasUrl = process.env.ATLAS_URL;
@@ -94,10 +94,10 @@ app.use((req, res, next) => {
 app.use("/", userRoutes);
 app.use("/admin", devRoutes);
 app.use("/museums", museumRoutes);
-app.use('/artists', artistRoutes);
-app.use('/museums/:id/artwork', artworkSubmitRoutes);
-app.use('/artworks', artworkRoutes);
-app.use('/search', searchRoutes);
+app.use("/artists", artistRoutes);
+app.use("/museums/:id/artwork", artworkSubmitRoutes);
+app.use("/artworks", artworkRoutes);
+app.use("/search", searchRoutes);
 
 app.get("/", (req, res) => {
   res.render("app/home");
@@ -107,7 +107,7 @@ app.get("/about", (req, res) => {
   res.render("app/about");
 });
 
-app.all('*', (req, res, next) => {
+app.all("*", (req, res, next) => {
   return next(new ExpressError("page not found", 404));
 });
 

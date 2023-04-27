@@ -23,7 +23,7 @@
           </div>
         </div>
         <form action="/artists?_method=PATCH" method="post" class="mx-3 needs-validation" novalidate>
-          
+
           <div class="mb-3 form-floating" id="artistNameContainer">
             <input type="text" class="form-control" name="name" id="artistName" placeholder="name">
             <label for="artistName">name:</label>
@@ -36,11 +36,11 @@
           <div class="mb-3" id="artistMuseumContainer">
             <label for="museum">museums:</label>
             <select name="filterMuseum" id="museumSelect" class="form-select form-select-sm">
-                  <option value='' disabled selected></option>
-                <% for (let museum of museums) {%>
-                  <option value="<%= museum._id %>"><%= museum.name %></option>
-                <% } %>
-              </select>
+              <option value='' disabled selected></option>
+              <% for (let museum of museums) {%>
+              <option value="<%= museum._id %>"><%= museum.name %></option>
+              <% } %>
+            </select>
           </div>
           <div class="d-grid" id="submitButtonContainer">
             <button class="btn" id="submitButton" disabled>submit</button>
@@ -52,27 +52,27 @@
 </header>
 
 <% if (artists.length === 0) {%>
-  <p class="text-center">no <span class="fw-bold">artists</span> match your search; try broadening your parameters</p>
-  <p class="text-center"><a href="/artists" class="btn">view all <span class="fw-bold">artists</span></a></p>
+<p class="text-center">no <span class="fw-bold">artists</span> match your search; try broadening your parameters</p>
+<p class="text-center"><a href="/artists" class="btn">view all <span class="fw-bold">artists</span></a></p>
 <% } %>
 <div class="grid" id="index-grid">
   <div class="grid-sizer"></div>
   <% for (let artist of artists) {%>
-    <a href="/artists/<%= artist._id %>">
-      <div class="grid-item ">
-        <div class="gradient-overlay"></div>
-        <h4 class="fw-bold museum-name"><%= artist.name %></h4>
-        <img src="<%= artist.images[0].url %>" alt="">
-      </div>
-    </a>
-    <% } %>
+  <a href="/artists/<%= artist._id %>">
+    <div class="grid-item ">
+      <div class="gradient-overlay"></div>
+      <h4 class="fw-bold museum-name"><%= artist.name %></h4>
+      <img src="<%= artist.images[0].url %>" alt="">
+    </div>
+  </a>
+  <% } %>
 </div>
 
 <% if (artists.length !== 0) {%>
-  <div class="container text-center">
-    <a href="/artists" class="btn"><i class="bi bi-chevron-left" id="backButton"></i>all <span class="fw-bold">artists</span></a>
-  </div>
-  <% } %>
+<div class="container text-center">
+  <a href="/artists" class="btn"><i class="bi bi-chevron-left" id="backButton"></i>all <span class="fw-bold">artists</span></a>
+</div>
+<% } %>
 
 <script src="/js/artistFilterForm.js"></script>
 <script src="/js/imagesloaded.js"></script>

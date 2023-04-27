@@ -35,11 +35,11 @@
           <div class="mb-3" id="artworkMuseumContainer">
             <label for="museumSelect">museum:</label>
             <select name="filterMuseum" id="museumSelect" class="form-select form-select-sm">
-                  <option value='' disabled selected></option>
-                <% for (let museum of museums) {%>
-                  <option value="<%= museum._id %>"><%= museum.name %></option>
-                <% } %>
-              </select>
+              <option value='' disabled selected></option>
+              <% for (let museum of museums) {%>
+              <option value="<%= museum._id %>"><%= museum.name %></option>
+              <% } %>
+            </select>
           </div>
           <div class="d-grid" id="submitButtonContainer">
             <button class="btn" id="submitButton" disabled>submit</button>
@@ -51,21 +51,21 @@
 </header>
 
 <% if (artworks.length === 0) {%>
-  <p class="text-center">no <span class="fw-bold">artworks</span> match your search; try broadening your parameters</p>
-  <p class="text-center"><a href="/artworks" class="btn">view all <span class="fw-bold">artworks</span></a></p>
+<p class="text-center">no <span class="fw-bold">artworks</span> match your search; try broadening your parameters</p>
+<p class="text-center"><a href="/artworks" class="btn">view all <span class="fw-bold">artworks</span></a></p>
 <% } %>
 
 <div class="grid" id="index-grid">
   <div class="grid-sizer"></div>
   <% for (let artwork of artworks) {%>
-    <a href="/artworks/<%= artwork._id %>">
-      <div class="grid-item ">
-        <div class="gradient-overlay"></div>
-        <h4 class="fw-bold museum-name"><%= artwork.title %></h4>
-        <img src="<%= artwork.images[0].url %>" alt="">
-      </div>
-    </a>
-    <% } %>
+  <a href="/artworks/<%= artwork._id %>">
+    <div class="grid-item ">
+      <div class="gradient-overlay"></div>
+      <h4 class="fw-bold museum-name"><%= artwork.title %></h4>
+      <img src="<%= artwork.images[0].url %>" alt="">
+    </div>
+  </a>
+  <% } %>
 </div>
 
 <% if (artworks.length !== 0) {%>

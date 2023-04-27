@@ -4,10 +4,10 @@ const catchAsync = require("../utilities/catchasync");
 const { isLoggedIn, isAuthor } = require("../utilities/middleware");
 const artistController = require("../controllers/artistController");
 
-router.route("/")
-    .get(catchAsync(artistController.index))
-    .patch(catchAsync(artistController.filterArtists))
-
+router
+  .route("/")
+  .get(catchAsync(artistController.index))
+  .patch(catchAsync(artistController.filterArtists));
 
 router.route("/:id").get(catchAsync(artistController.show));
 

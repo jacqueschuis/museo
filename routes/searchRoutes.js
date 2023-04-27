@@ -4,6 +4,6 @@ const catchAsync = require("../utilities/catchasync");
 const { isLoggedIn, isAuthor } = require("../utilities/middleware");
 const appController = require("../controllers/appControler");
 
-router.route('/').patch(catchAsync(appController.searchMuseo));
+router.route("/").patch(catchAsync(appController.searchMuseo));
 
-module.exports = router
+module.exports = router;

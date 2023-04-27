@@ -10,9 +10,9 @@ map.addControl(new mapboxgl.NavigationControl());
 
 new mapboxgl.Marker()
   .setLngLat(museum.geometry.coordinates)
-//   .setPopup(
-//     new mapboxgl.Popup({ offset: 25 }).setHTML(
-//       `<h5>${museum.name}</h5>`
-//     )
-//   )
+  //   .setPopup(
+  //     new mapboxgl.Popup({ offset: 25 }).setHTML(
+  //       `<h5>${museum.name}</h5>`
+  //     )
+  //   )
   .addTo(map);

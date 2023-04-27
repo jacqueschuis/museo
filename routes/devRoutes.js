@@ -1,5 +1,5 @@
 const express = require("express");
-const router = express.Router({mergeParams: true});
+const router = express.Router({ mergeParams: true });
 const { isAdmin } = require("../utilities/middleware");
 
 const devController = require("../controllers/devController");
