@@ -10,7 +10,8 @@ const geocoder = mbxGeocoding({ accessToken: mapBoxToken });
 module.exports.index = async (req, res) => {
   const museums = await Museum.find({});
   const artists = await Artist.find({});
-  res.render("museums/index", { museums, artists });
+  const allMuseums = museums;
+  res.render("museums/index", { museums, artists, allMuseums });
 };
 
 module.exports.showMuseum = async(req,res) => {
@@ -40,6 +41,7 @@ module.exports.showMuseum = async(req,res) => {
 module.exports.filterMuseums = async(req,res) => {
   const artists = await Artist.find({});
   const {name} = req.body;
+  const allMuseums = await Museum.find({})
   if (name) {
     const museumAgg = [
       {
@@ -56,8 +58,13 @@ module.exports.filterMuseums = async(req,res) => {
       },
     ];
     const museums = await Museum.aggregate(museumAgg);
-    return res.render('museums/index', {museums, artists});
+    return res.render('museums/index', {museums, artists, allMuseums});
   } 
   const museums = await Museum.find({});
-  res.render('museums/index', {museums,artists});
+  res.render('museums/index', {museums,artists, allMuseums});
+}
+
+module.exports.renderNewForm = async (req, res) => {
+  const museums = await Museum.find({});
+  res.render('dev/newMuseumTest', {museums})
 }

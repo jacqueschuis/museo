@@ -27,8 +27,9 @@ module.exports.submitArtwork = async (req, res) => {
 
 module.exports.index = async (req, res) => {
   const artworks = await Artwork.find({});
-  const museums = await Museum.find({})
-  res.render("artworks/index", { artworks, museums });
+  const museums = await Museum.find({});
+  const allArtworks = artworks;
+  res.render("artworks/index", { artworks, museums, allArtworks });
 };
 
 module.exports.show = async (req, res) => {
@@ -43,6 +44,7 @@ module.exports.show = async (req, res) => {
 module.exports.filterArtwork = async (req,res) => {
   const museums = await Museum.find({})
   const {title, filterFromDate, filterToDate, filterMuseum} = req.body;
+  const allArtworks = await Artwork.find({}) 
   if (title) {
     const artworkAgg = [
       {
@@ -59,26 +61,26 @@ module.exports.filterArtwork = async (req,res) => {
       },
     ];
     const artworks = await Artwork.aggregate(artworkAgg);
-    return res.render('artworks/index', {artworks, museums})
+    return res.render('artworks/index', {artworks, museums, allArtworks})
 
   } if (filterFromDate && filterToDate) {
     const artworks = await Artwork.find()
       .where('year').gte(filterFromDate).lte(filterToDate)
-    return res.render('artworks/index', {artworks, museums})
+    return res.render('artworks/index', {artworks, museums, allArtworks})
   } if (filterFromDate) {
     const artworks = await Artwork.find()
       .where('year').gte(filterFromDate);
-    return res.render('artworks/index', {artworks, museums})
+    return res.render('artworks/index', {artworks, museums, allArtworks})
   } if (filterToDate) {
     const artworks = await Artwork.find()
       .where('year').lte(filterToDate);
-    return res.render('artworks/index', {artworks, museums})
+    return res.render('artworks/index', {artworks, museums, allArtworks})
   } if (filterMuseum) {
     const artworks = await Artwork.find()
       .where('museum').all([filterMuseum])
-    return res.render('artworks/index', {artworks, museums})
+    return res.render('artworks/index', {artworks, museums, allArtworks})
   }
 
   const artworks = await Artwork.find({});
-  res.render('artworks/index', {artworks, museums});
+  res.render('artworks/index', {artworks, museums, allArtworks});
 }

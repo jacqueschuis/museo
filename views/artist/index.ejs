@@ -68,7 +68,7 @@
   <% } %>
 </div>
 
-<% if (artists.length !== 0) {%>
+<% if (artists.length !== 0 && artists.length < allArtists.length) {%>
 <div class="container text-center">
   <a href="/artists" class="btn"><i class="bi bi-chevron-left" id="backButton"></i>all <span class="fw-bold">artists</span></a>
 </div>

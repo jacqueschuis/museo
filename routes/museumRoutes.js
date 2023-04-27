@@ -9,6 +9,10 @@ router
   .get(catchAsync(museumController.index))
   .patch(catchAsync(museumController.filterMuseums));
 
+router
+  .route('/new')
+  .get(catchAsync(museumController.renderNewForm));
+
 router.route("/:id").get(catchAsync(museumController.showMuseum));
 
 module.exports = router;
