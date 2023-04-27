@@ -1,5 +1,17 @@
 <% layout('layouts/boilerplate') %>
 
+
+<% if (err.keyValue.name) {%>
+  <div class="row py-5">
+    <div class="col-md-6 offset-md-3">
+      <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading fw-bold">duplicate error</h4>
+        <p><%= err.keyValue.name %> already exists on <span class="fw-bold">museo</span>
+        </p>
+      </div>
+    </div>
+  </div>
+<% } else{ %>
 <div class="row">
   <div class="col-6 offset-3">
     <div class="alert alert-danger" role="alert">
@@ -10,3 +22,4 @@
     </div>
   </div>
 </div>
+<% } %>

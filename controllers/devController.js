@@ -28,7 +28,6 @@ module.exports.newDevMuseum = async (req, res, next) => {
   museum.geometry = geoData.body.features[0].geometry;
   museum.postedBy = req.user._id;
   museum.images.push(image);
-  console.log(museum);
   await museum.save();
   req.flash("success", `${museum.name} added to museo`);
   res.redirect("/admin/newmuseum");

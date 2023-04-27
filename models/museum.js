@@ -21,7 +21,10 @@ const opts = { toJSON: { virtuals: true } };
 
 const museumSchema = new Schema(
   {
-    name: String,
+    name: {
+      type: String,
+      unique: true
+    },
     images: [imageSchema],
     summary: String,
     location: String,

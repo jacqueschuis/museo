@@ -66,5 +66,9 @@ module.exports.filterMuseums = async(req,res) => {
 
 module.exports.renderNewForm = async (req, res) => {
   const museums = await Museum.find({});
-  res.render('dev/newMuseumTest', {museums})
+  let museumNames = [];
+    for (let museum of museums) {
+        museumNames.push(museum.name);
+    }
+  res.render('dev/newMuseumTest',{museumNames})
 }
