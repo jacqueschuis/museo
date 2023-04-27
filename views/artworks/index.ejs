@@ -4,7 +4,7 @@
 
 <header class="container-fluid my-3">
   <div class="row">
-    <div class="dropdown float-md-end">
+    <div class="dropdown d-flex justify-content-between">
       <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside"><i class="bi bi-filter-circle"></i></button>
       <div class="dropdown-menu shadow">
         <h5 class="text-center">filter <span class="fw-bold">art</span></h5>
@@ -46,7 +46,17 @@
           </div>
         </form>
       </div>
+      <div>
+        <a href="/artworks/new" class="btn">new <span class="fw-bold">artwork</span></a>
+      </div>
     </div>
+  </div>
+  <div>
+    <% if (artworks.length === allArtworks.length) {%>
+      <h2 class="text-center">all <span class="fw-bold">artworks</span></h2>
+    <% } else {%>
+      <h2 class="text-center">filtered <span class="fw-bold">artworks</span></h2>
+    <% } %>
   </div>
 </header>
 
