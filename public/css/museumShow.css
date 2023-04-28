@@ -1,113 +1,164 @@
-
-#header{
-    width: 100%;
-    height: 300px;
-    display: flex;
+#header {
+  width: 100%;
+  height: 300px;
+  display: flex;
 }
 
-#museumShowHero{
-    width: 100%;
-    height:auto;
-    border-radius: 18px;
-    object-fit: cover;
-    object-position: center;
-    z-index: 0;
-    filter: grayscale(1) contrast(.5);
+#museumShowHero {
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+  filter: grayscale(1) contrast(0.5);
 }
 
-#museumTitle{
-    position: absolute;
-    align-self: flex-end;
-    z-index: 3;
+#museumTitle {
+  position: absolute;
+  align-self: flex-end;
+  z-index: 3;
 }
 
-#museumHeroGradient{
-    width: 100%;
-    height: 100%;
-    align-self: flex-end;
-    z-index: 2;
-    background: linear-gradient(0deg, rgba(255,255,255,1) 5%, rgba(255,255,255,0) 30%);
-    position: absolute;
+#museumHeroGradient {
+  width: 100%;
+  height: 100%;
+  align-self: flex-end;
+  z-index: 2;
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 1) 5%,
+    rgba(255, 255, 255, 0) 30%
+  );
+  position: absolute;
 }
 
 #backButton {
-    color: #aaa;
-    transition: transform 0.2s, text-shadow 0.2s;
+  color: #aaa;
+  transition: transform 0.2s, text-shadow 0.2s;
 }
 
 #backButton:hover {
-    text-shadow: 0 1px 5px #aaa;
-    transform: translate(0, -0.1rem);
-    color: rgba(34, 34, 34, 0.75);
-  }
-
-#museumShowTab{
-    width: 100%;
-    padding-right: 25px;
+  text-shadow: 0 1px 5px #aaa;
+  transform: translate(0, -0.1rem);
+  color: rgba(34, 34, 34, 0.75);
 }
 
-.carousel-item{
-    width: 400px;
+#museumShowTab {
+  width: 100%;
+  padding-right: 25px;
 }
 
-.carousel-item>img {
-    height: 400px;
-    object-fit: cover;
-    object-position: center;
+.carousel-item {
+  width: 400px;
 }
 
-.museumTitleLink{
-    display: inline-block;
-    text-decoration: none !important;
-    color: rgba(34, 34, 34, 0.75);
-    transition: transform 0.2s, text-shadow 0.2s;
+.carousel-item > img {
+  height: 400px;
+  object-fit: cover;
+  object-position: center;
 }
 
-.museumTitleLink:hover{
-    text-shadow: 0 1px 5px #aaa;
-    transform: translate(0, -0.1rem);
-    color: rgba(34, 34, 34, 0.75);
+.museumTitleLink {
+  display: inline-block;
+  text-decoration: none !important;
+  color: rgba(34, 34, 34, 0.75);
+  transition: transform 0.2s, text-shadow 0.2s;
 }
 
-#artworkScroll{
-    height:400px;
+.museumTitleLink:hover {
+  text-shadow: 0 1px 5px #aaa;
+  transform: translate(0, -0.1rem);
+  color: rgba(34, 34, 34, 0.75);
 }
 
-.artworkScrollItem{
-    margin: 0 10px;
-    display: block;
-    max-width: 400px;
-    position: relative;
-    height: 100%
+.artCarousel {
+  height: 400px;
+  margin-top: 10px;
+  width: 100%;
+  display: block;
 }
 
-.artworkScrollItem img {
-    object-fit: cover;
-    object-position: center;
-    height: 100%;
-    max-width: 400px;
+.artCarousel a {
+  height: 100%;
+  display: flex;
 }
 
-.artworkText {
-    position: absolute;
-    justify-self: flex-start;
-    text-align: start;
-    padding: 10px;
+.artCarousel-item {
+  display: flex;
+  height: inherit;
+  margin-right: 10px;
+  border-radius: 10px;
+  position: relative;
+  width: auto;
 }
+
+.artwork-title {
+  position: absolute;
+  text-decoration: none !important;
+  font-weight: bold;
+  text-align: left;
+  bottom: 0;
+  color: rgba(34, 34, 34, 0.75);
+  display: none;
+  z-index: 3;
+  padding-left: 10px;
+}
+
+.artwork-img {
+  display: block;
+  height: inherit;
+  border-radius: 10px;
+  width: auto;
+  z-index: 0;
+  object-fit: cover;
+  position: relative;
+  transition: 0.2s;
+  filter: grayscale(1) brightness(0.5);
+}
+
+.gradient-overlay {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  z-index: 2;
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 1) 10%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  position: absolute;
+  left: 0;
+  display: none;
+  transition: 0.2s;
+}
+
+.artCarousel-item:hover > .gradient-overlay {
+  display: inLine;
+}
+
+.artCarousel-item:hover .artwork-img {
+  filter: grayscale(0) brightness(1);
+}
+
+.artCarousel-item:hover .artwork-title {
+  display: inline;
+}
+
 #mapCollapse {
-    width: 100%;
-    max-width:500px;
-    height: 300px;
-  }
+  width: 100%;
+  max-width: 500px;
+  height: 300px;
+}
 
-  @media (max-width: 768px) {
-    #mapCollapse{
-        max-width: 100%
-    }
+@media (max-width: 768px) {
+  #mapCollapse {
+    max-width: 100%;
   }
+}
 
 @media (max-width: 500) {
-    .carousel-item{
-        width: 100%;
-    }
+  .carousel-item {
+    width: 100%;
   }
+}
