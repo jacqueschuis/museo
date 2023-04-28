@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@mapbox/mapbox-sdk": "^0.15.0",
+    "@tarekraafat/autocomplete.js": "^10.2.7",
     "animate.css": "^4.1.1",
     "bootstrap-icons": "^1.10.4",
     "connect-flash": "^0.1.1",

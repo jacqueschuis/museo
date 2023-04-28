@@ -14,6 +14,7 @@ const passport = require("passport");
 const passportLocal = require("passport-local");
 const mongoSanitize = require("express-mongo-sanitize");
 const MongoDBStore = require("connect-mongo");
+const autoComplete = require('@tarekraafat/autocomplete.js');
 
 const User = require("./models/user");
 
@@ -25,6 +26,7 @@ const artistRoutes = require("./routes/artistRoutes");
 const userRoutes = require("./routes/userRoutes");
 const devRoutes = require("./routes/devRoutes");
 const searchRoutes = require("./routes/searchRoutes");
+const Museum = require("./models/museum");
 
 const dbUrl = "mongodb://localhost:27017/muzeion";
 const atlasUrl = process.env.ATLAS_URL;
@@ -106,6 +108,15 @@ app.get("/", (req, res) => {
 app.get("/about", (req, res) => {
   res.render("app/about");
 });
+
+app.get("/museumnames", async (req,res) => {
+  const allMuseums = await Museum.find({});
+  let museumNames = [];
+  for (let museum of allMuseums) {
+    museumNames.push(museum.name);
+  }
+  res.send(museumNames);
+})
 
 app.all("*", (req, res, next) => {
   return next(new ExpressError("page not found", 404));

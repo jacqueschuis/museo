@@ -1,14 +1,33 @@
 <% layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.01.min.css">
 
 
 <div class="container my-5">
     <form action="">
-        <div class="form-floating" id="nameSearchContainer">
-            <input type="text" id="museumName" class="form-control" placeholder="museum name:">
-            <label for="museumName">museum name:</label>
-            <ul id="autocompleteResults"></ul>
+            <label for="autoComplete" class="form-label">museum name:</label>
+            <input type="text" id="autoComplete" class="form-control" >
         </div>
+        <input name="museumName" id="" class="form-select" list="allNames">
+        </input>
+        <datalist id="allNames">
+            <% for (let name of names) {%>
+            <option value="<%= name.name %>" />
+            <% } %>
+        </datalist>
     </form>
 </div>
 
 <script src="/js/newMuseumForm.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
+<script>
+    const autoCompleteJS = new autoComplete({ 
+    placeHolder: 'search',
+    data: {
+        src: names
+    },
+    resultItem: {
+        highlight: false
+    },
+    tabSelect: true
+ });
+</script>
