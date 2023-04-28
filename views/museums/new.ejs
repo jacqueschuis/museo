@@ -1,6 +1,6 @@
 <% layout('layouts/boilerplate') %>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.01.min.css">
-
+<link rel="stylesheet" href="awesomplete.css" />
 
 <div class="container my-5">
     <form action="">
@@ -17,9 +17,20 @@
     </form>
 </div>
 
+<input id="myinput" class="awesomplete"/>
+<ul id="mylist">
+    <% for (let name of names) {%>
+        <li><%= name.name %></li>
+    <% } %>
+</ul>
+
+<script src="https://cdnjs.com/libraries/awesomplete" async></script>
 <script src="/js/newMuseumForm.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
 <script>
+    var input = document.getElementById("myinput");
+    new Awesomplete(input, {list: "#mylist"});
+
     const autoCompleteJS = new autoComplete({ 
     placeHolder: 'search',
     data: {
