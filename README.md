@@ -9,7 +9,7 @@ Inspired by YelpCamp by Colt Steele combined with my background/personal interes
 - [ ] about page
 
 ### Artists
-- [ ] submit a new artist form
+- [x] submit a new artist form
 - [ ] edit form
 - [ ] delete form
 - [ ] artist comment

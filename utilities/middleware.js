@@ -1,8 +1,8 @@
-// const Museum = require("../models/museum");
+const Museum = require("../models/museum");
 // const Artwork = require("../models/artwork");
 // const Review = require("../models/review");
-// const ExpressError = require("./expresserror");
-// const { museumSchema, reviewSchema, artworkSchema } = require("./schemas");
+const ExpressError = require("../utilities/expresserror");
+const { artistSchema } = require("../utilities/schemas");
 
 module.exports.isLoggedIn = (req, res, next) => {
   if (!req.isAuthenticated()) {
@@ -13,7 +13,7 @@ module.exports.isLoggedIn = (req, res, next) => {
   next();
 };
 
-module.exports.isAuthor = async (req, res, next) => {
+module.exports.isMuseumAuthor = async (req, res, next) => {
   const { id } = req.params;
   const museum = await Museum.findById(id);
   if (!museum.postedBy.equals(req.user._id) && !req.user.isAdmin) {
@@ -30,3 +30,13 @@ module.exports.isAdmin = (req, res, next) => {
   }
   next();
 };
+
+module.exports.validateArtist = (req, res, next) => {
+  const {error} = artistSchema.validate(req.body);
+  if (error) {
+    const msg = error.details.map(el => el.message).join(',');
+    throw new ExpressError(msg, 400);
+  } else {
+    next();
+  }
+}

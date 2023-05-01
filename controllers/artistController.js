@@ -67,3 +67,15 @@ module.exports.filterArtists = async (req, res) => {
 module.exports.renderNewArtistForm = async (req, res) => {
   res.render('artist/new');
 }
+
+module.exports.createNewArtist = async (req, res) => {
+  console.log('hit route')
+  const artist = new Artist(req.body.artist)
+  console.log('this is artist:', artist);
+  artist.images = req.files.map(f => ({url: f.path, filename: f.filename}));
+  artist.postedBy= req.user._id;
+  await artist.save();
+  req.flash('success', `${artist.name} added to museo`)
+  console.log('this is newArtist:', artist);
+  res.redirect(`/artists/${artist._id}`);
+}

@@ -17,21 +17,31 @@ const museumInput = document.querySelector("#museumSelect");
 const submitBtn = document.querySelector("#submitButton");
 
 nameSelect.addEventListener("click", () => {
-  // show/hide the proper elements
-  nameInput.removeAttribute("disabled", "required");
+  // enable and require the correct criteria
+  nameInput.removeAttribute("disabled");
   submitBtn.removeAttribute("disabled");
+  nameInput.setAttribute("required", "");
+
+  // show/hide correct sections
   artistLifeContainer.style.display = "none";
   artistMuseumContainer.style.display = "none";
   artistNameContainer.style.display = "block";
   submitBtn.style.display = "block";
-  nameInput.setAttribute("required", "");
-  birthInput.setAttribute("disabled", "");
-  deathInput.setAttribute("disabled", "");
-  museumInput.setAttribute("disabled", "");
+
+  // ensure other criteria are not functional
+  birthInput
+    .setAttribute("disabled", "")
+    .removeAttribute('required');
+    deathInput
+    .setAttribute("disabled", "")
+    .removeAttribute('required');
+  museumInput
+    .setAttribute("disabled", "")
+    .removeAttribute('required');
 });
 
 lifeSelect.addEventListener("click", () => {
-  // event listeners to toggle required on birth/death
+  // enable and require the correct criteria
   birthInput.addEventListener("click", () => {
     birthInput.setAttribute("required", "");
     deathInput.removeAttribute("required");
@@ -41,29 +51,46 @@ lifeSelect.addEventListener("click", () => {
     birthInput.removeAttribute("required");
   });
 
-  // show/hide the proper elements
   birthInput.removeAttribute("disabled");
   deathInput.removeAttribute("disabled");
   submitBtn.removeAttribute("disabled");
   birthInput.setAttribute("required", "");
   deathInput.setAttribute("required", "");
+
+  // display proper sections
   artistLifeContainer.style.display = "flex";
   artistMuseumContainer.style.display = "none";
   artistNameContainer.style.display = "none";
   submitBtn.style.display = "block";
-  nameInput.setAttribute("disabled", "");
-  museumInput.setAttribute("disabled", "");
+
+  // disable other inputs
+  nameInput
+    .setAttribute("disabled", "")
+    .removeAttribute('required');
+  museumInput
+    .setAttribute("disabled", "")
+    .removeAttribute('required');
 });
 
 museumSelect.addEventListener("click", () => {
   // show/hide the proper elements
   museumInput.removeAttribute("disabled");
   submitBtn.removeAttribute("disabled");
+  museumInput.setAttribute("required", "");
+
   artistLifeContainer.style.display = "none";
   artistMuseumContainer.style.display = "block";
   artistNameContainer.style.display = "none";
   submitBtn.style.display = "block";
-  museumInput.setAttribute("required", "");
-  deathInput.setAttribute("disabled", "");
-  nameInput.setAttribute("disabled", "");
+
+  
+  birthInput
+    .setAttribute("disabled", "")
+    .removeAttribute('required');
+  deathInput
+    .setAttribute("disabled", "")
+    .removeAttribute('required');
+  nameInput
+    .setAttribute("disabled", "")
+    .removeAttribute('required');
 });
