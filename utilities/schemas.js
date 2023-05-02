@@ -25,16 +25,18 @@ const extension = (joi) => ({
 const Joi = BaseJoi.extend(extension);
 
 module.exports.artistSchema = Joi.object({
-    artist: Joi.object({
-        name: Joi.string().required(),
-        bornDate: Joi.number().required(),
-        deathDate: Joi.optional().allow('').allow(null),
-    })
+  artist: Joi.object({
+    name: Joi.string().required(),
+    bornDate: Joi.number().required(),
+    deathDate: Joi.optional().allow("").allow(null),
+  })
     .required()
-    .when(Joi.object({deathDeate: Joi.exist()}), {
-        then: Joi.object({deathDate: Joi.number().greater(Joi.ref('bornDate'))})
-    })
-})
+    .when(Joi.object({ deathDeate: Joi.exist() }), {
+      then: Joi.object({
+        deathDate: Joi.number().greater(Joi.ref("bornDate")),
+      }),
+    }),
+});
 
 // // module.exports.artworkSchema =
 
