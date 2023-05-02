@@ -1,3 +1,55 @@
 <% layout('layouts/boilerplate') %>
 
-<h1>new artwork</h1>
+<div class="container">
+    <div class="card shadow my-5">
+        <div class="card-body">
+            <h3 class="card-title">new <span class="fw-bold">artwork</span></h3>
+            <form action="/artworks" class="needs-validation" method="post" enctype="multipart/form-data" novalidate>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-floating my-3">
+                            <input type="text" name="artwork[title]" id="artworkTitle" class="form-control" placeholder="title" required>
+                            <label for="artworkTitle" class="form-label">title:</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-floating my-3">
+                            <input type="number" name="artwork[year]" class="form-control" id="year" placeholder="year" required>
+                            <label for="year" class="form-label">year:</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col my-3">
+                        <label for="image" class="form-label">upload image:</label>
+                        <input type="file" name="image" class="form-control" id="image" required>
+                    </div>
+                </div>
+                <div class="row my-3">
+                    <div class="col-lg-6 my-3">
+                        <label for="artistName">artist:</label>
+                        <input class="form-select" name="artistName" id="artistName" list="artistNames" autocomplete="on" required>
+                        <datalist id="artistNames">
+                            <% for (let artistName of artistNames) {%>
+                                <option><%= artistName %></option>
+                            <% } %>
+                        </datalist>
+                    </div>
+                    <div class="col-lg-6 my-3">
+                        <label for="museumName">museum:</label>
+                        <input class="form-select" name="museumName" id="museumName" list="museumNames" required>
+                        <datalist id="museumNames">
+                            <% for (let museumName of museumNames) {%>
+                                <option><%= museumName %></option>
+                            <% } %>
+                        </datalist>
+                    </div>
+                </div>
+                <div class="d-grid">
+                    <button class="btn">submit <span class="fw-bold">artwork</span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

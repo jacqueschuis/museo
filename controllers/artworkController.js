@@ -86,5 +86,36 @@ module.exports.filterArtwork = async (req,res) => {
 }
 
 module.exports.renderNewArtworkForm = async(req, res) => {
-  res.render('artworks/new')
+  let museumNames = [];
+  let artistNames = [];
+  const museums = await Museum.find({});
+  const artists = await Artist.find({});
+  for (let museum of museums) {
+    museumNames.push(museum.name);
+  };
+  for (let artist of artists) {
+    artistNames.push(artist.name);
+  }
+  res.render('artworks/new', {museumNames, artistNames})
+}
+
+module.exports.createArtwork = async (req, res) => {
+  const {artwork, artistName, museumName} = req.body;
+  const artist = await Artist.findOne({name: artistName}); 
+  const museum = await Museum.findOne({name: museumName});
+  // console.log(museum._id, artist._id)
+  const newArtwork = new Artwork({
+    title: artwork.title,
+    year: artwork.year,
+    museum: museum._id,
+    artist: artist._id,
+    postedBy: req.user._id
+  });
+  newArtwork.images = req.files.map(f => ({url: f.path, filename: f.filename}));
+  await newArtwork.save();
+  artist.artworks.push(newArtwork);
+  artist.museums.push(museum);
+  await artist.save();
+  req.flash('success', `${newArtwork.title} added to museo`)
+  res.redirect(`/artworks/${newArtwork._id}`);
 }
