@@ -15,7 +15,7 @@ Inspired by YelpCamp by Colt Steele combined with my background/personal interes
 - [ ] artist comment
 - [ ] edit artist comment
 - [ ] delete artist comment
-- [ ] show page artwork listing fix
+- [x] show page artwork listing fix
 
 ### Museums
 - [ ] fill out museum show page
@@ -29,7 +29,7 @@ Inspired by YelpCamp by Colt Steele combined with my background/personal interes
 - [ ] delete museum comment
 
 ### Art
-- [ ] new art
+- [x] new art
 - [ ] edit art
 - [ ] delete art
 - [x] filter art

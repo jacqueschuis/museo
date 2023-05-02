@@ -2,7 +2,7 @@ const Museum = require("../models/museum");
 // const Artwork = require("../models/artwork");
 // const Review = require("../models/review");
 const ExpressError = require("../utilities/expresserror");
-const { artistSchema } = require("../utilities/schemas");
+const { artistSchema, artworkSchema } = require("../utilities/schemas");
 
 module.exports.isLoggedIn = (req, res, next) => {
   if (!req.isAuthenticated()) {
@@ -33,6 +33,16 @@ module.exports.isAdmin = (req, res, next) => {
 
 module.exports.validateArtist = (req, res, next) => {
   const {error} = artistSchema.validate(req.body);
+  if (error) {
+    const msg = error.details.map(el => el.message).join(',');
+    throw new ExpressError(msg, 400);
+  } else {
+    next();
+  }
+}
+
+module.exports.validateArtwork = (req, res, next) => {
+  const {error} = artworkSchema.validate(req.body);
   if (error) {
     const msg = error.details.map(el => el.message).join(',');
     throw new ExpressError(msg, 400);

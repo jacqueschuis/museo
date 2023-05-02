@@ -141,7 +141,7 @@
     <% } %>
   </div>
 
-  <div class="artCarousel mt-3" data-flickity='{ "cellAlign": "left", "contain": true, "imagesLoaded": true, "percentPosition": true, "pageDots": false, "prevNextButtons": false, "freeScroll": true, "wrapAround": true}'>
+  <div class="artCarousel mt-3" data-flickity='{ "cellAlign": "center", "contain": true, "imagesLoaded": true, "percentPosition": true, "pageDots": false, "prevNextButtons": false, "freeScroll": true, "wrapAround": true, "draggable": true}'>
     <% for (let artwork of artworks) {%>
     <a href="/artworks/<%= artwork._id %>">
       <div class="artCarousel-item">

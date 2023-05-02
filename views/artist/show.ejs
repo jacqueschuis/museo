@@ -3,77 +3,48 @@
 <link rel="stylesheet" href="/css/artistShow.css">
 
 
-<main class="container-fluid d-flex justify-content-center align-items-md-center my-5">
-  <div class="row justify-content-center mx-0 align-items-center">
-    <div class="col-md-6 d-flex align-items-md-center justify-content-center mb-4">
+<main class="container-fluid my-5">
+  <div class="row">
+    <div class="col-md-6 mb-4 d-flex justify-content-center justify-content-md-end">
       <img src="<%= artist.images[0].url %>" alt="" class="img-fluid" id="artistProfile">
     </div>
-    <div class="col-md-6 d-flex justify-content-center align-items-center">
-      <div class="text-container text-lg-start text-center">
+    <div class="col-md-6 d-flex justify-content-center justify-content-md-start align-items-center">
+      <div class="text-container text-md-start text-center">
         <h2 class="fw-bold mb-3" id="artistName"><a href="/artists"><i class="bi bi-chevron-left" id="backButton"></i></a><%= artist.name %></h2>
         <h5 class="text-center mb-3">
           <%= artist.bornDate %> - <%= (artist.deathDate === null ? 'present' : artist.deathDate) %>
         </h5>
-        <ul class="nav nav-pills nav-justified flex-column flex-md-row text-center" id="artistShowTab" role="tablist">
-          <li class="nav-item">
-            <button class="nav-link active" id="artwork-tab" data-bs-toggle="tab" data-bs-target="#artwork-tab-pane" role="tab" aria-controls="artwork-tab-pane" aria-selected="true">
-              art
-            </button>
-          </li>
-          <li class="nav-item">
-            <button class="nav-link" id="museum-tab" data-bs-toggle="tab" data-bs-target="#museum-tab-pane" role="tab" aria-controls="museum-tab-pane" aria-selected="true">
-              museums
-            </button>
-          </li>
-          <li class="nav-item">
-            <button class="nav-link" id="comments-tab" data-bs-toggle="tab" data-bs-target="#comments-tab-pane" role="tab" aria-controls="comments-tab-pane" aria-selected="true">
-              comments
-            </button>
-          </li>
+        <h3 class="fw-bold">museums</h3>
+        <ul class="list-group list-group-flush">
+          <% if (artist.museums.length === 0) {%>
+          <li class="list-group-item"><%= artist.name %>'s works aren't yet on <span class="fw-bold">museo</span></li>
+          <%} else{for (let museum of artist.museums) {%>
+          <li class="list-group-item"><a href="/museums/<%= museum._id %>"><%= museum.name %></a></li>
+          <% }} %>
         </ul>
-
-        <div class="tab-content" id="artistShowTabContent">
-          <div class="tab-pane fade show active" id="artwork-tab-pane" role="tabpanel" aria-labelledby="artwork-tab" tabindex="0">
-            <ul class="list-group list-group-flush text-center text-md-start">
-              <% if (artist.artworks.length === 0) {%>
-              <li class="list-group-item"><%= artist.name %>'s works aren't yet on <span class="fw-bold">museo</span></li>
-              <%} else {%>
-              <div class="carousel mt-3" data-flickity='{ "cellAlign": "center", "contain": true, "imagesLoaded": true, "percentPosition": true, "pageDots": false, "prevNextButtons": false, "freeScroll": true, "wrapAround": true}'>
-                <% for (let artwork of artist.artworks) {%>
-                <a href="/artworks/<%= artwork._id %>">
-                  <div class="carousel-item">
-                    <h6 class="artwork-title"><%= artwork.title %></h6>
-                    <div class="gradient-overlay"></div>
-                    <img src="<%= artwork.images[0].url %>" alt="" class="artwork-img">
-                  </div>
-                </a>
-                <% } %>
-              </div>
-              <% } %>
-            </ul>
-          </div>
-          <div class="tab-pane fade show" id="museum-tab-pane" role="tabpanel" aria-labelledby="museum-tab" tabindex="0">
-            <ul class="list-group list-group-flush">
-              <% if (artist.museums.length === 0) {%>
-              <li class="list-group-item"><%= artist.name %>'s works aren't yet on <span class="fw-bold">museo</span></li>
-              <%} else{for (let museum of artist.museums) {%>
-              <li class="list-group-item"><a href="/museums/<%= museum._id %>"><%= museum.name %></a></li>
-              <% }} %>
-            </ul>
-          </div>
-          <div class="tab-pane fade show" id="comments-tab-pane" role="tabpanel" aria-labelledby="comments-tab" tabindex="0">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">no comments about <%= artist.name %> yet</li>
-            </ul>
-          </div>
-        </div>
-
-
-      </div>
-      <div class="text-container">
       </div>
     </div>
   </div>
+  <div class="row mt-3">
+    <h3 class="fw-bold text-center">artworks</h3>
+    <% if (artist.artworks.length === 0) {%>
+      <p class="text-center"><%= artist.name %>'s works aren't yet on <span class="fw-bold">museo</span></p>
+    <%} else {%>
+      <div class="carousel mt-3" data-flickity='{ "cellAlign": "center", "contain": true, "imagesLoaded": true, "percentPosition": true, "pageDots": false, "prevNextButtons": false, "freeScroll": true, "draggable": true, "wrapAround": true}'>
+        <% for (let artwork of artist.artworks) {%>
+          <a href="/artworks/<%= artwork._id %>">
+            <div class="carousel-item">
+              <h6 class="artwork-title"><%= artwork.title %></h6>
+              <div class="gradient-overlay"></div>
+              <img src="<%= artwork.images[0].url %>" alt="" class="artwork-img">
+            </div>
+          </a>
+        <% } %>
+      </div>
+    <% } %>
+  </div>
 </main>
+
+
 
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.js"></script>
