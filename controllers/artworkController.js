@@ -114,7 +114,20 @@ module.exports.createArtwork = async (req, res) => {
   newArtwork.images = req.files.map(f => ({url: f.path, filename: f.filename}));
   await newArtwork.save();
   artist.artworks.push(newArtwork);
-  artist.museums.push(museum);
+
+  // checking to see if artist already has museum
+  const hasMuseum = async (artist, museum) => {
+    const check = await Artist.find({ $and: [{name: artist.name}, {museums: {$all: museum._id}}]});
+    if (check.length > 0) {
+      console.log('museum present already, no push');
+      return
+    } 
+    console.log('museum not found, pushing')
+    artist.museums.push(museum);
+    return await artist.save();
+  }
+  hasMuseum(artist, museum);
+
   await artist.save();
   req.flash('success', `${newArtwork.title} added to museo`)
   res.redirect(`/artworks/${newArtwork._id}`);

@@ -42,7 +42,7 @@ module.exports.validateArtist = (req, res, next) => {
 }
 
 module.exports.validateArtwork = (req, res, next) => {
-  const {error} = artworkSchema.validate(req.body);
+  const {error} = artworkSchema.validate(req.body.artist);
   if (error) {
     const msg = error.details.map(el => el.message).join(',');
     throw new ExpressError(msg, 400);
