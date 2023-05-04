@@ -50,3 +50,13 @@ module.exports.validateArtwork = (req, res, next) => {
     next();
   }
 }
+
+module.exports.isArtworkPoster = async (req, res, next) => {
+  const {id} = req.params;
+  const artwork = await Artwork.findById(id);
+  if (!artwork.postedBy.equals(req.user._id) && !req.user.isAdmin) {
+    req.flash("error", "you do not have permission to do that");
+    return res.redirect("/login");
+  }
+  next();
+}

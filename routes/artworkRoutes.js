@@ -18,6 +18,8 @@ router
   .route('/new')
   .get(isLoggedIn, catchAsync(artworkController.renderNewArtworkForm))
 
-router.get("/:id", catchAsync(artworkController.show));
+router.route("/:id") 
+  .get(catchAsync(artworkController.show))
+  .delete(catchAsync(artworkController.deleteArtwork))
 
 module.exports = router;

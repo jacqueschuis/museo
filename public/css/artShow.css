@@ -14,3 +14,17 @@
     transform: translate(0, -0.1rem);
     color: rgba(34, 34, 34, 0.75);
   }
+
+
+  p a {
+  display: inline-block;
+  color: #aaa;
+  text-decoration: none;
+  transition: transform 0.2s, text-shadow 0.2s;
+}
+
+p a:hover {
+  text-shadow: 0 1px 5px #aaa;
+  transform: translate(0, -0.1rem);
+  color: rgba(34, 34, 34, 0.75);
+}

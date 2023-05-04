@@ -114,6 +114,7 @@ module.exports.createArtwork = async (req, res) => {
   newArtwork.images = req.files.map(f => ({url: f.path, filename: f.filename}));
   await newArtwork.save();
   artist.artworks.push(newArtwork);
+  museum.artworks.push(newArtwork);
 
   // checking to see if artist already has museum
   const hasMuseum = async (artist, museum) => {
@@ -129,6 +130,22 @@ module.exports.createArtwork = async (req, res) => {
   hasMuseum(artist, museum);
 
   await artist.save();
+  await museum.save();
   req.flash('success', `${newArtwork.title} added to museo`)
   res.redirect(`/artworks/${newArtwork._id}`);
+}
+
+module.exports.deleteArtwork = async (req, res, next) => {
+  const {id} = req.params;
+  const artwork = await Artwork.findById(id);
+  await Museum.findOneAndUpdate({_id: artwork.museum}, { $pull: {artworks: id}});
+  await Artist.findOneAndUpdate({_id: artwork.artist}, { $pull: {artworks: id}});
+  await Artwork.findByIdAndDelete(id);
+
+  const isLastArtworkFromMuseum = async (artworkObj, artistObj) => {
+    const artWorkMuseum = await Artist
+  }
+
+  req.flash('success', `deleted ${artwork.title} from museo`);
+  res.redirect('/artworks')
 }
