@@ -11,7 +11,7 @@
         <h1 class="fw-bold"><a href="/artworks"><i class="bi bi-chevron-left" id="backButton"></i></a><%= artwork.title %></h1>
         <p>by <a href="/artists/<%= artwork.artist._id %>"><%= artwork.artist.name %></a>, <%= artwork.year %></p>
         <p>at <a href="/museums/<%= artwork.museum._id %>"><%= artwork.museum.name %></a></p>
-        <p>added to <span class="fw-bold">museo</span> by <a href="/users/<%= artwork.postedBy._id %>"><%= artwork.postedBy.username %></a></p>
+        <p>added to <span class="fw-bold">museo</span> by <a href="/users/<%= artwork.postedBy._id %>"><span class="fw-bold"><%= artwork.postedBy.username %></span></a></p>
         <% if (currentUser && artwork.postedBy.equals(currentUser._id)) {%>
             <form action="/artworks/<%= artwork._id %>?_method=DELETE" method="post" class="d-grid"><button class="btn">delete</button></form>
         <% } %>

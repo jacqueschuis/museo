@@ -14,7 +14,8 @@ module.exports.show = async (req, res) => {
   const { id } = req.params;
   const artist = await Artist.findById(id)
     .populate("artworks")
-    .populate("museums");
+    .populate("museums")
+    .populate('postedBy')
   res.render("artist/show", { artist });
 };
 

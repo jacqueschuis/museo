@@ -18,16 +18,6 @@
       the museum
     </button>
   </li>
-  <li class="nav-item">
-    <button class="nav-link" id="artwork-tab" data-bs-toggle="tab" data-bs-target="#artwork-tab-pane" role="tab" aria-controls="artwork-tab-pane" aria-selected="true">
-      the art
-    </button>
-  </li>
-  <li class="nav-item">
-    <button class="nav-link" id="review-tab" data-bs-toggle="tab" data-bs-target="#review-tab-pane" role="tab" aria-controls="review-tab-pane" aria-selected="true">
-      the reviews
-    </button>
-  </li>
   <% if(currentUser && museum.postedBy.equals(currentUser._id)) {%>
   <li class="nav-item">
     <button class="nav-link" id="admin-tab" data-bs-toggle="tab" data-bs-target="#admin-tab-pane" role="tab" aria-controls="admin-tab-pane" aria-selected="true">
@@ -65,7 +55,7 @@
           <h3 class="fw-bold link-underline-none"><%= museum.name %> <i class="bi bi-box-arrow-up-right d-inline" style="font-size: .75em"></i></h3>
         </a>
         <div class="row">
-          <p>posted by <span class="fw-bold"><%= museum.postedBy.username %></span></p>
+          <p>added to <span class="fw-bold">museo</span> by <a href="/users/<%= museum.postedBy._id %>"><span class="fw-bold"><%= museum.postedBy.username %></span></a></p>
         </div>
         <div class="row">
           <div class="col">
@@ -77,72 +67,46 @@
     </div>
   </div>
   <div class="tab-pane fade show" id="museum-tab-pane" role="tabpanel" aria-labelledby="museum-tab" tabindex="0">
-    <h1><%= museum.name %></h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 text-center text-md-end">
+          <a href="<%= museum.url %>" data-bs-toggle="tooltip" data-bs-title="view museum's website" class="museumTitleLink">
+            <h3 class="fw-bold link-underline-none"><%= museum.name %> <i class="bi bi-box-arrow-up-right d-inline" style="font-size: .75em"></i></h3>
+          </a>
+          <p>added to <span class="fw-bold">museo</span> by <a href="/users/<%= museum.postedBy._id %>"><span class="fw-bold"><%= museum.postedBy.username %></span></a></p>
+          <p><%= museum.location %></p>
+        </div>
+        <div class="col-md-6">
+          <p class="me-md-8"><%= museum.summary %></p>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="tab-pane fade show" id="artwork-tab-pane" role="tabpanel" aria-labelledby="artwork-tab" tabindex="0">
-    <!-- <div class="col-lg-8 offset-lg-2 text-center"> -->
-
-    <!-- development new artwork form -->
-    <% if (currentUser) {%>
-    <a href="#artworkSubmit" data-bs-toggle="collapse" role="button" class="artworkSubmitLink btn mb-3">submit artwork for <%= museum.name %></a>
-    <div class="card shadow collapse mb-5" id="artworkSubmit">
-      <div class="card-body">
-        <h5 class="card-title text-center fw-bold mb-3">DEV_submit artwork to <%= museum.name %></h5>
-        <form action="/museums/<%= museum._id %>/artwork" method="post" novalidate class="needs-validation">
-          <div class="mb-3">
-            <div class="form-floating">
-              <input type="text" id="title" name="artwork[title]" class="form-control" required autofocus placeholder="name">
-              <label for="title">title:</label>
+ 
+  <% if(currentUser && museum.postedBy.equals(currentUser._id)) {%>
+    <div class="tab-pane fade show" id="admin-tab-pane" role="tabpanel" aria-labelledby="admin-tab" tabindex="0">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 offset-lg-3 text-center">
+            <h3>edit <%= museum.name %></h3>
+            <div class="d-grid">
+              <div class="row">
+                <form action="/museums" method="delete" class="d-grid">
+                  <button class="btn">delete <%= museum.name %> from <span class="fw-bold">museo</span></button>
+                </form>
+                <a href="/museums/<%= museum._id %>/edit" class="btn">edit <%= museum.name %></a>
+              </div>
             </div>
           </div>
-          <div class="mb-3">
-            <div class="form-floating">
-              <input type="text" id="year" name="artwork[year]" class="form-control" required autofocus placeholder="url">
-              <label for="year">date:</label>
-            </div>
-          </div>
-          <div class="mb-3">
-            <div class="form-floating">
-              <input type="text" id="imageUrl" name="image" class="form-control" required autofocus placeholder="url">
-              <label for="imageUrl">image url:</label>
-            </div>
-          </div>
-          <div class="mb-3">
-            <label for="artist">artist:</label>
-            <select name="artwork[artist]" id="artist" class="form-select">
-              <% for (let artist of formArtists) {%>
-              <option value="<%= artist._id %>"><%= artist.name %></option>
-              <% } %>
-            </select>
-          </div>
-          <div class="d-grid">
-            <button class="btn">add artwork</button>
-          </div>
-        </form>
+        </div>
       </div>
     </div>
     <% } %>
-    <% if (artworks.length === 0) {%>
-    <ul class="list-group list-group-flush text-center text-md-start">
-      <li class="list-group-item">no works in <%= museum.name %> on <span class="fw-bold">museo</span></li>
-    </ul>
-    <%}%>
-
-    <!-- </div> -->
-
-  </div>
-  <div class="tab-pane fade show" id="review-tab-pane" role="tabpanel" aria-labelledby="review-tab" tabindex="0">
-    <h1>reviews</h1>
-  </div>
-  <% if(currentUser && museum.postedBy.equals(currentUser._id)) {%>
-    <div class="tab-pane fade show" id="admin-tab-pane" role="tabpanel" aria-labelledby="admin-tab" tabindex="0">
-      <h1>settings</h1>
-    </div>
-    <% } %>
   </div>
 
-  <div class="artCarousel mt-3" data-flickity='{ "cellAlign": "center", "contain": true, "imagesLoaded": true, "percentPosition": true, "pageDots": false, "prevNextButtons": false, "freeScroll": true, "wrapAround": true, "draggable": true}'>
-    <% for (let artwork of artworks) {%>
+  <h3 class="mt-3 text-center"><span class="fw-bold">artwork</span> at <%= museum.name %></h3>
+  <div class="artCarousel mt-3" data-flickity='{"cellAlign": "center", "contain": true, "imagesLoaded": true, "percentPosition": true, "pageDots": false, "prevNextButtons": false, "freeScroll": true, "draggable": true, "wrapAround": true}'>
+    <% for (let artwork of museum.artworks) {%>
     <a href="/artworks/<%= artwork._id %>">
       <div class="artCarousel-item">
         <h2 class="artwork-title"><%= artwork.title %></h2>

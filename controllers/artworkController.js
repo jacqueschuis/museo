@@ -162,11 +162,11 @@ module.exports.createArtworkByUrl = async (req, res) => {
       return
     } 
     console.log('museum not found, pushing')
-    artist.museums.push(museum);
-    return await artist.save();
+    return artist.museums.push(museum);
   }
   hasMuseum(artist, museum);
 
+  await artist.save();
   await museum.save();
   req.flash('success', `${newArtwork.title} added to museo`)
   res.redirect(`/artworks/${newArtwork._id}`);

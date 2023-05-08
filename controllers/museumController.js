@@ -18,8 +18,8 @@ module.exports.showMuseum = async(req,res) => {
   const {id} = req.params;
   const formArtists = await Artist.find({});
   const artists = await Artist.find().where('museums').all([id]);
-  const museum = await Museum.findById(id).populate('postedBy')
-  const artworks = await Artwork.find({museum: id}).populate('artist');
+  const museum = await Museum.findById(id).populate('postedBy').populate('artworks')
+  // const artworks = await Artwork.find({museum: id}).populate('artist');
   // .populate({
   //   path: 'reviews',
   //   populate: {
@@ -35,7 +35,7 @@ module.exports.showMuseum = async(req,res) => {
   //   req.flash('error', 'museum not found');
   //   return res.redirect('/museums');
   // }
-  res.render('museums/show', {museum,formArtists, artists, artworks})
+  res.render('museums/show', {museum,formArtists, artists})
 }
 
 module.exports.filterMuseums = async(req,res) => {
