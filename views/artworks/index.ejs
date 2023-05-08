@@ -66,18 +66,19 @@
 <p class="text-center">no <span class="fw-bold">artworks</span> match your search; try broadening your parameters</p>
 <p class="text-center"><a href="/artworks" class="btn">view all <span class="fw-bold">artworks</span></a></p>
 <% } %>
-
-<div class="grid" id="index-grid">
-  <div class="grid-sizer"></div>
-  <% for (let artwork of artworks) {%>
-  <a href="/artworks/<%= artwork._id %>">
-    <div class="grid-item ">
-      <div class="gradient-overlay"></div>
-      <h4 class="fw-bold museum-name"><%= artwork.title %></h4>
-      <img src="<%= artwork.images[0].url %>" alt="">
-    </div>
-  </a>
-  <% } %>
+<div class="container-fluid">
+  <div class="grid" id="index-grid">
+    <div class="grid-sizer"></div>
+    <% for (let artwork of artworks) {%>
+    <a href="/artworks/<%= artwork._id %>">
+      <div class="grid-item ">
+        <div class="gradient-overlay"></div>
+        <h4 class="fw-bold museum-name"><%= artwork.title %></h4>
+        <img src="<%= artwork.images[0].url %>" alt="">
+      </div>
+    </a>
+    <% } %>
+  </div>
 </div>
 
 <% if (artworks.length !== 0 && artworks.length < allArtworks.length) {%>

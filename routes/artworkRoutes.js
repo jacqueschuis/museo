@@ -11,8 +11,15 @@ const upload = multer({storage});
 router
   .route("/")
   .get(catchAsync(artworkController.index))
-  .post(isLoggedIn, upload.array('image'), validateArtwork, catchAsync(artworkController.createArtwork))
   .patch(catchAsync(artworkController.filterArtwork))
+
+router
+  .route('/newByUpload')
+  .post(isLoggedIn, upload.array('image'), validateArtwork, catchAsync(artworkController.createArtworkByUpload))
+
+router
+  .route('/newByUrl')
+  .post(isLoggedIn, validateArtwork, catchAsync(artworkController.createArtworkByUrl))
 
 router
   .route('/new')

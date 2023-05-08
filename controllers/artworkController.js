@@ -99,11 +99,10 @@ module.exports.renderNewArtworkForm = async(req, res) => {
   res.render('artworks/new', {museumNames, artistNames})
 }
 
-module.exports.createArtwork = async (req, res) => {
+module.exports.createArtworkByUpload = async (req, res) => {
   const {artwork, artistName, museumName} = req.body;
   const artist = await Artist.findOne({name: artistName}); 
   const museum = await Museum.findOne({name: museumName});
-  // console.log(museum._id, artist._id)
   const newArtwork = new Artwork({
     title: artwork.title,
     year: artwork.year,
@@ -130,6 +129,44 @@ module.exports.createArtwork = async (req, res) => {
   hasMuseum(artist, museum);
 
   await artist.save();
+  await museum.save();
+  req.flash('success', `${newArtwork.title} added to museo`)
+  res.redirect(`/artworks/${newArtwork._id}`);
+}
+
+module.exports.createArtworkByUrl = async (req, res) => {
+  const image = {
+    url: req.body.imageUrl,
+    postedBy: req.user._id,
+  };
+  const {artwork, artistName, museumName} = req.body;
+  const artist = await Artist.findOne({name: artistName}); 
+  const museum = await Museum.findOne({name: museumName});
+  const newArtwork = new Artwork({
+    title: artwork.title,
+    year: artwork.year,
+    museum: museum._id,
+    artist: artist._id,
+    postedBy: req.user._id
+  });
+
+  newArtwork.images.push(image);
+  await newArtwork.save();
+  artist.artworks.push(newArtwork);
+  museum.artworks.push(newArtwork);
+
+  const hasMuseum = async (artist, museum) => {
+    const check = await Artist.find({ $and: [{name: artist.name}, {museums: {$all: museum._id}}]});
+    if (check.length > 0) {
+      console.log('museum present already, no push');
+      return
+    } 
+    console.log('museum not found, pushing')
+    artist.museums.push(museum);
+    return await artist.save();
+  }
+  hasMuseum(artist, museum);
+
   await museum.save();
   req.flash('success', `${newArtwork.title} added to museo`)
   res.redirect(`/artworks/${newArtwork._id}`);

@@ -34,7 +34,7 @@ uploadImageBtn.addEventListener('click', () => {
     imageUrlInput.removeAttribute('required');
 
     //change form
-    newArtworkForm.setAttribute('action', '/artworks');
+    newArtworkForm.setAttribute('action', '/artworks/newByUpload');
     newArtworkForm.setAttribute('enctype', 'multipart/form-data');
 })
 
@@ -55,6 +55,6 @@ imageUrlBtn.addEventListener('click', () => {
     imageUploadInput.removeAttribute('required');
 
     //change form
-    newArtworkForm.setAttribute('action', '#');
+    newArtworkForm.setAttribute('action', '/artworks/newByUrl');
     newArtworkForm.setAttribute('enctype', 'application/x-www-form-urlencoded')
 })

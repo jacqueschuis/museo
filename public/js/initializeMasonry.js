@@ -5,7 +5,7 @@ let msnry = new Masonry(grid, {
   itemSelector: ".grid-item",
   columnWidth: '.grid-sizer',
   percentPosition: true,
-  gutter: 9,
+  gutter: 5,
   stagger: 50,
   transitionDuration: "0.6s",
   horizontalOrder: true
