@@ -3,7 +3,7 @@ const router = express.Router({ mergeParams: true });
 const catchAsync = require("../utilities/catchasync");
 const {
   isLoggedIn,
-  isAuthor,
+  isMuseumAuthor,
   validateMuseum,
 } = require("../utilities/middleware");
 const museumController = require("../controllers/museumController");
@@ -32,6 +32,9 @@ router
 
 router.route("/new").get(catchAsync(museumController.renderNewForm));
 
-router.route("/:id").get(catchAsync(museumController.showMuseum));
+router
+  .route("/:id")
+  .get(catchAsync(museumController.showMuseum))
+  .delete(isLoggedIn, isMuseumAuthor, catchAsync(museumController.deleteMuseum));
 
 module.exports = router;

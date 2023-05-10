@@ -91,8 +91,8 @@
             <h3>edit <%= museum.name %></h3>
             <div class="d-grid">
               <div class="row">
-                <form action="/museums" method="delete" class="d-grid">
-                  <button class="btn">delete <%= museum.name %> from <span class="fw-bold">museo</span></button>
+                <form action="/museums/<%= museum._id %>?_method=DELETE" method="post" class="d-grid">
+                  <button class="btn">delete  <%= museum.name %> from <span class="fw-bold">museo</span></button>
                 </form>
                 <a href="/museums/<%= museum._id %>/edit" class="btn">edit <%= museum.name %></a>
               </div>

@@ -41,7 +41,7 @@ With **museo**, I have taken what I learned from YelpCamp and added:
 - [x] show page artwork list
 - [x] new museum
 - [ ] edit museum
-- [ ] delete museum
+- [x] delete museum
 - [x] filter museums
 
 ### Art

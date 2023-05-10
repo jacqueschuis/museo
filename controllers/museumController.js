@@ -107,3 +107,13 @@ module.exports.renderNewForm = async (req, res) => {
   }
   res.render("museums/new", { names });
 };
+
+module.exports.deleteMuseum = async (req, res) => {
+  const {id} = req.params;
+  const museum = await Museum.findById(id);
+  await Museum.findByIdAndDelete(id);
+  await Artist.updateMany({museums: id}, {$pull: {museums: id}});
+  await Artwork.deleteMany({museum: id});
+  req.flash("success", `${museum.name} removed from museo`);
+  res.redirect('/museums');
+}
