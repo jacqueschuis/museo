@@ -14,7 +14,7 @@
         <h5 class="text-center mb-3">
           <%= artist.bornDate %> - <%= (artist.deathDate === null ? 'present' : artist.deathDate) %>
         </h5>
-        <p>added to <span class="fw-bold">museo</span> by <a href="<%= artist.postedBy._id %>"><span class="fw-bold"><%= artist.postedBy.username %></span></a></p>
+        <p>added to <span class="fw-bold">museo</span> by <a href="/users/<%= artist.postedBy._id %>"><span class="fw-bold"><%= artist.postedBy.username %></span></a></p>
         <h3 class="fw-bold">museums</h3>
         <ul class="list-group list-group-flush">
           <% if (artist.museums.length === 0) {%>

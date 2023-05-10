@@ -36,8 +36,7 @@ module.exports.isAdmin = (req, res, next) => {
 };
 
 module.exports.validateArtist = (req, res, next) => {
-  const { artist } = req.body;
-  const { error } = artistSchema.validate(artist);
+  const { error } = artistSchema.validate(req.body.artist);
   if (error) {
     const msg = error.details.map((el) => el.message).join(",");
     throw new ExpressError(msg, 400);

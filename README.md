@@ -24,9 +24,9 @@ With **museo**, I have taken what I learned from YelpCamp and added:
 
 ### Tomorrow
 
-- [ ] Check image upload for artists
+- [x] Check image upload for artists
 - [ ] Check image upload for artworks
-- [ ] Fix artwork schema
+- [x] Fix artwork schema
 
 ### App
 
@@ -60,4 +60,4 @@ With **museo**, I have taken what I learned from YelpCamp and added:
 
 ### Users
 
-- [ ] user show page
+- [x] user show page
