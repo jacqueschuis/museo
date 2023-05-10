@@ -2,7 +2,11 @@ const Museum = require("../models/museum");
 // const Artwork = require("../models/artwork");
 // const Review = require("../models/review");
 const ExpressError = require("../utilities/expresserror");
-const { artistSchema, artworkSchema } = require("../utilities/schemas");
+const {
+  artistSchema,
+  artworkSchema,
+  museumSchema,
+} = require("../utilities/schemas");
 
 module.exports.isLoggedIn = (req, res, next) => {
   if (!req.isAuthenticated()) {
@@ -32,31 +36,42 @@ module.exports.isAdmin = (req, res, next) => {
 };
 
 module.exports.validateArtist = (req, res, next) => {
-  const {error} = artistSchema.validate(req.body);
+  const { artist } = req.body;
+  const { error } = artistSchema.validate(artist);
   if (error) {
-    const msg = error.details.map(el => el.message).join(',');
+    const msg = error.details.map((el) => el.message).join(",");
     throw new ExpressError(msg, 400);
   } else {
     next();
   }
-}
+};
 
 module.exports.validateArtwork = (req, res, next) => {
-  const {error} = artworkSchema.validate(req.body.artist);
+  const { error } = artworkSchema.validate(req.body.artwork);
   if (error) {
-    const msg = error.details.map(el => el.message).join(',');
+    const msg = error.details.map((el) => el.message).join(",");
     throw new ExpressError(msg, 400);
   } else {
     next();
   }
-}
+};
+
+module.exports.validateMuseum = (req, res, next) => {
+  const { error } = museumSchema.validate(req.body.museum);
+  if (error) {
+    const msg = error.details.map((el) => el.message).join(",");
+    throw new ExpressError(msg, 400);
+  } else {
+    next();
+  }
+};
 
 module.exports.isArtworkPoster = async (req, res, next) => {
-  const {id} = req.params;
+  const { id } = req.params;
   const artwork = await Artwork.findById(id);
   if (!artwork.postedBy.equals(req.user._id) && !req.user.isAdmin) {
     req.flash("error", "you do not have permission to do that");
     return res.redirect("/login");
   }
   next();
-}
+};

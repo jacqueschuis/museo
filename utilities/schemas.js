@@ -25,24 +25,29 @@ const extension = (joi) => ({
 const Joi = BaseJoi.extend(extension);
 
 module.exports.artistSchema = Joi.object({
-  artist: Joi.object({
-    name: Joi.string().required(),
-    bornDate: Joi.number().required(),
-    deathDate: Joi.optional().allow("").allow(null),
-  })
-    .required()
-    .when(Joi.object({ deathDeate: Joi.exist() }), {
-      then: Joi.object({
-        deathDate: Joi.number().greater(Joi.ref("bornDate")),
-      }),
-    }),
+  name: Joi.string().required(),
+  bornDate: Joi.number().required(),
+  deathDate: Joi.optional().allow("").allow(null),
+}).when(Joi.object({ deathDate: Joi.exist() }), {
+  then: Joi.object({
+    deathDate: Joi.number().greater(Joi.ref("bornYear")),
+  }),
+});
+
+module.exports.museumSchema = Joi.object({
+  name: Joi.string().required(),
+  url: Joi.string().required(),
+  location: Joi.string().required(),
+  summary: Joi.string().required(),
+});
+
+module.exports.imageSchema = Joi.object({
+  url: Joi.string().required(),
 });
 
 module.exports.artworkSchema = Joi.object({
   artwork: Joi.object({
     title: Joi.string().required(),
     year: Joi.number().required(),
-  })
-})
-
-// // module.exports.reviewSchema =
+  }),
+});

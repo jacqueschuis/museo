@@ -1,12 +1,11 @@
 const Artist = require("../models/artist");
 const Museum = require("../models/museum");
 const Artwork = require("../models/artwork");
-const artist = require("../models/artist");
 
 module.exports.index = async (req, res) => {
   const museums = await Museum.find({});
   const artists = await Artist.find({});
-  const allArtists = artists
+  const allArtists = artists;
   res.render("artist/index", { artists, museums, allArtists });
 };
 
@@ -15,35 +14,37 @@ module.exports.show = async (req, res) => {
   const artist = await Artist.findById(id)
     .populate("artworks")
     .populate("museums")
-    .populate('postedBy')
+    .populate("postedBy");
   res.render("artist/show", { artist });
 };
 
 module.exports.filterArtists = async (req, res) => {
   const museums = await Museum.find({});
   const { name, filterBornDate, filterDeathDate, filterMuseum } = req.body;
-  const allArtists = await Artist.find({})
+  const allArtists = await Artist.find({});
   if (filterMuseum) {
-    const artists = await Artist.find()
-      .where("museums")
-      .all([filterMuseum]);
+    const artists = await Artist.find().where("museums").all([filterMuseum]);
     return res.render("artist/index", { artists, museums, allArtists });
-  } if (filterBornDate && filterDeathDate) {
+  }
+  if (filterBornDate && filterDeathDate) {
     const artists = await Artist.find({})
       .where("deathDate")
       .lte(filterDeathDate)
       .where("bornDate")
       .gte(filterBornDate);
     return res.render("artist/index", { artists, museums, allArtists });
-  } if (filterBornDate) {
+  }
+  if (filterBornDate) {
     const artists = await Artist.find({}).where("bornDate").gte(filterBornDate);
     return res.render("artist/index", { artists, museums, allArtists });
-  } if (filterDeathDate) {
+  }
+  if (filterDeathDate) {
     const artists = await Artist.find({})
       .where("deathDate")
       .lte(filterDeathDate);
     return res.render("artist/index", { artists, museums, allArtists });
-  } if (name) {
+  }
+  if (name) {
     const agg = [
       {
         $search: {
@@ -56,7 +57,7 @@ module.exports.filterArtists = async (req, res) => {
             },
           },
         },
-      }
+      },
     ];
     const artists = await Artist.aggregate(agg);
     return res.render("artist/index", { artists, museums, allArtists });
@@ -66,14 +67,28 @@ module.exports.filterArtists = async (req, res) => {
 };
 
 module.exports.renderNewArtistForm = async (req, res) => {
-  res.render('artist/new');
-}
+  res.render("artist/new");
+};
 
-module.exports.createNewArtist = async (req, res) => {
-  const artist = new Artist(req.body.artist)
-  artist.images = req.files.map(f => ({url: f.path, filename: f.filename}));
-  artist.postedBy= req.user._id;
+module.exports.newByUpload = async (req, res) => {
+  const artist = new Artist(req.body.artist);
+  artist.images = req.files.map((f) => ({ url: f.path, filename: f.filename }));
+  artist.postedBy = req.user._id;
   await artist.save();
-  req.flash('success', `${artist.name} added to museo`)
+  req.flash("success", `${artist.name} added to museo`);
   res.redirect(`/artists/${artist._id}`);
-}
+};
+
+module.exports.newByUrl = async (req, res) => {
+  console.log(req.body);
+  const image = {
+    url: req.body.imageUrl,
+  };
+  const { artist } = req.body;
+  const newArtist = new Artist(artist);
+  newArtist.images.push(image);
+  newArtist.postedBy = req.user._id;
+  await newArtist.save();
+  req.flash("success", `${newArtist.name} added to museo`);
+  res.redirect(`/artists/${newArtist._id}`);
+};

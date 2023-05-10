@@ -9,3 +9,7 @@
 #imageUrlContainer {
   display: none;
 }
+
+#museumSummary {
+  height: 150px;
+}

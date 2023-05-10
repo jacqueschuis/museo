@@ -1,8 +1,16 @@
 const express = require("express");
 const router = express.Router({ mergeParams: true });
 const catchAsync = require("../utilities/catchasync");
-const { isLoggedIn, isAuthor } = require("../utilities/middleware");
+const {
+  isLoggedIn,
+  isAuthor,
+  validateMuseum,
+} = require("../utilities/middleware");
 const museumController = require("../controllers/museumController");
+
+const multer = require("multer");
+const { storage } = require("../cloudinary");
+const upload = multer({ storage });
 
 router
   .route("/")
@@ -10,8 +18,19 @@ router
   .patch(catchAsync(museumController.filterMuseums));
 
 router
-  .route('/new')
-  .get(catchAsync(museumController.renderNewForm));
+  .route("/newByUrl")
+  .post(isLoggedIn, validateMuseum, catchAsync(museumController.newByUrl));
+
+router
+  .route("/newByUpload")
+  .post(
+    isLoggedIn,
+    upload.array("image"),
+    validateMuseum,
+    catchAsync(museumController.newByUpload)
+  );
+
+router.route("/new").get(catchAsync(museumController.renderNewForm));
 
 router.route("/:id").get(catchAsync(museumController.showMuseum));
 

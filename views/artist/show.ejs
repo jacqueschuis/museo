@@ -29,19 +29,19 @@
   <div class="row mt-3">
     <h3 class="fw-bold text-center">artworks</h3>
     <% if (artist.artworks.length === 0) {%>
-      <p class="text-center"><%= artist.name %>'s works aren't yet on <span class="fw-bold">museo</span></p>
+    <p class="text-center"><%= artist.name %>'s works aren't yet on <span class="fw-bold">museo</span></p>
     <%} else {%>
-      <div class="carousel mt-3" data-flickity='{ "cellAlign": "center", "contain": true, "imagesLoaded": true, "percentPosition": true, "pageDots": false, "prevNextButtons": false, "freeScroll": true, "draggable": true, "wrapAround": true}'>
-        <% for (let artwork of artist.artworks) {%>
-          <a href="/artworks/<%= artwork._id %>">
-            <div class="carousel-item">
-              <h6 class="artwork-title"><%= artwork.title %></h6>
-              <div class="gradient-overlay"></div>
-              <img src="<%= artwork.images[0].url %>" alt="" class="artwork-img">
-            </div>
-          </a>
-        <% } %>
-      </div>
+    <div class="carousel mt-3" data-flickity='{ "cellAlign": "center", "contain": true, "imagesLoaded": true, "percentPosition": true, "pageDots": false, "prevNextButtons": false, "freeScroll": true, "draggable": true, "wrapAround": true}'>
+      <% for (let artwork of artist.artworks) {%>
+      <a href="/artworks/<%= artwork._id %>">
+        <div class="carousel-item">
+          <h6 class="artwork-title"><%= artwork.title %></h6>
+          <div class="gradient-overlay"></div>
+          <img src="<%= artwork.images[0].url %>" alt="" class="artwork-img">
+        </div>
+      </a>
+      <% } %>
+    </div>
     <% } %>
   </div>
 </main>

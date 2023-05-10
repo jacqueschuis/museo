@@ -1,44 +1,76 @@
 <% layout('layouts/boilerplate') %>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.01.min.css">
-<link rel="stylesheet" href="awesomplete.css" />
 
-<div class="container my-5">
-    <form action="">
-            <label for="autoComplete" class="form-label">museum name:</label>
-            <input type="text" id="autoComplete" class="form-control" >
+<link rel="stylesheet" href="/css/newMuseumForm.css">
+
+<div class="container">
+  <div class="card shadow my-5">
+    <div class="card-body">
+      <h3 class="card-title">new <span class="fw-bold">museum</span></h3>
+
+      <form class="needs-validation" id="newMuseumForm" novalidate method="post">
+        <div class="row my-3">
+          <div class="col-md-6">
+            <div class="form-floating my-3">
+              <input type="text" id="museumName" class="form-control" name="museum[name]" placeholder="name" required>
+              <label for="museumName" class="form-label">name:</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-floating my-3">
+              <input type="text" id="museumUrl" class="form-control" name="museum[url]" placeholder="museum website" required>
+              <label for="museumUrl" class="form-label">museum website:</label>
+            </div>
+          </div>
         </div>
-        <input style="color:red" name="museumName" id="" class="form-select" list="allNames">
-        </input>
-        <datalist id="allNames">
-            <% for (let name of names) {%>
-            <option value="<%= name.name %>" />
-            <% } %>
-        </datalist>
-    </form>
+        <div class="row my-3">
+          <div class="container-fluid">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="museumLocation" name="museum[location]" placeholder="address" required>
+              <label class="form-label" for="museumLocation">museum address:</label>
+            </div>
+          </div>
+        </div>
+        <div class="row my-3" id="imageOptionsContainer">
+          <div class="container">
+            <h4>how would you like to add an image?</h4>
+            <div class="container-fluid d-flex justify-content-around">
+              <div class="form-check">
+                <input type="radio" class="form-check-input" name="imageOptions" id="uploadImageBtn">
+                <label for="uploadImageBtn" class="form-check-label">file upload:</label>
+              </div>
+              <div class="form-check">
+                <input type="radio" class="form-check-input" name="imageOptions" id="imageUrlBtn">
+                <label for="imageUrlBtn" class="form-check-label">image url:</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row my-3" id="imageInputsContainer">
+          <div class="col my-3" id="imageUploadContainer">
+            <label for="image" class="form-label">upload image:</label>
+            <input type="file" name="image" class="form-control" id="image" required>
+          </div>
+          <div class="col my-3" id="imageUrlContainer">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="imageUrl" name="imageUrl" placeholder="url">
+              <label for="imageUrl" class="form-label">image url:</label>
+            </div>
+          </div>
+        </div>
+        <div class="row my-3">
+          <div class="container-fluid">
+            <div class="form-floating">
+              <textarea name="museum[summary]" id="museumSummary" class="form-control" placeholder="summary"></textarea>
+              <label for="museumSummary">summary</label>
+            </div>
+          </div>
+        </div>
+        <div class="d-grid">
+          <button class="btn">submit <span class="fw-bold">museum</span></button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
 
-<input id="myinput" class="awesomplete"/>
-<ul id="mylist">
-    <% for (let name of names) {%>
-        <li><%= name.name %></li>
-    <% } %>
-</ul>
-
-<script src="https://cdnjs.com/libraries/awesomplete" async></script>
 <script src="/js/newMuseumForm.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
-<script>
-    var input = document.getElementById("myinput");
-    new Awesomplete(input, {list: "#mylist"});
-
-    const autoCompleteJS = new autoComplete({ 
-    placeHolder: 'search',
-    data: {
-        src: names
-    },
-    resultItem: {
-        highlight: false
-    },
-    tabSelect: true
- });
-</script>

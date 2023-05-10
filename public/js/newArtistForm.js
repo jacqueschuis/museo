@@ -15,7 +15,7 @@ const imageUrlContainer = document.querySelector("#imageUrlContainer");
 const imageUrlInput = document.querySelector("#imageUrl");
 
 // parent form
-const newMuseumForm = document.querySelector("#newMuseumForm");
+const newArtistForm = document.querySelector("#newArtistForm");
 
 uploadImageBtn.addEventListener("click", () => {
   // display the proper inputs
@@ -34,8 +34,8 @@ uploadImageBtn.addEventListener("click", () => {
   imageUrlInput.removeAttribute("required");
 
   //change form
-  newMuseumForm.setAttribute("action", "/museums/newByUpload");
-  newMuseumForm.setAttribute("enctype", "multipart/form-data");
+  newArtistForm.setAttribute("action", "/artists/newByUpload");
+  newArtistForm.setAttribute("enctype", "multipart/form-data");
 });
 
 imageUrlBtn.addEventListener("click", () => {
@@ -55,6 +55,6 @@ imageUrlBtn.addEventListener("click", () => {
   imageUploadInput.removeAttribute("required");
 
   //change form
-  newMuseumForm.setAttribute("action", "/museums/newByUrl");
-  newMuseumsForm.setAttribute("enctype", "application/x-www-form-urlencoded");
+  newArtistForm.setAttribute("action", "/artists/newByUrl");
+  newArtistForm.setAttribute("enctype", "application/x-www-form-urlencoded");
 });
