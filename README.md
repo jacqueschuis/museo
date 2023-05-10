@@ -32,7 +32,7 @@ With **museo**, I have taken what I learned from YelpCamp and added:
 
 - [x] submit a new artist form
 - [ ] edit form
-- [ ] delete form
+- [x] delete form
 - [x] show page artwork listing fix
 
 ### Museums

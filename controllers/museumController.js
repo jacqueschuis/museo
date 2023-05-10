@@ -21,22 +21,6 @@ module.exports.showMuseum = async (req, res) => {
   const museum = await Museum.findById(id)
     .populate("postedBy")
     .populate("artworks");
-  // const artworks = await Artwork.find({museum: id}).populate('artist');
-  // .populate({
-  //   path: 'reviews',
-  //   populate: {
-  //     path: 'postedBy'
-  //   }
-  // }).populate({
-  //   path: 'artworks',
-  //   populate: {
-  //     path: 'postedBy'
-  //   }
-  // }).populate('postedBy');
-  // if (!museum) {
-  //   req.flash('error', 'museum not found');
-  //   return res.redirect('/museums');
-  // }
   res.render("museums/show", { museum, formArtists, artists });
 };
 

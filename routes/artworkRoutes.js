@@ -5,6 +5,7 @@ const {
   isLoggedIn,
   isAuthor,
   validateArtwork,
+  isArtistAuthor,
 } = require("../utilities/middleware");
 const artworkController = require("../controllers/artworkController");
 
@@ -41,6 +42,6 @@ router
 router
   .route("/:id")
   .get(catchAsync(artworkController.show))
-  .delete(catchAsync(artworkController.deleteArtwork));
+  .delete(isLoggedIn, isArtistAuthor, catchAsync(artworkController.deleteArtwork));
 
 module.exports = router;

@@ -26,8 +26,8 @@
   <ul class="list-group list-group-flush mb-3">
     <% if (artworks.length === 0) {%>
     <li class="list-group-item">no matching <a href="/artworks" class="fw-bold nav-link">artworks</a> on <span class="fw-bold">museo, </span><% if (!currentUser) {%>
-    <a href="/register" class="nav-link">register to add one</a>
-    <% } else { %>
+      <p class="mt-3"><a href="/login" class="nav-link fw-bold">login</a> or <a href="/register" class="nav-link fw-bold">register</a> to add one</p>
+      <% } else { %>
 
       <a href="/artworks/new" class="nav-link">add one to <span class="fw-bold">museo</span></a>
       <% } %> 
@@ -41,8 +41,8 @@
     <% if (artists.length === 0) {%>
     <li class="list-group-item">no matching <a href="/artists" class="fw-bold nav-link">artists</a> on <span class="fw-bold">museo, </span>
     <% if (!currentUser) {%>
-    <a href="/register" class="nav-link">register to add one</a>
-    <% } else { %>
+      <p class="mt-3"><a href="/login" class="nav-link fw-bold">login</a> or <a href="/register" class="nav-link fw-bold">register</a> to add one</p>
+      <% } else { %>
       <a href="/artists/new" class="nav-link">add one to <span class="fw-bold">museo</span></a>
       <% } %> 
     </li>
@@ -54,8 +54,8 @@
   <ul class="list-group list-group-flush mb-3">
     <% if (museums.length === 0) {%>
     <li class="list-group-item">no matching <a href="/museums" class="fw-bold nav-link">museums</a> on <span class="fw-bold">museo, </span><% if (!currentUser) {%>
-    <a href="/register" class="nav-link">register to add one</a>
-    <% } else { %> 
+      <p class="mt-3"><a href="/login" class="nav-link fw-bold">login</a> or <a href="/register" class="nav-link fw-bold">register</a> to add one</p>
+      <% } else { %> 
       <a href="/museums/new" class="nav-link">add one to <span class="fw-bold">museo</span></a>
       <% } %> 
     </li>

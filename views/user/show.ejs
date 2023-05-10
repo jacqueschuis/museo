@@ -11,7 +11,7 @@
         <div class="col-md-9 text-center text-md-start">
             <h2><%= user.firstName %>'s contributions to <span class="fw-bold">museo</span></h2>
             <div class="container my-3">
-                <h3 class="fw-bold" data-bs-toggle="collapse" role="button" data-bs-target="#artCollapse">art</h3>
+                <h3 class="fw-bold" data-bs-toggle="collapse" role="button" data-bs-target="#artCollapse"><span data-bs-toggle="tooltip" data-bs-title="click to expand">art</span></h3>
                 <ul class="list-group list-group-flush collapse" id="artCollapse">
                     <% if (artworks.length === 0) {%>
                         <li class="list-group-item"><%= user.username %> hasn't added any <span class="fw-bold">artworks</span> to <span class="fw-bold">museo</span></li>
@@ -21,7 +21,7 @@
                 </ul>
             </div>
             <div class="container my-3">
-                <h3 class="fw-bold" data-bs-toggle="collapse" role="button" data-bs-target="#artistCollapse">artists</h3>
+                <h3 class="fw-bold" data-bs-toggle="collapse" role="button" data-bs-target="#artistCollapse"><span data-bs-toggle="tooltip" data-bs-title="click to expand">artists</span></h3>
                 <ul class="list-group list-group-flush collapse" id="artistCollapse">
                     <% if (artists.length === 0) {%>
                         <li class="list-group-item"><%= user.username %> hasn't added any <span class="fw-bold">artists</span> to <span class="fw-bold">museo</span></li>
@@ -31,7 +31,7 @@
                 </ul>
             </div>
             <div class="container my-3">
-                <h3 class="fw-bold" data-bs-toggle="collapse" data-bs-target="#museumCollapse" role="button">museums</h3>
+                <h3 class="fw-bold" data-bs-toggle="collapse" data-bs-target="#museumCollapse" role="button"><span data-bs-toggle="tooltip" data-bs-title="click to expand">museums</span></h3>
                 <ul class="list-group list-group-flush collapse" id="museumCollapse">
                     <% if (museums.length === 0) {%>
                         <li class="list-group-item"><%= user.username %> hasn't added any <span class="fw-bold">museums</span> to <span class="fw-bold">museo</span></li>

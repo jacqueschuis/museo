@@ -1,4 +1,6 @@
 const Museum = require("../models/museum");
+const Artist = require('../models/artist')
+const Artwork = require('../models/artwork')
 // const Artwork = require("../models/artwork");
 // const Review = require("../models/review");
 const ExpressError = require("../utilities/expresserror");
@@ -7,6 +9,7 @@ const {
   artworkSchema,
   museumSchema,
 } = require("../utilities/schemas");
+const artist = require("../models/artist");
 
 module.exports.isLoggedIn = (req, res, next) => {
   if (!req.isAuthenticated()) {
@@ -16,6 +19,26 @@ module.exports.isLoggedIn = (req, res, next) => {
   }
   next();
 };
+
+module.exports.isArtistAuthor = async (req, res, next) => {
+  const { id } = req.params;
+  const artist = await Artist.findById(id);
+  if (!artist.postedBy.equals(req.user._id)) {
+    req.flash("error", "you do not have permission to do that");
+    return res.redirect('/login')
+  }
+  next();
+}
+
+module.exports.isArtworkAuthor = async (req, res, next) => {
+  const { id} = req.params;
+  const artwork = await Artwork.findById(id);
+  if(!artwork.postedBy.equals(req.user._id)) {
+    req.flash("error", 'you do not have permission to do that');
+    return res.redirect('/login');
+  }
+  next();
+}
 
 module.exports.isMuseumAuthor = async (req, res, next) => {
   const { id } = req.params;

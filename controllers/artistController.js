@@ -92,3 +92,12 @@ module.exports.newByUrl = async (req, res) => {
   req.flash("success", `${newArtist.name} added to museo`);
   res.redirect(`/artists/${newArtist._id}`);
 };
+
+module.exports.deleteArtist = async (req, res) => {
+  const {id} = req.params;
+  const artist = await Artist.findById(id);
+  await Artwork.deleteMany({artist: id});
+  await Artist.findByIdAndDelete(id);
+  req.flash("success", `${artist.name} removed from museo`)
+  res.redirect('/artists');
+}
