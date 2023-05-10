@@ -25,11 +25,10 @@
   <h6 class="fw-bold">art</h6>
   <ul class="list-group list-group-flush mb-3">
     <% if (artworks.length === 0) {%>
-    <li class="list-group-item">no matching <a href="/artworks" class="fw-bold nav-link">artworks</a> on <span class="fw-bold">museo</span><% if (!currentUser) {%>
-      , 
+    <li class="list-group-item">no matching <a href="/artworks" class="fw-bold nav-link">artworks</a> on <span class="fw-bold">museo, </span><% if (!currentUser) {%>
     <a href="/register" class="nav-link">register to add one</a>
     <% } else { %>
-      , 
+
       <a href="/artworks/new" class="nav-link">add one to <span class="fw-bold">museo</span></a>
       <% } %> 
     </li>
@@ -40,12 +39,10 @@
   <h6 class="fw-bold">artists</h6>
   <ul class="list-group list-group-flush mb-3">
     <% if (artists.length === 0) {%>
-    <li class="list-group-item">no matching <a href="/artists" class="fw-bold nav-link">artists</a> on <span class="fw-bold">museo</span>
+    <li class="list-group-item">no matching <a href="/artists" class="fw-bold nav-link">artists</a> on <span class="fw-bold">museo, </span>
     <% if (!currentUser) {%>
-      , 
     <a href="/register" class="nav-link">register to add one</a>
     <% } else { %>
-      , 
       <a href="/artists/new" class="nav-link">add one to <span class="fw-bold">museo</span></a>
       <% } %> 
     </li>
@@ -56,11 +53,9 @@
   <h6 class="fw-bold">museums</h6>
   <ul class="list-group list-group-flush mb-3">
     <% if (museums.length === 0) {%>
-    <li class="list-group-item">no matching <a href="/museums" class="fw-bold nav-link">museums</a> on <span class="fw-bold">museo</span><% if (!currentUser) {%>
-      , 
+    <li class="list-group-item">no matching <a href="/museums" class="fw-bold nav-link">museums</a> on <span class="fw-bold">museo, </span><% if (!currentUser) {%>
     <a href="/register" class="nav-link">register to add one</a>
-    <% } else { %>
-      , 
+    <% } else { %> 
       <a href="/museums/new" class="nav-link">add one to <span class="fw-bold">museo</span></a>
       <% } %> 
     </li>

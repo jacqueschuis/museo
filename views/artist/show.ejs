@@ -18,8 +18,13 @@
         <h3 class="fw-bold">museums</h3>
         <ul class="list-group list-group-flush">
           <% if (artist.museums.length === 0) {%>
-          <li class="list-group-item"><%= artist.name %>'s works aren't yet on <span class="fw-bold">museo</span></li>
-          <%} else{for (let museum of artist.museums) {%>
+          <li class="list-group-item"><%= artist.name %>'s works aren't yet on <span class="fw-bold">museo, </span>
+            <% if (currentUser) {%>
+              <a href="/artworks/new" class="nav-link">add one</a>
+              <% } else { %>
+              <a href="/register" class="nav-link">register to add one</a>
+          </li>
+          <%}} else{for (let museum of artist.museums) {%>
           <li class="list-group-item"><a href="/museums/<%= museum._id %>"><%= museum.name %></a></li>
           <% }} %>
         </ul>
@@ -29,8 +34,12 @@
   <div class="row mt-3">
     <h3 class="fw-bold text-center">artworks</h3>
     <% if (artist.artworks.length === 0) {%>
-    <p class="text-center"><%= artist.name %>'s works aren't yet on <span class="fw-bold">museo</span></p>
-    <%} else {%>
+    <p class="text-center"><%= artist.name %>'s works aren't yet on <span class="fw-bold">museo,</span>
+      <% if (currentUser) {%>
+        <a href="/artworks/new" class="nav-link">add one</a>
+        <% } else { %>
+        <a href="/register" class="nav-link">register to add one</a>
+    <%}} else {%>
     <div class="carousel mt-3" data-flickity='{ "cellAlign": "center", "contain": true, "imagesLoaded": true, "percentPosition": true, "pageDots": false, "prevNextButtons": false, "freeScroll": true, "draggable": true, "wrapAround": true}'>
       <% for (let artwork of artist.artworks) {%>
       <a href="/artworks/<%= artwork._id %>">

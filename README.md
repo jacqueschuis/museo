@@ -22,18 +22,11 @@ With **museo**, I have taken what I learned from YelpCamp and added:
 
 ## To-Do
 
-### Tomorrow
-
-- [x] Check image upload for artists
-- [ ] Check image upload for artworks
-- [x] Fix artwork schema
-
 ### App
 
 - [x] site-wide search
 - [x] new dropdown with links to forms for new artists, new museums, new art
 - [ ] about page
--
 
 ### Artists
 
@@ -55,7 +48,7 @@ With **museo**, I have taken what I learned from YelpCamp and added:
 
 - [x] new art
 - [ ] edit art
-- [ ] delete art
+- [x] delete art
 - [x] filter art
 
 ### Users

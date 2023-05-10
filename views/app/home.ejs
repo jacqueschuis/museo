@@ -25,9 +25,6 @@
         <a href="/login" class="nav-link">login</a>
         <a href="/register" class="nav-link">register</a>
         <% } else  {%>
-        <% if (currentUser.isAdmin === true) {%>
-        <li><a href="/admin" class="nav-link">admin tools</a></li>
-        <% } %>
         <li><a href="/logout" class="nav-link fw-bold">logout, <%= currentUser.firstName %></a></li>
         <% } %>
       </nav>

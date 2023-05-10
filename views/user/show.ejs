@@ -3,6 +3,9 @@
     <div class="row">
         <div class="col-md-3 text-center text-md-end mb-3">
             <h1 class="fw-bold"><%= user.firstName %></h1>
+            <% if (user.isAdmin === true) {%>
+                <p>admin on <span class="fw-bold">museo</span></p>
+            <% } %>
             <p>@<%= user.username %></p>
         </div>
         <div class="col-md-9 text-center text-md-start">

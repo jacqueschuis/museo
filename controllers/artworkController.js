@@ -127,7 +127,7 @@ module.exports.createArtworkByUpload = async (req, res) => {
     });
     if (check.length > 0) {
       console.log("museum present already, no push");
-      return;
+      return await artist.save();
     }
     console.log("museum not found, pushing");
     artist.museums.push(museum);
@@ -135,7 +135,6 @@ module.exports.createArtworkByUpload = async (req, res) => {
   };
   hasMuseum(artist, museum);
 
-  await artist.save();
   await museum.save();
   req.flash("success", `${newArtwork.title} added to museo`);
   res.redirect(`/artworks/${newArtwork._id}`);
@@ -168,14 +167,14 @@ module.exports.createArtworkByUrl = async (req, res) => {
     });
     if (check.length > 0) {
       console.log("museum present already, no push");
-      return;
+      return await artist.save();
     }
     console.log("museum not found, pushing");
-    return artist.museums.push(museum);
+    artist.museums.push(museum);
+    return await artist.save();
   };
   hasMuseum(artist, museum);
 
-  await artist.save();
   await museum.save();
   req.flash("success", `${newArtwork.title} added to museo`);
   res.redirect(`/artworks/${newArtwork._id}`);
@@ -184,6 +183,8 @@ module.exports.createArtworkByUrl = async (req, res) => {
 module.exports.deleteArtwork = async (req, res, next) => {
   const { id } = req.params;
   const artwork = await Artwork.findById(id);
+  const museumId = artwork.museum;
+  const artistId = artwork.artist;
   await Museum.findOneAndUpdate(
     { _id: artwork.museum },
     { $pull: { artworks: id } }
@@ -194,9 +195,27 @@ module.exports.deleteArtwork = async (req, res, next) => {
   );
   await Artwork.findByIdAndDelete(id);
 
-  const isLastArtworkFromMuseum = async (artworkObj, artistObj) => {
-    const artWorkMuseum = await Artist;
+  const isLastArtworkFromMuseum = async(museumId, artistId) => {
+    const artist = await Artist.findById(artistId).populate('artworks');
+    let check = []; 
+    for (let artwork of artist.artworks) {
+      if (artwork.museum === museumId) {
+        check.push(artwork);
+      } return
+    }
+    if (check.length > 1) {
+      console.log('not the last one');
+     return
+    } else {
+      console.log('last in museum');
+      await Artist.findOneAndUpdate(
+        {_id: artistId},
+        {$pull: {museums: museumId}}
+      )
+    }
   };
+
+  isLastArtworkFromMuseum(museumId, artistId)
 
   req.flash("success", `deleted ${artwork.title} from museo`);
   res.redirect("/artworks");
