@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
 
-const Review = require("./review");
-
 const Schema = mongoose.Schema;
 
 const imageSchema = new Schema({
@@ -78,12 +76,6 @@ const museumSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "User",
     },
-    reviews: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Review",
-      },
-    ],
     artworks: [
       {
         type: Schema.Types.ObjectId,
@@ -101,14 +93,5 @@ museumSchema.virtual("properties.popUpMarkUp").get(() => {
     `;
 });
 
-museumSchema.post("findOneAndDelete", async function (museum) {
-  if (museum) {
-    await Review.deleteMany({
-      _id: {
-        $in: museum.reviews,
-      },
-    });
-  }
-});
 
 module.exports = mongoose.model("Museum", museumSchema);

@@ -117,3 +117,9 @@ module.exports.deleteMuseum = async (req, res) => {
   req.flash("success", `${museum.name} removed from museo`);
   res.redirect('/museums');
 }
+
+module.exports.editMuseumForm = async (req, res) => {
+  const {id} = req.params;
+  const museum = await Museum.findById(id);
+  res.render('museums/edit', {museum})
+}

@@ -1,15 +1,12 @@
 const Museum = require("../models/museum");
 const Artist = require('../models/artist')
 const Artwork = require('../models/artwork')
-// const Artwork = require("../models/artwork");
-// const Review = require("../models/review");
 const ExpressError = require("../utilities/expresserror");
 const {
   artistSchema,
   artworkSchema,
   museumSchema,
 } = require("../utilities/schemas");
-const artist = require("../models/artist");
 
 module.exports.isLoggedIn = (req, res, next) => {
   if (!req.isAuthenticated()) {

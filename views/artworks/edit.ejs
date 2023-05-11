@@ -1,0 +1,49 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="container">
+  <div class="card shadow my-5">
+    <div class="card-body">
+      <h3 class="card-title"><a href="/artworks/<%= artwork._id %>"><i class="bi bi-chevron-left" id="backButton"></i></a>editing <span class="fw-bold"><%= artwork.title %></span></h3>
+      <form action="#" class="needs-validation" method="post" enctype="multipart/form-data" id="newArtworkForm" novalidate>
+        <div class="row">
+          <div class="col-md-8">
+            <div class="form-floating my-3">
+              <input type="text" name="artwork[title]" id="artworkTitle" class="form-control" placeholder="title" value="<%= artwork.title %>" required>
+              <label for="artworkTitle" class="form-label">title:</label>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-floating my-3">
+              <input type="number" name="artwork[year]" class="form-control" id="year" placeholder="year" value="<%= artwork.year %>" required>
+              <label for="year" class="form-label">year:</label>
+            </div>
+          </div>
+        </div>
+       
+        <div class="row my-3">
+          <div class="col-lg-6 my-3">
+            <label for="artistName" class="form-label">artist:</label>
+            <input class="form-control" name="artistName" id="artistName" list="artistNames" autocomplete="on" value="<%= artwork.artist.name %>" required>
+            <datalist id="artistNames">
+              <% for (let artistName of artistNames) {%>
+              <option><%= artistName %></option>
+              <% } %>
+            </datalist>
+          </div>
+          <div class="col-lg-6 my-3">
+            <label for="museumName" class="form-label">museum:</label>
+            <input class="form-control" name="museumName" id="museumName" list="museumNames" value="<%= artwork.museum.name %>" required>
+            <datalist id="museumNames">
+              <% for (let museumName of museumNames) {%>
+              <option><%= museumName %></option>
+              <% } %>
+            </datalist>
+          </div>
+        </div>
+        <div class="d-grid">
+          <button class="btn">submit <span class="fw-bold">edits</span></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

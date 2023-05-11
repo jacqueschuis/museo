@@ -101,3 +101,9 @@ module.exports.deleteArtist = async (req, res) => {
   req.flash("success", `${artist.name} removed from museo`)
   res.redirect('/artists');
 }
+
+module.exports.editArtistForm = async (req, res) => {
+  const {id} = req.params;
+  const artist = await Artist.findById(id);
+  res.render('artist/edit', {artist})
+}

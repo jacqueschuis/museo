@@ -1,0 +1,50 @@
+<% layout('layouts/boilerplate') %>
+
+<link rel="stylesheet" href="/css/newMuseumForm.css">
+
+
+<div class="container">
+  <div class="card shadow my-5">
+    <div class="card-body">
+      <h3 class="card-title"><a href="/museums/<%= museum._id %>"><i class="bi bi-chevron-left" id="backButton"></i></a>editing <span class="fw-bold"><%= museum.name %></span></h3>
+
+      <form class="needs-validation" id="newMuseumForm" novalidate method="post">
+        <div class="row my-3">
+          <div class="col-md-6">
+            <div class="form-floating my-3">
+              <input type="text" id="museumName" class="form-control" name="museum[name]" placeholder="name" value="<%= museum.name %>" required>
+              <label for="museumName" class="form-label">name:</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-floating my-3">
+              <input type="text" id="museumUrl" class="form-control" name="museum[url]" placeholder="museum website" value="<%= museum.url %>" required>
+              <label for="museumUrl" class="form-label">museum website:</label>
+            </div>
+          </div>
+        </div>
+        <div class="row my-3">
+          <div class="container-fluid">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="museumLocation" name="museum[location]" placeholder="address" value="<%= museum.location %>" required>
+              <label class="form-label" for="museumLocation">museum address:</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row my-3">
+          <div class="container-fluid">
+            <div class="form-floating">
+              <textarea name="museum[summary]" id="museumSummary" class="form-control" placeholder="summary"><%= museum.summary %></textarea>
+              <label for="museumSummary">summary</label>
+            </div>
+          </div>
+        </div>
+        <div class="d-grid">
+          <button class="btn">submit <span class="fw-bold">museum</span></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

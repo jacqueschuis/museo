@@ -3,9 +3,8 @@ const router = express.Router({ mergeParams: true });
 const catchAsync = require("../utilities/catchasync");
 const {
   isLoggedIn,
-  isAuthor,
   validateArtwork,
-  isArtistAuthor,
+  isArtworkAuthor,
 } = require("../utilities/middleware");
 const artworkController = require("../controllers/artworkController");
 
@@ -42,6 +41,10 @@ router
 router
   .route("/:id")
   .get(catchAsync(artworkController.show))
-  .delete(isLoggedIn, isArtistAuthor, catchAsync(artworkController.deleteArtwork));
+  .delete(isLoggedIn, isArtworkAuthor, catchAsync(artworkController.deleteArtwork));
+
+router
+    .route('/:id/edit')
+    .get(isLoggedIn, isArtworkAuthor, catchAsync(artworkController.editArtworkForm))
 
 module.exports = router;

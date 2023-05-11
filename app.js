@@ -18,7 +18,6 @@ const catchAsync = require("./utilities/catchasync");
 
 const User = require("./models/user");
 
-const artworkSubmitRoutes = require("./routes/artworkSubmitRoutes");
 const artworkRoutes = require("./routes/artworkRoutes");
 const museumRoutes = require("./routes/museumRoutes");
 const artistRoutes = require("./routes/artistRoutes");
@@ -99,7 +98,6 @@ app.use("/", userRoutes);
 app.use("/admin", devRoutes);
 app.use("/museums", museumRoutes);
 app.use("/artists", artistRoutes);
-app.use("/museums/:id/artwork", artworkSubmitRoutes);
 app.use("/artworks", artworkRoutes);
 app.use("/search", searchRoutes);
 
@@ -146,12 +144,3 @@ app.use((err, req, res, next) => {
 app.listen(3001, () => {
   console.log("listening on port 3500");
 });
-
-// process.once("SIGUSR2", function () {
-//   process.kill(process.pid, "SIGUSR2");
-// });
-
-// process.on("SIGINT", function () {
-//   // this is only called on ctrl+c, not restart
-//   process.kill(process.pid, "SIGINT");
-// });

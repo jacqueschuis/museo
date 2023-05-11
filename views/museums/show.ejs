@@ -88,13 +88,17 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-6 offset-lg-3 text-center">
-            <h3>edit <%= museum.name %></h3>
-            <div class="d-grid">
-              <div class="row">
-                <form action="/museums/<%= museum._id %>?_method=DELETE" method="post" class="d-grid">
-                  <button class="btn">delete  <%= museum.name %> from <span class="fw-bold">museo</span></button>
-                </form>
-                <a href="/museums/<%= museum._id %>/edit" class="btn">edit <%= museum.name %></a>
+            <div class="card shadow">
+              <div class="card-body">
+                <h3 class="card-title"><%= museum.name %> settings</h3>
+                <div class="d-grid">
+                  <div class="row">
+                    <a href="/museums/<%= museum._id %>/edit" class="btn"><span class="fw-bold">edit</span> <%= museum.name %></a>
+                    <form action="/museums/<%= museum._id %>?_method=DELETE" method="post" class="d-grid">
+                      <button class="btn"><span class="fw-bold">delete</span> <%= museum.name %> from <span class="fw-bold">museo</span></button>
+                    </form>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

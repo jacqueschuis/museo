@@ -220,3 +220,19 @@ module.exports.deleteArtwork = async (req, res, next) => {
   req.flash("success", `deleted ${artwork.title} from museo`);
   res.redirect("/artworks");
 };
+
+module.exports.editArtworkForm = async (req, res) => {
+  const {id} = req.params;
+  const artwork = await Artwork.findById(id).populate('artist').populate('museum')
+  let museumNames = [];
+  let artistNames = [];
+  const museums = await Museum.find({});
+  const artists = await Artist.find({});
+  for (let museum of museums) {
+    museumNames.push(museum.name);
+  }
+  for (let artist of artists) {
+    artistNames.push(artist.name);
+  }
+  res.render('artworks/edit', {artwork, artistNames, museumNames});
+}

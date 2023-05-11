@@ -37,4 +37,7 @@ router
   .get(catchAsync(museumController.showMuseum))
   .delete(isLoggedIn, isMuseumAuthor, catchAsync(museumController.deleteMuseum));
 
+router
+    .route('/:id/edit')
+    .get(isLoggedIn, isMuseumAuthor, catchAsync(museumController.editMuseumForm))
 module.exports = router;

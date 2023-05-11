@@ -35,4 +35,8 @@ router
   .get(catchAsync(artistController.show))
   .delete(isLoggedIn, isArtistAuthor, catchAsync(artistController.deleteArtist))
 
+router
+    .route('/:id/edit')
+    .get(isLoggedIn, isArtistAuthor, catchAsync(artistController.editArtistForm))
+
 module.exports = router;
