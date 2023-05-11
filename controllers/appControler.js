@@ -51,3 +51,7 @@ module.exports.searchMuseo = async (req, res) => {
   const artworks = await Artwork.aggregate(artworkAgg).limit(5);
   res.render("app/search", { artists, museums, artworks, search });
 };
+
+module.exports.renderSearch = (req, res) => {
+  res.render('app/searchWidget')
+}
