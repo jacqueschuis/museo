@@ -195,35 +195,38 @@ module.exports.deleteArtwork = async (req, res, next) => {
   );
   await Artwork.findByIdAndDelete(id);
 
-  const isLastArtworkFromMuseum = async(museumId, artistId) => {
-    const artist = await Artist.findById(artistId).populate('artworks');
-    let check = []; 
+  const isLastArtworkFromMuseum = async (museumId, artistId) => {
+    const artist = await Artist.findById(artistId).populate("artworks");
+    let check = [];
     for (let artwork of artist.artworks) {
       if (artwork.museum === museumId) {
         check.push(artwork);
-      } return
+      }
+      return;
     }
     if (check.length > 1) {
-      console.log('not the last one');
-     return
+      console.log("not the last one");
+      return;
     } else {
-      console.log('last in museum');
+      console.log("last in museum");
       await Artist.findOneAndUpdate(
-        {_id: artistId},
-        {$pull: {museums: museumId}}
-      )
+        { _id: artistId },
+        { $pull: { museums: museumId } }
+      );
     }
   };
 
-  isLastArtworkFromMuseum(museumId, artistId)
+  isLastArtworkFromMuseum(museumId, artistId);
 
   req.flash("success", `deleted ${artwork.title} from museo`);
   res.redirect("/artworks");
 };
 
 module.exports.editArtworkForm = async (req, res) => {
-  const {id} = req.params;
-  const artwork = await Artwork.findById(id).populate('artist').populate('museum')
+  const { id } = req.params;
+  const artwork = await Artwork.findById(id)
+    .populate("artist")
+    .populate("museum");
   let museumNames = [];
   let artistNames = [];
   const museums = await Museum.find({});
@@ -234,5 +237,5 @@ module.exports.editArtworkForm = async (req, res) => {
   for (let artist of artists) {
     artistNames.push(artist.name);
   }
-  res.render('artworks/edit', {artwork, artistNames, museumNames});
-}
+  res.render("artworks/edit", { artwork, artistNames, museumNames });
+};

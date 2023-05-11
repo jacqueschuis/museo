@@ -53,5 +53,5 @@ module.exports.searchMuseo = async (req, res) => {
 };
 
 module.exports.renderSearch = (req, res) => {
-  res.render('app/searchWidget')
-}
+  res.render("app/searchWidget");
+};

@@ -1,19 +1,19 @@
 #artworkTitleContainer {
-    display: none;
+  display: none;
 }
 
 #artworkDateContainer {
-    display: none;
+  display: none;
 }
 
 #artworkMuseumContainer {
-    display: none;
+  display: none;
 }
 
 #submitButton {
-    display: none;
+  display: none;
 }
 
 .dropdown-menu {
-    min-width: 375px;
+  min-width: 375px;
 }

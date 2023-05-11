@@ -1,21 +1,21 @@
 <% layout('layouts/boilerplate') %>
 
 <div class="container">
-    <div class="card shadow my-4">
-      <div class="card-body">
-        <div class="card-title mb-1">
-          <h5 class="text-center">search <span class="fw-bold">museo</span></h5>
-        </div>
-        <div class="container-fluid">
-          <form action="/search?_method=PATCH" method="post" class="needs-validation" novalidate>
-            <div class="form-floating mb-3">
-              <input type="text" class="form-control" name="search" placeholder="search" required>
-              <label for="name">search:</label>
-            </div>
-            <div class="d-grid">
-              <button class="btn">search</button>
-            </div>
-          </form>
-        </div>
+  <div class="card shadow my-4">
+    <div class="card-body">
+      <div class="card-title mb-1">
+        <h5 class="text-center">search <span class="fw-bold">museo</span></h5>
+      </div>
+      <div class="container-fluid">
+        <form action="/search?_method=PATCH" method="post" class="needs-validation" novalidate>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="search" placeholder="search" required>
+            <label for="name">search:</label>
+          </div>
+          <div class="d-grid">
+            <button class="btn">search</button>
+          </div>
+        </form>
       </div>
     </div>
+  </div>

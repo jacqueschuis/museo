@@ -1,7 +1,7 @@
 const User = require("../models/user");
-const Artwork = require('../models/artwork');
-const Artist = require('../models/artist');
-const Museum = require('../models/museum');
+const Artwork = require("../models/artwork");
+const Artist = require("../models/artist");
+const Museum = require("../models/museum");
 
 module.exports.registerForm = (req, res) => {
   res.render("user/register");
@@ -50,12 +50,11 @@ module.exports.logout = (req, res, next) => {
 };
 
 module.exports.show = async (req, res) => {
-  const {id} = req.params;
+  const { id } = req.params;
   const user = await User.findById(id);
-  const artworks = await Artwork.find({postedBy: id});
-  const museums = await Museum.find({postedBy: id});
-  const artists = await Artist.find({postedBy: id});
-  
-  res.render('user/show', {user, artworks, artists, museums});
+  const artworks = await Artwork.find({ postedBy: id });
+  const museums = await Museum.find({ postedBy: id });
+  const artists = await Artist.find({ postedBy: id });
 
-}
+  res.render("user/show", { user, artworks, artists, museums });
+};

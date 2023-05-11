@@ -1,7 +1,11 @@
 const express = require("express");
 const router = express.Router({ mergeParams: true });
 const catchAsync = require("../utilities/catchasync");
-const { isLoggedIn, validateArtist, isArtistAuthor } = require("../utilities/middleware");
+const {
+  isLoggedIn,
+  validateArtist,
+  isArtistAuthor,
+} = require("../utilities/middleware");
 const artistController = require("../controllers/artistController");
 
 const multer = require("multer");
@@ -33,10 +37,14 @@ router
 router
   .route("/:id")
   .get(catchAsync(artistController.show))
-  .delete(isLoggedIn, isArtistAuthor, catchAsync(artistController.deleteArtist))
+  .delete(
+    isLoggedIn,
+    isArtistAuthor,
+    catchAsync(artistController.deleteArtist)
+  );
 
 router
-    .route('/:id/edit')
-    .get(isLoggedIn, isArtistAuthor, catchAsync(artistController.editArtistForm))
+  .route("/:id/edit")
+  .get(isLoggedIn, isArtistAuthor, catchAsync(artistController.editArtistForm));
 
 module.exports = router;

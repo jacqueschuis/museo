@@ -29,15 +29,9 @@ nameSelect.addEventListener("click", () => {
   submitBtn.style.display = "block";
 
   // ensure other criteria are not functional
-  birthInput
-    .setAttribute("disabled", "")
-    .removeAttribute('required');
-    deathInput
-    .setAttribute("disabled", "")
-    .removeAttribute('required');
-  museumInput
-    .setAttribute("disabled", "")
-    .removeAttribute('required');
+  birthInput.setAttribute("disabled", "").removeAttribute("required");
+  deathInput.setAttribute("disabled", "").removeAttribute("required");
+  museumInput.setAttribute("disabled", "").removeAttribute("required");
 });
 
 lifeSelect.addEventListener("click", () => {
@@ -64,12 +58,8 @@ lifeSelect.addEventListener("click", () => {
   submitBtn.style.display = "block";
 
   // disable other inputs
-  nameInput
-    .setAttribute("disabled", "")
-    .removeAttribute('required');
-  museumInput
-    .setAttribute("disabled", "")
-    .removeAttribute('required');
+  nameInput.setAttribute("disabled", "").removeAttribute("required");
+  museumInput.setAttribute("disabled", "").removeAttribute("required");
 });
 
 museumSelect.addEventListener("click", () => {
@@ -83,14 +73,7 @@ museumSelect.addEventListener("click", () => {
   artistNameContainer.style.display = "none";
   submitBtn.style.display = "block";
 
-  
-  birthInput
-    .setAttribute("disabled", "")
-    .removeAttribute('required');
-  deathInput
-    .setAttribute("disabled", "")
-    .removeAttribute('required');
-  nameInput
-    .setAttribute("disabled", "")
-    .removeAttribute('required');
+  birthInput.setAttribute("disabled", "").removeAttribute("required");
+  deathInput.setAttribute("disabled", "").removeAttribute("required");
+  nameInput.setAttribute("disabled", "").removeAttribute("required");
 });

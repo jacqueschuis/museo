@@ -21,7 +21,7 @@ const museumSchema = new Schema(
   {
     name: {
       type: String,
-      unique: true
+      unique: true,
     },
     images: [imageSchema],
     summary: String,
@@ -83,7 +83,7 @@ const museumSchema = new Schema(
       },
     ],
   },
-  opts,
+  opts
 );
 
 museumSchema.virtual("properties.popUpMarkUp").get(() => {
@@ -92,6 +92,5 @@ museumSchema.virtual("properties.popUpMarkUp").get(() => {
     <p>${this.summary}</p>
     `;
 });
-
 
 module.exports = mongoose.model("Museum", museumSchema);

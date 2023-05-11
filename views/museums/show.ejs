@@ -82,22 +82,21 @@
       </div>
     </div>
   </div>
- 
+
   <% if(currentUser && museum.postedBy.equals(currentUser._id)) {%>
-    <div class="tab-pane fade show" id="admin-tab-pane" role="tabpanel" aria-labelledby="admin-tab" tabindex="0">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 offset-lg-3 text-center">
-            <div class="card shadow">
-              <div class="card-body">
-                <h3 class="card-title"><%= museum.name %> settings</h3>
-                <div class="d-grid">
-                  <div class="row">
-                    <a href="/museums/<%= museum._id %>/edit" class="btn"><span class="fw-bold">edit</span> <%= museum.name %></a>
-                    <form action="/museums/<%= museum._id %>?_method=DELETE" method="post" class="d-grid">
-                      <button class="btn"><span class="fw-bold">delete</span> <%= museum.name %> from <span class="fw-bold">museo</span></button>
-                    </form>
-                  </div>
+  <div class="tab-pane fade show" id="admin-tab-pane" role="tabpanel" aria-labelledby="admin-tab" tabindex="0">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 offset-lg-3 text-center">
+          <div class="card shadow">
+            <div class="card-body">
+              <h3 class="card-title"><%= museum.name %> settings</h3>
+              <div class="d-grid">
+                <div class="row">
+                  <a href="/museums/<%= museum._id %>/edit" class="btn"><span class="fw-bold">edit</span> <%= museum.name %></a>
+                  <form action="/museums/<%= museum._id %>?_method=DELETE" method="post" class="d-grid">
+                    <button class="btn"><span class="fw-bold">delete</span> <%= museum.name %> from <span class="fw-bold">museo</span></button>
+                  </form>
                 </div>
               </div>
             </div>
@@ -105,61 +104,62 @@
         </div>
       </div>
     </div>
-    <% } %>
-  </div>
-
-  <h3 class="my-3 text-center"><span class="fw-bold">artists</span> at <%= museum.name %></h3>
-  <% if (artists.length === 0) {%>
-    <div class="container text-center">
-      <p class="mt-3 text-center">no artists have been added to <%= museum.name %> yet on <span class="fw-bold">museo</span></p>
-      <% if(currentUser) {%>
-        <a href="/artists/new" class="nav-link">add one</a>
-        <% } else { %>
-          <p class="mt-3 text-center"><a href="/login" class="nav-link fw-bold">login</a> or <a href="/register" class="nav-link fw-bold">register</a> to add one</p>
-    </div>
-    <% }} else { %>
-      <div class="artCarousel mt-3" data-flickity='{"cellAlign": "center", "contain": true, "imagesLoaded": true, "percentPosition": true, "pageDots": false, "prevNextButtons": false, "freeScroll": true, "draggable": true, "wrapAround": true}'>
-        <% for (let artist of artists) {%>
-          <a href="/artists/<%= artist._id %>">
-          <div class="artCarousel-item">
-            <h2 class="artwork-title"><%= artist.name %></h2>
-            <div class="gradient-overlay"></div>
-            <img src="<%= artist.images[0].url %>" alt="" class="artwork-img">
-          </div>
-          </a>
-          <% } %>
-      </div>
-      <% } %>
-
-
-  <h3 class="my-3 text-center"><span class="fw-bold">artwork</span> at <%= museum.name %></h3>
-
-  <% if (museum.artworks.length === 0) {%>
-    <div class="container text-center">
-      <p class="mt-3 text-center">no works have been added to <%= museum.name %> on <span class="fw-bold">museo</span></p>
-      <% if (currentUser) {%>
-        <a href="/artworks/new" class="nav-link">add one</a>
-        <% } else { %>
-          <p class="mt-3 text-center"><a href="/login" class="nav-link fw-bold">login</a> or <a href="/register" class="nav-link fw-bold">register</a> to add one</p>
-    </div>
-    <% }} else { %>
-  <div class="artCarousel mt-3" data-flickity='{"cellAlign": "center", "contain": true, "imagesLoaded": true, "percentPosition": true, "pageDots": false, "prevNextButtons": false, "freeScroll": true, "draggable": true, "wrapAround": true}'>
-    <% for (let artwork of museum.artworks) {%>
-    <a href="/artworks/<%= artwork._id %>">
-      <div class="artCarousel-item">
-        <h2 class="artwork-title"><%= artwork.title %></h2>
-        <div class="gradient-overlay"></div>
-        <img src="<%= artwork.images[0].url %>" alt="" class="artwork-img">
-      </div>
-    </a>
-    <% } %>
   </div>
   <% } %>
+</div>
 
-  <script>
-    const mapToken = '<%-process.env.MAPBOX_TOKEN%>'
-    const museum = <%- JSON.stringify(museum) %>
-  </script>
-  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.js"></script>
-  <script src="/js/museumShowMap.js"></script>
-  <script src="/js/imagesloaded.js"></script>
+<h3 class="my-3 text-center"><span class="fw-bold">artists</span> at <%= museum.name %></h3>
+<% if (artists.length === 0) {%>
+<div class="container text-center">
+  <p class="mt-3 text-center">no artists have been added to <%= museum.name %> yet on <span class="fw-bold">museo</span></p>
+  <% if(currentUser) {%>
+  <a href="/artists/new" class="nav-link">add one</a>
+  <% } else { %>
+  <p class="mt-3 text-center"><a href="/login" class="nav-link fw-bold">login</a> or <a href="/register" class="nav-link fw-bold">register</a> to add one</p>
+</div>
+<% }} else { %>
+<div class="artCarousel mt-3" data-flickity='{"cellAlign": "center", "contain": true, "imagesLoaded": true, "percentPosition": true, "pageDots": false, "prevNextButtons": false, "freeScroll": true, "draggable": true, "wrapAround": true}'>
+  <% for (let artist of artists) {%>
+  <a href="/artists/<%= artist._id %>">
+    <div class="artCarousel-item">
+      <h2 class="artwork-title"><%= artist.name %></h2>
+      <div class="gradient-overlay"></div>
+      <img src="<%= artist.images[0].url %>" alt="" class="artwork-img">
+    </div>
+  </a>
+  <% } %>
+</div>
+<% } %>
+
+
+<h3 class="my-3 text-center"><span class="fw-bold">artwork</span> at <%= museum.name %></h3>
+
+<% if (museum.artworks.length === 0) {%>
+<div class="container text-center">
+  <p class="mt-3 text-center">no works have been added to <%= museum.name %> on <span class="fw-bold">museo</span></p>
+  <% if (currentUser) {%>
+  <a href="/artworks/new" class="nav-link">add one</a>
+  <% } else { %>
+  <p class="mt-3 text-center"><a href="/login" class="nav-link fw-bold">login</a> or <a href="/register" class="nav-link fw-bold">register</a> to add one</p>
+</div>
+<% }} else { %>
+<div class="artCarousel mt-3" data-flickity='{"cellAlign": "center", "contain": true, "imagesLoaded": true, "percentPosition": true, "pageDots": false, "prevNextButtons": false, "freeScroll": true, "draggable": true, "wrapAround": true}'>
+  <% for (let artwork of museum.artworks) {%>
+  <a href="/artworks/<%= artwork._id %>">
+    <div class="artCarousel-item">
+      <h2 class="artwork-title"><%= artwork.title %></h2>
+      <div class="gradient-overlay"></div>
+      <img src="<%= artwork.images[0].url %>" alt="" class="artwork-img">
+    </div>
+  </a>
+  <% } %>
+</div>
+<% } %>
+
+<script>
+  const mapToken = '<%-process.env.MAPBOX_TOKEN%>'
+  const museum = <%- JSON.stringify(museum) %>
+</script>
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.js"></script>
+<script src="/js/museumShowMap.js"></script>
+<script src="/js/imagesloaded.js"></script>

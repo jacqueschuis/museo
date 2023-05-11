@@ -35,9 +35,13 @@ router.route("/new").get(catchAsync(museumController.renderNewForm));
 router
   .route("/:id")
   .get(catchAsync(museumController.showMuseum))
-  .delete(isLoggedIn, isMuseumAuthor, catchAsync(museumController.deleteMuseum));
+  .delete(
+    isLoggedIn,
+    isMuseumAuthor,
+    catchAsync(museumController.deleteMuseum)
+  );
 
 router
-    .route('/:id/edit')
-    .get(isLoggedIn, isMuseumAuthor, catchAsync(museumController.editMuseumForm))
+  .route("/:id/edit")
+  .get(isLoggedIn, isMuseumAuthor, catchAsync(museumController.editMuseumForm));
 module.exports = router;

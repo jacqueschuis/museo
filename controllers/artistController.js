@@ -94,16 +94,16 @@ module.exports.newByUrl = async (req, res) => {
 };
 
 module.exports.deleteArtist = async (req, res) => {
-  const {id} = req.params;
+  const { id } = req.params;
   const artist = await Artist.findById(id);
-  await Artwork.deleteMany({artist: id});
+  await Artwork.deleteMany({ artist: id });
   await Artist.findByIdAndDelete(id);
-  req.flash("success", `${artist.name} removed from museo`)
-  res.redirect('/artists');
-}
+  req.flash("success", `${artist.name} removed from museo`);
+  res.redirect("/artists");
+};
 
 module.exports.editArtistForm = async (req, res) => {
-  const {id} = req.params;
+  const { id } = req.params;
   const artist = await Artist.findById(id);
-  res.render('artist/edit', {artist})
-}
+  res.render("artist/edit", { artist });
+};

@@ -28,8 +28,8 @@ const artistSchema = new Schema({
   museums: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Museum',
-    }
+      ref: "Museum",
+    },
   ],
   postedBy: {
     type: Schema.Types.ObjectId,

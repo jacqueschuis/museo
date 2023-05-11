@@ -41,10 +41,18 @@ router
 router
   .route("/:id")
   .get(catchAsync(artworkController.show))
-  .delete(isLoggedIn, isArtworkAuthor, catchAsync(artworkController.deleteArtwork));
+  .delete(
+    isLoggedIn,
+    isArtworkAuthor,
+    catchAsync(artworkController.deleteArtwork)
+  );
 
 router
-    .route('/:id/edit')
-    .get(isLoggedIn, isArtworkAuthor, catchAsync(artworkController.editArtworkForm))
+  .route("/:id/edit")
+  .get(
+    isLoggedIn,
+    isArtworkAuthor,
+    catchAsync(artworkController.editArtworkForm)
+  );
 
 module.exports = router;

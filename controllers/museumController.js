@@ -109,17 +109,17 @@ module.exports.renderNewForm = async (req, res) => {
 };
 
 module.exports.deleteMuseum = async (req, res) => {
-  const {id} = req.params;
+  const { id } = req.params;
   const museum = await Museum.findById(id);
   await Museum.findByIdAndDelete(id);
-  await Artist.updateMany({museums: id}, {$pull: {museums: id}});
-  await Artwork.deleteMany({museum: id});
+  await Artist.updateMany({ museums: id }, { $pull: { museums: id } });
+  await Artwork.deleteMany({ museum: id });
   req.flash("success", `${museum.name} removed from museo`);
-  res.redirect('/museums');
-}
+  res.redirect("/museums");
+};
 
 module.exports.editMuseumForm = async (req, res) => {
-  const {id} = req.params;
+  const { id } = req.params;
   const museum = await Museum.findById(id);
-  res.render('museums/edit', {museum})
-}
+  res.render("museums/edit", { museum });
+};

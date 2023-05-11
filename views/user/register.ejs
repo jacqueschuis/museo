@@ -1,29 +1,29 @@
 <% layout('layouts/boilerplate') %>
 
 <div class="container">
-    <div class="col-md-6 offset-md-3">
-      <div class="card shadow my-5">
-        <div class="card-body">
-          <h3 class="card-title mb-3">register for <span class="fw-bold">museo</span></h3>
-          <form action="/register" method="post" novalidate class="needs-validation">
+  <div class="col-md-6 offset-md-3">
+    <div class="card shadow my-5">
+      <div class="card-body">
+        <h3 class="card-title mb-3">register for <span class="fw-bold">museo</span></h3>
+        <form action="/register" method="post" novalidate class="needs-validation">
+          <div class="form-floating">
+            <input type="text" id="username" name="username" class="form-control" required autofocus placeholder="username">
+            <label for="username">username:</label>
+            <div class="input-group my-3">
+              <span class="input-group-text">name:</span>
               <div class="form-floating">
-                <input type="text" id="username" name="username" class="form-control" required autofocus placeholder="username">
-                <label for="username">username:</label>
-              <div class="input-group my-3">
-                <span class="input-group-text">name:</span>
-                <div class="form-floating">
-                  <input type="text" id="firstName" name="firstName" class="form-control" placeholder="first" required>
-                  <label for="firstName">first</label>
-                </div>
-                <div class="form-floating">
-                  <input type="text" id="lastName" name="lastName" class="form-control" placeholder="last" required>
-                  <label for="lastName">last</label>
-                </div>
+                <input type="text" id="firstName" name="firstName" class="form-control" placeholder="first" required>
+                <label for="firstName">first</label>
               </div>
-              <div class="form-floating my-3">
-                <input type="email" name="email" id="email" class="form-control" placeholder="email" required>
-                <label for="email">email:</label>
+              <div class="form-floating">
+                <input type="text" id="lastName" name="lastName" class="form-control" placeholder="last" required>
+                <label for="lastName">last</label>
               </div>
+            </div>
+            <div class="form-floating my-3">
+              <input type="email" name="email" id="email" class="form-control" placeholder="email" required>
+              <label for="email">email:</label>
+            </div>
             <div class="my-3 form-floating">
               <input type="password" name="password" id="password" class="form-control" placeholder="password" required>
               <label for="password" class="form-label">password:</label>
@@ -31,9 +31,9 @@
             <div class="d-grid">
               <button class="btn">register</button>
             </div>
-          </form>
-        </div>
+        </form>
       </div>
     </div>
+  </div>
 
 </div>

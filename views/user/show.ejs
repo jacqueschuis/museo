@@ -1,46 +1,46 @@
 <% layout('layouts/boilerplate') %>
 <div class="container my-5">
-    <div class="row">
-        <div class="col-md-3 text-center text-md-end mb-3">
-            <h1 class="fw-bold"><%= user.firstName %></h1>
-            <% if (user.isAdmin === true) {%>
-                <p>admin on <span class="fw-bold">museo</span></p>
-            <% } %>
-            <p>@<%= user.username %></p>
-        </div>
-        <div class="col-md-9 text-center text-md-start">
-            <h2><%= user.firstName %>'s contributions to <span class="fw-bold">museo</span></h2>
-            <div class="container my-3">
-                <h3 class="fw-bold" data-bs-toggle="collapse" role="button" data-bs-target="#artCollapse"><span data-bs-toggle="tooltip" data-bs-title="click to expand">art</span></h3>
-                <ul class="list-group list-group-flush collapse" id="artCollapse">
-                    <% if (artworks.length === 0) {%>
-                        <li class="list-group-item"><%= user.username %> hasn't added any <span class="fw-bold">artworks</span> to <span class="fw-bold">museo</span></li>
-                    <% } else { for (let artwork of artworks) {%>
-                        <li class="list-group-item"><a href="/artworks/<%= artwork._id %>" class="nav-link"><%= artwork.title %></a></li>
-                    <% }}%>
-                </ul>
-            </div>
-            <div class="container my-3">
-                <h3 class="fw-bold" data-bs-toggle="collapse" role="button" data-bs-target="#artistCollapse"><span data-bs-toggle="tooltip" data-bs-title="click to expand">artists</span></h3>
-                <ul class="list-group list-group-flush collapse" id="artistCollapse">
-                    <% if (artists.length === 0) {%>
-                        <li class="list-group-item"><%= user.username %> hasn't added any <span class="fw-bold">artists</span> to <span class="fw-bold">museo</span></li>
-                    <% } else { for (let artist of artists) {%>
-                        <li class="list-group-item"><a href="/artists/<%= artist._id %>" class="nav-link"><%= artist.name %></a></li>
-                    <% }}%>
-                </ul>
-            </div>
-            <div class="container my-3">
-                <h3 class="fw-bold" data-bs-toggle="collapse" data-bs-target="#museumCollapse" role="button"><span data-bs-toggle="tooltip" data-bs-title="click to expand">museums</span></h3>
-                <ul class="list-group list-group-flush collapse" id="museumCollapse">
-                    <% if (museums.length === 0) {%>
-                        <li class="list-group-item"><%= user.username %> hasn't added any <span class="fw-bold">museums</span> to <span class="fw-bold">museo</span></li>
-                    <% } else { for (let museum of museums) {%>
-                        <li class="list-group-item"><a href="/museums/<%= museum._id %>" class="nav-link"><%= museum.name %></a></li>
-                    <% }}%>
-    
-                </ul>
-            </div>
-        </div>
+  <div class="row">
+    <div class="col-md-3 text-center text-md-end mb-3">
+      <h1 class="fw-bold"><%= user.firstName %></h1>
+      <% if (user.isAdmin === true) {%>
+      <p>admin on <span class="fw-bold">museo</span></p>
+      <% } %>
+      <p>@<%= user.username %></p>
     </div>
+    <div class="col-md-9 text-center text-md-start">
+      <h2><%= user.firstName %>'s contributions to <span class="fw-bold">museo</span></h2>
+      <div class="container my-3">
+        <h3 class="fw-bold" data-bs-toggle="collapse" role="button" data-bs-target="#artCollapse"><span data-bs-toggle="tooltip" data-bs-title="click to expand">art</span></h3>
+        <ul class="list-group list-group-flush collapse" id="artCollapse">
+          <% if (artworks.length === 0) {%>
+          <li class="list-group-item"><%= user.username %> hasn't added any <span class="fw-bold">artworks</span> to <span class="fw-bold">museo</span></li>
+          <% } else { for (let artwork of artworks) {%>
+          <li class="list-group-item"><a href="/artworks/<%= artwork._id %>" class="nav-link"><%= artwork.title %></a></li>
+          <% }}%>
+        </ul>
+      </div>
+      <div class="container my-3">
+        <h3 class="fw-bold" data-bs-toggle="collapse" role="button" data-bs-target="#artistCollapse"><span data-bs-toggle="tooltip" data-bs-title="click to expand">artists</span></h3>
+        <ul class="list-group list-group-flush collapse" id="artistCollapse">
+          <% if (artists.length === 0) {%>
+          <li class="list-group-item"><%= user.username %> hasn't added any <span class="fw-bold">artists</span> to <span class="fw-bold">museo</span></li>
+          <% } else { for (let artist of artists) {%>
+          <li class="list-group-item"><a href="/artists/<%= artist._id %>" class="nav-link"><%= artist.name %></a></li>
+          <% }}%>
+        </ul>
+      </div>
+      <div class="container my-3">
+        <h3 class="fw-bold" data-bs-toggle="collapse" data-bs-target="#museumCollapse" role="button"><span data-bs-toggle="tooltip" data-bs-title="click to expand">museums</span></h3>
+        <ul class="list-group list-group-flush collapse" id="museumCollapse">
+          <% if (museums.length === 0) {%>
+          <li class="list-group-item"><%= user.username %> hasn't added any <span class="fw-bold">museums</span> to <span class="fw-bold">museo</span></li>
+          <% } else { for (let museum of museums) {%>
+          <li class="list-group-item"><a href="/museums/<%= museum._id %>" class="nav-link"><%= museum.name %></a></li>
+          <% }}%>
+
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
