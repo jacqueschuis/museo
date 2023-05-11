@@ -16,7 +16,7 @@ nav {
 }
 
 .btn {
-  color: rgba(34,34,34,.75) !important
+  color: rgba(34, 34, 34, 0.75) !important;
 }
 
 #searchDropdown {
@@ -38,14 +38,18 @@ nav {
 }
 
 .dropdown-toggle {
-  color: rgba(34,34,34,.75) !important
+  color: #aaa;
 }
 
-.dropdown-menu .btn{
-  color: rgba(34,34,34,.75)
+.dropdown-toggle:hover {
+  color: rgba(34, 34, 34, 0.75);
 }
 
-.list-group-flush > li{
+.dropdown-menu .btn {
+  color: rgba(34, 34, 34, 0.75);
+}
+
+.list-group-flush > li {
   color: rgba(34, 34, 34, 0.75);
   font-weight: 400;
 }
@@ -65,10 +69,9 @@ nav {
   color: rgba(34, 34, 34, 0.75);
 }
 
-
 /* clear fix */
 .grid:after {
-  content: '';
+  content: "";
   display: block;
   clear: both;
 }
@@ -88,35 +91,35 @@ nav {
   margin-bottom: 8px;
   display: flex;
   z-index: 0;
-  transition: .2s
+  transition: 0.2s;
 }
 
 .grid-item img {
   border-radius: 8px;
   max-width: 100%;
   z-index: 1;
-  filter: grayscale(1) brightness(.5);
-  transition: .2s
+  filter: grayscale(1) brightness(0.5);
+  transition: 0.2s;
 }
 
-.grid-item:hover > img{
+.grid-item:hover > img {
   filter: grayscale(0) brightness(1);
 }
 
-.museum-name{
+.museum-name {
   position: absolute;
   justify-self: flex-end;
   text-align: end;
   padding: 10px;
   z-index: 3;
   color: white;
-  transition: .2s;
+  transition: 0.2s;
   display: none;
 }
 
 .grid-item:hover > .museum-name {
   color: rgba(34, 34, 34, 0.75);
-  display: inline
+  display: inline;
 }
 
 .gradient-overlay {
@@ -124,17 +127,21 @@ nav {
   height: 100%;
   border-radius: 8px;
   z-index: 2;
-  background: linear-gradient(180deg, rgba(255,255,255,1) 10%, rgba(255,255,255,0) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 10%,
+    rgba(255, 255, 255, 0) 100%
+  );
   position: absolute;
   display: none;
-  transition: .2s
+  transition: 0.2s;
 }
 
-.grid-item:hover > .gradient-overlay{
-  display:inline;
+.grid-item:hover > .gradient-overlay {
+  display: inline;
 }
 
-#index-grid{
+#index-grid {
   display: flex;
   justify-content: center;
 }
@@ -143,37 +150,43 @@ nav {
   color: rgba(34, 34, 34, 0.75) !important;
 }
 
-.nav-pills>li>.nav-link.active {
+.nav-pills > li > .nav-link.active {
   color: #fff;
   background-color: rgba(34, 34, 34, 0.75);
 }
 
-.nav-pills>li>.nav-link,
-.nav-pills>li>.nav-link:hover{
+.nav-pills > li > .nav-link,
+.nav-pills > li > .nav-link:hover {
   transform: none;
 }
 
 @media (max-width: 2400px) {
   .grid-sizer,
-  .grid-item { width: 19.2%}
+  .grid-item {
+    width: 19.2%;
+  }
 }
 
 @media (max-width: 1200px) {
   .grid-sizer,
-  .grid-item { width: 32.5%}
+  .grid-item {
+    width: 32.5%;
+  }
 }
 
 @media (max-width: 992px) {
-
 }
 
 @media (max-width: 768px) {
   .grid-sizer,
-  .grid-item { width: 48%}
+  .grid-item {
+    width: 48%;
+  }
 }
 
 @media (max-width: 500px) {
   .grid-sizer,
-  .grid-item { width: 100%}
+  .grid-item {
+    width: 100%;
+  }
 }
-

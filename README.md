@@ -18,6 +18,7 @@ With **museo**, I have taken what I learned from YelpCamp and added:
 - More complex and more dynamic form inputs with JS DOM manipulation
 - Atlas search of the three main data models
 - Multi-faceted filtering of the three main data models
+- Inspiration finder: get a random artist, artwork, or museum
 - Full-UI redesign using Bootstrap and significant amounts of original CSS
 
 ## To-Do
@@ -27,6 +28,11 @@ With **museo**, I have taken what I learned from YelpCamp and added:
 - [x] site-wide search
 - [x] new dropdown with links to forms for new artists, new museums, new art
 - [ ] about page
+  - [ ] copy
+  - [ ] design
+- [x] randomize
+  - [x] navbar dropdown
+  - [x] homepage button
 
 ### Artists
 

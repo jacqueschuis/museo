@@ -14,19 +14,20 @@ const passport = require("passport");
 const passportLocal = require("passport-local");
 const mongoSanitize = require("express-mongo-sanitize");
 const MongoDBStore = require("connect-mongo");
-const autoComplete = require('@tarekraafat/autocomplete.js');
+const catchAsync = require("./utilities/catchasync");
 
 const User = require("./models/user");
 
 const artworkSubmitRoutes = require("./routes/artworkSubmitRoutes");
 const artworkRoutes = require("./routes/artworkRoutes");
 const museumRoutes = require("./routes/museumRoutes");
-const reviewRoutes = require("./routes/reviewRoutes");
 const artistRoutes = require("./routes/artistRoutes");
 const userRoutes = require("./routes/userRoutes");
 const devRoutes = require("./routes/devRoutes");
 const searchRoutes = require("./routes/searchRoutes");
+const Artist = require("./models/artist");
 const Museum = require("./models/museum");
+const Artwork = require("./models/artwork");
 
 const dbUrl = "mongodb://localhost:27017/muzeion";
 const atlasUrl = process.env.ATLAS_URL;
@@ -110,14 +111,27 @@ app.get("/about", (req, res) => {
   res.render("app/about");
 });
 
-app.get("/museumnames", async (req,res) => {
-  const allMuseums = await Museum.find({});
-  let museumNames = [];
-  for (let museum of allMuseums) {
-    museumNames.push(museum.name);
-  }
-  res.send(museumNames);
-})
+app.get(
+  "/random",
+  catchAsync(async (req, res) => {
+    const randomCategory = Math.floor(Math.random() * 3);
+    if (randomCategory === 0) {
+      const museums = await Museum.find({});
+      const randomMuseum = Math.floor(Math.random() * museums.length);
+      const museum = museums[randomMuseum];
+      return res.redirect(`/museums/${museum._id}`);
+    } else if (randomCategory === 1) {
+      const artists = await Artist.find({});
+      const randomArtist = Math.floor(Math.random() * artists.length);
+      const artist = artists[randomArtist];
+      return res.redirect(`/artists/${artist._id}`);
+    }
+    const artworks = await Artwork.find({});
+    const randomArtwork = Math.floor(Math.random() * artworks.length);
+    const artwork = artworks[randomArtwork];
+    return res.redirect(`/artworks/${artwork._id}`);
+  })
+);
 
 app.all("*", (req, res, next) => {
   return next(new ExpressError("page not found", 404));

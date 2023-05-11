@@ -14,7 +14,7 @@
         <a href="/museums" class="nav-link">institutions</a>
         <% if (currentUser) {%>
         <div class="dropdown-center">
-          <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">new</a>
+          <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" id="newDropdown">new</a>
           <ul class="dropdown-menu shadow">
             <a href="/artworks/new" class="dropdown-item" type="button">artwork</a>
             <a href="/artists/new" class="dropdown-item" type="button">artist</a>
@@ -22,6 +22,7 @@
           </ul>
         </div>
         <% } %>
+        <a href="/random" class="nav-link fw-bold"><i class="bi bi-shuffle" data-bs-toggle="tooltip" data-bs-title="find inspiration" data-bs-placement="bottom"></i></a>
       </div>
       <div class="navbar-nav ms-auto dropdown">
         <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside"><i class="bi bi-search"></i></a>
