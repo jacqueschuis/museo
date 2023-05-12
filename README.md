@@ -37,7 +37,7 @@ With **museo**, I have taken what I learned from YelpCamp and added:
 ### Artists
 
 - [x] submit a new artist form
-- [ ] edit form
+- [x] edit form
 - [x] delete form
 - [x] show page artwork listing fix
 
@@ -46,14 +46,14 @@ With **museo**, I have taken what I learned from YelpCamp and added:
 - [x] fill out museum show page
 - [x] show page artwork list
 - [x] new museum
-- [ ] edit museum
+- [x] edit museum
 - [x] delete museum
 - [x] filter museums
 
 ### Art
 
 - [x] new art
-- [ ] edit art
+- [x] edit art
 - [x] delete art
 - [x] filter art
 

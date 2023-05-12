@@ -31,7 +31,7 @@ nav {
 }
 
 #searchDropdown {
-  min-width: 375px;
+  width: 375px;
 }
 
 #navLogo {
@@ -199,5 +199,10 @@ nav {
   .grid-sizer,
   .grid-item {
     width: 100%;
+  }
+
+  #searchDropdown,
+  #newDropdown {
+    width: 280px;
   }
 }

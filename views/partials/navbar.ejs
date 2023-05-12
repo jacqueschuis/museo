@@ -14,8 +14,8 @@
         <a href="/museums" class="nav-link">institutions</a>
         <% if (currentUser) {%>
         <div class="dropdown-center">
-          <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" id="newDropdown">new</a>
-          <ul class="dropdown-menu shadow">
+          <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-display="static" >new</a>
+          <ul class="dropdown-menu dropdown-menu-end shadow" id="newDropdown">
             <a href="/artworks/new" class="dropdown-item" type="button">artwork</a>
             <a href="/artists/new" class="dropdown-item" type="button">artist</a>
             <a href="/museums/new" class="dropdown-item" type="button">museum</a>
