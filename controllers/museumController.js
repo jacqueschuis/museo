@@ -123,3 +123,11 @@ module.exports.editMuseumForm = async (req, res) => {
   const museum = await Museum.findById(id);
   res.render("museums/edit", { museum });
 };
+
+module.exports.submitEdit = async (req, res) => {
+  const { id } = req.params;
+  const museum = await Museum.findByIdAndUpdate(id, { ...req.body.museum });
+  await museum.save();
+  req.flash("success", `edits submitted for ${museum.name}`);
+  res.redirect(`/museums/${museum._id}`);
+};

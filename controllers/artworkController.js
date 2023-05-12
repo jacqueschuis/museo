@@ -239,3 +239,43 @@ module.exports.editArtworkForm = async (req, res) => {
   }
   res.render("artworks/edit", { artwork, artistNames, museumNames });
 };
+
+module.exports.submitEdit = async (req, res) => {
+  const { id } = req.params;
+  const { artistName, museumName } = req.body;
+  const artwork = await Artwork.findByIdAndUpdate(id, { ...req.body.artwork })
+    .populate("artist", "name")
+    .populate("museum", "name");
+  if (!(artistName === artwork.artist.name)) {
+    console.log("artist name changed");
+    const newArtist = await Artist.findOne({ name: artistName });
+
+    // remove artwork from old artist
+    await Artist.findOneAndUpdate(
+      { name: artwork.artist.name },
+      { $pull: { artworks: id } }
+    );
+
+    // add artwork to new artist
+    newArtist.artworks.push(artwork);
+    await newArtist.save();
+    return await Artwork.findByIdAndUpdate(id, { artist: newArtist });
+  } else if (!(museumName === artwork.museum.name)) {
+    console.log("museum name changed");
+    const newMuseum = await Museum.findOne({ name: museumName });
+
+    // remove artwork from old museum
+    await Museum.findOneAndUpdate(
+      { name: artwork.museum.name },
+      { $pull: { artworks: id } }
+    );
+
+    // add artwork to new museum
+    newMuseum.artworks.push(artwork);
+    await newMuseum.save();
+    return await Artwork.findByIdAndUpdate(id, { museum: newMuseum });
+  }
+  await artwork.save();
+  req.flash("success", `edits submitted for ${artwork.title}`);
+  res.redirect(`/artworks/${artwork._id}`);
+};

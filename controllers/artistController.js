@@ -107,3 +107,11 @@ module.exports.editArtistForm = async (req, res) => {
   const artist = await Artist.findById(id);
   res.render("artist/edit", { artist });
 };
+
+module.exports.submitEdit = async (req, res) => {
+  const { id } = req.params;
+  const artist = await Artist.findByIdAndUpdate(id, { ...req.body.artist });
+  await artist.save();
+  req.flash("success", `edits submitted for ${artist.name}`);
+  res.redirect(`/artists/${artist._id}`);
+};

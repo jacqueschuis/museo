@@ -41,6 +41,12 @@ router
 router
   .route("/:id")
   .get(catchAsync(artworkController.show))
+  .put(
+    isLoggedIn,
+    isArtworkAuthor,
+    validateArtwork,
+    catchAsync(artworkController.submitEdit)
+  )
   .delete(
     isLoggedIn,
     isArtworkAuthor,

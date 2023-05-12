@@ -35,6 +35,12 @@ router.route("/new").get(catchAsync(museumController.renderNewForm));
 router
   .route("/:id")
   .get(catchAsync(museumController.showMuseum))
+  .put(
+    isLoggedIn,
+    isMuseumAuthor,
+    validateMuseum,
+    catchAsync(museumController.submitEdit)
+  )
   .delete(
     isLoggedIn,
     isMuseumAuthor,

@@ -37,6 +37,12 @@ router
 router
   .route("/:id")
   .get(catchAsync(artistController.show))
+  .put(
+    isLoggedIn,
+    isArtistAuthor,
+    validateArtist,
+    catchAsync(artistController.submitEdit)
+  )
   .delete(
     isLoggedIn,
     isArtistAuthor,
