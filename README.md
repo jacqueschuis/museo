@@ -23,6 +23,14 @@ With **museo**, I have taken what I learned from YelpCamp and added:
 
 ## To-Do
 
+- [ ] about page
+  - [ ] copy
+  - [ ] design
+- [ ] edit artwork form
+  - [ ] handle museum adding/dropping of the new artist
+  - [ ] try to make the form submit faster
+
+
 ### App
 
 - [x] site-wide search
