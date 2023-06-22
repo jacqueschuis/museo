@@ -116,10 +116,6 @@ By the end of working on **museo**, I was working largely in custom CSS, and bec
 
 **museo** is completely functionally done, but there are still some things I would like to add at some point down the line.
 
-- [ ] migrate the deployment to a new service; Render is unfortunately very slow, even for a paid instance
-- [ ] flesh out the about page
-  - [ ] improve the copy
-  - [ ] incorporate a library like Ukiyo.js for parallax effect on scroll
 - [ ] edit the route for submitting the edit artwork form to optimize speed
 
 ## Author

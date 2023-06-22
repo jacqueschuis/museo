@@ -1,37 +1,54 @@
 <% layout('layouts/boilerplate') %>
 
 <div class="container">
-  <div class="col-md-6 offset-md-3">
-    <div class="card shadow my-5">
-      <div class="card-body">
-        <h3 class="card-title mb-3">register for <span class="fw-bold">museo</span></h3>
-        <form action="/register" method="post" novalidate class="needs-validation">
-          <div class="form-floating">
-            <input type="text" id="username" name="username" class="form-control" required autofocus placeholder="username">
-            <label for="username">username:</label>
-            <div class="input-group my-3">
-              <span class="input-group-text">name:</span>
-              <div class="form-floating">
-                <input type="text" id="firstName" name="firstName" class="form-control" placeholder="first" required>
-                <label for="firstName">first</label>
+  <div class="row my-5 gx-5">
+    <div class="col-md-4 mb-3 mb-md-0 offset-md-1 text-md-end text-center">
+      <p class="m-0 rule-detail">by registering, you agree to the following:</p>
+      <h2 class="fw-bold m-0">rules</h2>
+      <p class="rule-detail">click any rule for details</p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" data-bs-toggle="collapse" data-bs-target="#rule-one" role="button"><span class="fw-bold">1.</span> We collect from the <span class="fw-bold">visual arts</span>
+        <p class="collapse rule-detail ms-md-4" id="rule-one">We appreciate all forms of art at <span class="fw-bold">museo</span>, but our <span class="fw-bold">institutions</span> should only be art museums or galleries, our <span class="fw-bold">artists</span> painters, sculptors, printmakers, performance artists, and other visual artists, and our <span class="fw-bold">artworks</span> similarly visual.</p>
+      </li>
+        <li class="list-group-item" data-bs-toggle="collapse" data-bs-target="#rule-two" role="button"><span class="fw-bold">2.</span> Our collection is <span class="fw-bold">inspiring</span>
+        <p id="rule-two" class="collapse rule-detail ms-md-4">Our small admin staff is in charge of moderating our content, but we rely on our users to be the first-line of moderation. Add only content which you find inspiring, and do so in good faith. Ensure accuracy whenever possible, and if the details of an item in our collection changes, be sure to go back and edit it.</p>
+        </li>
+        <li class="list-group-item" data-bs-toggle="collapse" data-bs-target="#rule-three" role="button"><span class="fw-bold">3.</span> Fame is <span class="fw-bold">superfluous</span>
+        <p id="rule-three" class="collapse rule-detail ms-md-4"><span class="fw-bold">museo</span> places more weight on the inspirational quality of its collection than notoriety. Relatively-unknown local artists are welcome, as are small galleries with only a few pieces with which you have fallen in love. Our collection should contain the old masters, the canonical cornerstones of art history, and the world's premier institutions, but <span class="fw-bold">we firmly believe that inspiration does not require renown.</span></p></li>
+      </ul>
+    </div>
+    <div class="col-md-6 ">
+      <div class="card shadow">
+        <div class="card-body">
+          <h3 class="card-title mb-3">register for <span class="fw-bold">museo</span></h3>
+          <form action="/register" method="post" novalidate class="needs-validation">
+            <div class="form-floating">
+              <input type="text" id="username" name="username" class="form-control" required autofocus placeholder="username">
+              <label for="username">username:</label>
+              <div class="input-group my-3">
+                <span class="input-group-text">name:</span>
+                <div class="form-floating">
+                  <input type="text" id="firstName" name="firstName" class="form-control" placeholder="first" required>
+                  <label for="firstName">first</label>
+                </div>
+                <div class="form-floating">
+                  <input type="text" id="lastName" name="lastName" class="form-control" placeholder="last" required>
+                  <label for="lastName">last</label>
+                </div>
               </div>
-              <div class="form-floating">
-                <input type="text" id="lastName" name="lastName" class="form-control" placeholder="last" required>
-                <label for="lastName">last</label>
+              <div class="form-floating my-3">
+                <input type="email" name="email" id="email" class="form-control" placeholder="email" required>
+                <label for="email">email:</label>
               </div>
-            </div>
-            <div class="form-floating my-3">
-              <input type="email" name="email" id="email" class="form-control" placeholder="email" required>
-              <label for="email">email:</label>
-            </div>
-            <div class="my-3 form-floating">
-              <input type="password" name="password" id="password" class="form-control" placeholder="password" required>
-              <label for="password" class="form-label">password:</label>
-            </div>
-            <div class="d-grid">
-              <button class="btn">register</button>
-            </div>
-        </form>
+              <div class="my-3 form-floating">
+                <input type="password" name="password" id="password" class="form-control" placeholder="password" required>
+                <label for="password" class="form-label">password:</label>
+              </div>
+              <div class="d-grid">
+                <button class="btn">register</button>
+              </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>

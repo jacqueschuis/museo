@@ -3,6 +3,7 @@ let   mouseX,
       trackX,
       trackY;
 
+
 document.addEventListener("mousemove", function(e) {
   mouseX = e.pageX;
   mouseY = e.pageY;

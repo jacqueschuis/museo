@@ -34,7 +34,7 @@ nav {
   width: 375px;
 }
 
-#navLogo {
+.nav-logo {
   font-weight: 800;
   font-weight: 800;
   color: rgba(34, 34, 34, 0.75);
@@ -42,7 +42,7 @@ nav {
   display: inline-block;
 }
 
-#navLogo:hover {
+.nav-logo:hover {
   text-shadow: 0 1px 5px #aaa;
   transform: translate(0, -0.1rem);
   color: rgba(34, 34, 34, 0.75);
@@ -169,6 +169,12 @@ nav {
 .nav-pills > li > .nav-link,
 .nav-pills > li > .nav-link:hover {
   transform: none;
+}
+
+.rule-detail {
+  margin-top: 5px;
+  font-size: 10pt;
+  color: rgba(34, 34, 34, 0.5);
 }
 
 @media (max-width: 2400px) {
