@@ -1,0 +1,48 @@
+p a{
+  display: inline-block;
+  color: #aaa;
+  text-decoration: none;
+  transition: transform 0.2s, text-shadow 0.2s;
+}
+
+p a:hover{
+  text-shadow: 0 1px 5px #aaa;
+  transform: translate(0, -0.1rem);
+  color: rgba(34, 34, 34, 0.75);
+}
+
+.body-copy {
+    margin-bottom: 2rem;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+}
+
+.about-header {
+    height: fit-content;
+    font-size: calc(50px + (200 - 50) * ((100vw - 200px) / (1440 - 200)));
+    transition: .15s;
+    background: url('/images/museum.jpg');
+    background-position: center;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: rgba(34,34,34,0.25);
+    filter: drop-shadow(0 5px 5px rgba(34,34,34,0.25));
+}
+
+.fine-print {
+    font-size: 10pt;
+}
+
+.list-group-item {
+    cursor: pointer;
+}
+
+.rule-detail {
+    text-align: start;
+    margin-top: 5px;
+    font-size: 10pt;
+    color: rgba(34, 34, 34, 0.5);
+}

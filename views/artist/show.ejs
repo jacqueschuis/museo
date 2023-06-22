@@ -28,10 +28,7 @@
           <li class="list-group-item"><a href="/museums/<%= museum._id %>"><%= museum.name %></a></li>
           <% }} %>
         </ul>
-        <% if (currentUser && artist.postedBy.equals(currentUser._id)) {%>
-        <div class="d-grid"><a href="/artists/<%= artist._id %>/edit" class="btn"><span class="fw-bold">edit</span> <%= artist.name %></a></div>
-        <form action="/artists/<%= artist._id %>?_method=DELETE" method="post" class="d-grid"><button class="btn"><span class="fw-bold">delete</span> <%= artist.name %></button></form>
-        <% } %>
+       
       </div>
     </div>
   </div>
@@ -56,6 +53,13 @@
       <% } %>
     </div>
     <% } %>
+  </div>
+  <div class="row mt-3">
+    <% if (currentUser && artist.postedBy.equals(currentUser._id)) {%>
+      <div class="d-grid">
+        <a href="/artists/<%= artist._id %>/edit" class="btn"><span class="fw-bold">edit</span> <%= artist.name %></a></div>
+        <form action="/artists/<%= artist._id %>?_method=DELETE" method="post" class="d-grid"><button class="btn"><span class="fw-bold">delete</span> <%= artist.name %></button></form>
+      <% } %>
   </div>
 </main>
 
